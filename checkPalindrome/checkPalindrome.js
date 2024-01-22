@@ -20,29 +20,18 @@ function solution(inputString)
     i = 0;
     j = inputString.length - 1;
 
-    /*
-    
-    if (isOdd(inputString))
+    for (i; i < inputString.length; i++)
     {
-        
-    }
-
-    else
-    {
-    */
-        for (i; i < inputString.length; i++)
+        if (inputString [i] != inputString [j])
         {
-            if (inputString [i] != inputString [j])
-            {
-                return false;
-            }
-
-            else
-            {
-                j--;
-            }
+            return false;
         }
-    // }
+
+        else
+        {
+            j--;
+        }
+    }
 
     return true;
 }
