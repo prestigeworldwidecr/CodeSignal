@@ -17,22 +17,50 @@ solution(inputString) = true.
 
 function solution(inputString) 
 {
-    return isOdd(inputString);
+    i = 0;
+    j = inputString.length - 1;
+
+    /*
+    
+    if (isOdd(inputString))
+    {
+        
+    }
+
+    else
+    {
+    */
+        for (i; i < inputString.length; i++)
+        {
+            if (inputString [i] != inputString [j])
+            {
+                return false;
+            }
+
+            else
+            {
+                j--;
+            }
+        }
+    // }
+
+    return true;
 }
 
 function isOdd(n)
 {
     if (n % 2 == 0)
     {
-        return true;
+        return false;
     }
 
     else
     {
-        return false;
+        return true;
     }
 }
 
-solution("aabaa");
-solution("abac");
-solution("a");
+console.log(solution("aabaa"));
+console.log(solution("abac"));
+console.log(solution("abccba"));
+console.log(solution("racecar"));
