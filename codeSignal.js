@@ -60,31 +60,77 @@ output
 function solution(src) 
 {
     tmp = "";
-    prev = '';  // previous character
+    prev = "";  // previous character
+    prevPrev = "" // penultimate character
+    camelCase = "";
 
     for (i = 0; i < src.length; i++)
     {
-        tmp = tmp + src [i];
+
+        tmp = src [i];
+        prevPrev = src [i - 1];
+        
+        // see underscore, remove and capitalize next character
+        if (tmp === "_" && prevPrev != '_')
+        {
+            i++;
+            tmp = src [i];
+            camelCase = camelCase + tmp.toUpperCase();
+        }
+
+        // character, ex. 'a', 'B', '9'
+        else
+        {
+            camelCase = camelCase + tmp;
+        }
+
+        prev = tmp;
+        
+        // console.log("i: ", i, "prev: ", prev, " prevPrev: ", prevPrev, " tmp:", tmp, " tmp.localeCompare: ", tmp.localeCompare("_"), " src.length: ", src.length);
+    }
+
+    return camelCase;
+
+}
+
+src = "This is the doc_string for __secret_fun__";
+console.log(solution(src));
+
+/*
+
+BONEYARD
+--------
+
+
+        // if ends w/underscore, preserve
+        else if (i == src.length - 1)
+        {
+
+            if (tmp === "_")
+            {
+                camelCase = camelCase + tmp;
+            }
+
+            else
+            {
+                camelCase = camelCase + tmp.toUpperCase();
+            }
+        }
 
         // if starts w/underscore, preserve
         if (i == 0)
         {
-            
+            camelCase = tmp;
         }
 
-        // if ends w/underscore, preserve
-        else if (i = src.length)
-        {
+if (tmp === "_")
+{
+    camelCase = tmp;
+}
 
-        }
-
-        else
-        {
-
-        }
-    }
-
-    console.log(tmp);
+else
+{
+    camelCase = tmp.toLowerCase();
 }
 
 function printSource(src)
@@ -104,16 +150,9 @@ function printSource(src)
         }
     }
 
-    // console.log(underscoreCnt);
 }
 
-src = "This is the doc_string for __secret_fun";
-solution(src);
-
-/*
-
-BONEYARD
---------
+// src.charCodeAt(i) ** // string1.localeCompare(string2)
 
 // tmp = tmp + src.charCodeAt(i);
 // console.log(src[i]);
