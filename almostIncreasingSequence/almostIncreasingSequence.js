@@ -40,3 +40,5 @@ function solution(sequence)
 {
     console.log("*");
 }
+
+solution("");
