@@ -282,10 +282,41 @@ function solution5(sequence)
 // send to flatrun
 function solution6(sequence)
 {
-    for (i = sequence.length - 1; i > 0; i--)
-    {
-        console(sequence[i]);
+    for (x = sequence.length - 1; x > 0; x--)
+    {   
+        // last element
+        if ((x == sequence.length - 1) && (sequence[x] <= sequence[x - 1]))
+        {
+            return flatRun(copyArraySansElement(sequence, x));
+        }
+        
+        // first element
+        else if ((x == 1) && (sequence[x] >= sequence[x - 1]))
+        {
+            return flatRun(copyArraySansElement(sequence, x - 1));
+        }
+        
+        // look both ways
+        else if ((sequence[x] >= sequence[x + 1]) && (sequence[x] >= sequence[x - 1]))
+        {
+            return flatRun(copyArraySansElement(sequence, x + 1));
+        }
+
+        // look right
+        else if ((sequence[x] > sequence[x - 1]) && (sequence[x] >= sequence[x + 1]))
+        {
+            return flatRun(copyArraySansElement(sequence, x + 1));
+        }
+
+        // peachy
+        else
+        {
+            // 
+        }
     }
+
+    return true;
+
 }
 
 s1 = [1, 3, 2, 1];                          // false
@@ -296,17 +327,17 @@ s5 = [40, 50, 60, 10, 20, 30];              // false
 s6 = [1, 2, 5, 3, 5];                       // true
 s7 = [1, 2, 3, 4, 99, 5, 6];                // true
 s8 = [123, -17, -5, 1, 2, 3, 12, 43, 45]    // true
+s9 = [1, 2, 3, 4, 3, 6];                    // true
+s10 = [3, 5, 67, 98, 3];                    // true
 
-s = [ [1, 3, 2, 1], [1, 3, 2], [1, 2, 1, 2], [1, 2, 3, 4, 5, 3, 5, 6], [40, 50, 60, 10, 20, 30], [1,  2, 5, 3, 5], [1, 2, 3, 4, 99, 5, 6], [123, -17, -5, 1, 2, 3, 12, 43, 45] ];
+s = [ s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
 
-solution6(s1);
+// console.log(solution6(s[1]));
 
-/*
 for (y = 0; y < s.length; y++)
 {
-    console.log(s[y], solution5(s[y]));
+    console.log(s[y], solution6(s[y]));
 }
-*/
 
 /*
 
@@ -314,6 +345,17 @@ for (y = 0; y < s.length; y++)
 BONEYARD
 ********
 
+// console.log("***", flatRun(copyArraySansElement(sequence, x)));
+            // tmp = copyArraySansElement(sequence, x - 1);
+            // console.log(tmp);
+            /*
+        if (currMax <= sequence[i - 1]) 
+        {
+
+        }
+        */
+        
+        // console.log("x: ", x, " sequence[i]: ", sequence[x], "sequence[i - 1]: ", sequence[x - 1]);
 
         // if (flatRun(copyArraySansElement(sequence, z)))
         // {
@@ -358,10 +400,10 @@ BONEYARD
     // all = [];
     // tmp = [];
 
-function hi(i)
-{
-    return "*" + i;
-}
+// function hi(i)
+// {
+    //return "*" + i;
+// }
 
 // console.log(all);
 
