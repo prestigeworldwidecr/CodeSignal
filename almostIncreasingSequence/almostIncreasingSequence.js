@@ -36,6 +36,51 @@ Return true if it is possible to remove one element from the array in order to g
 
 */
 
+// flatRun goes through sequence less one element
+// one element out of order returns false
+function flatRun(sequence)
+{    
+    for (i = 0; i < sequence.length - 1; i++)
+    {
+        // console.log("i: ", i, " sequence[i]: ", sequence[i], " sequence[i + 1]: ", sequence[i + 1])
+        
+        if (sequence[i] < sequence[i + 1])
+        {
+            //
+        }
+
+        else
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function copyArraySansElement(sequence, n)
+{
+    i = 0;
+    j = 0;
+    tmp = [];
+
+    for(i; i < sequence.length; i++)
+    {
+        if (i == n)
+        {
+            //
+        }
+        
+        else
+        {
+            tmp [j] = sequence [i];
+            j++;
+        }
+    }
+
+    return tmp;
+}
+
 function solution1(sequence)
 {
     cnt = 0;            // count out of sequence
@@ -138,22 +183,209 @@ function solution2(sequence)
     return true;
 }
 
+// read sequence backwards
+// check repeats
+function solution3(sequence)
+{
+    cnt = 0;                                    // count out of sequence
+    rptCnt = 0;                                 // count of repeat
+    currMax = sequence[sequence.length - 1];
+    
+    for (i = sequence.length; i > 0; i--)
+    {
+        console.log("i: ", i, " sequence [i]: ", sequence [i], " sequence [i - 1]: ", sequence [i - 1], " currMax: ", currMax, " cnt: ", cnt);
+        
+        if (cnt > 1)
+        {
+            return false;
+        }
+        
+        else if (rptCnt > 1)
+        {
+            return false;
+        }
+
+        else if (sequence [i] == sequence[i - 1])
+        {
+            rptCnt++;
+        }
+
+        else if (sequence [i] > sequence[i - 1])
+        {
+            // 
+        }
+
+        else if (sequence [i] < sequence[i - 1])
+        {
+            currMax = sequence[i - 1];
+            cnt++;
+        }
+
+        else
+        {
+
+        }
+        
+    }
+
+    return true;
+}
+
+// remove element, run again
+function solution4(sequence)
+{
+    cnt = 0;    // count out of sequence
+
+    for (i = 0; i < sequence.length; i++)
+    {
+        console.log("i: ", i, " sequence [i]: ", sequence [i], " sequence [i + 1]: ", sequence [i + 1], " cnt: ", cnt);
+
+        if (cnt >= 1)
+        {
+            sequence.pop(sequence[i + 1]);
+            return flatRun(sequence);
+        }
+
+        else if(sequence[i] >= sequence[i + 1])
+        {
+            // sequence.pop(sequence[i]);
+            cnt++;
+        }
+
+        else
+        {
+            //
+        }
+
+    }
+
+    return true;
+}
+
+// create array of arrays missing one element
+// flatRun each
+function solution5(sequence)
+{
+    for (z = 0; z < sequence.length; z++)
+    {
+        if (flatRun(copyArraySansElement(sequence, z)))
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// run through array backwards
+// out of sequence, remove element
+// send to flatrun
+function solution6(sequence)
+{
+    for (i = sequence.length - 1; i > 0; i--)
+    {
+        console(sequence[i]);
+    }
+}
+
 s1 = [1, 3, 2, 1];                          // false
 s2 = [1, 3, 2];                             // true
 s3 = [1, 2, 1, 2];                          // false
 s4 = [1, 2, 3, 4, 5, 3, 5, 6];              // false
-s5 = [40, 50, 60, 10, 20, 30]               // false
-s6 = [1, 2, 5, 3, 5];                       // 
-s7 = [1, 2, 3, 4, 99, 5, 6];                // 
-s8 = [123, -17, -5, 1, 2, 3, 12, 43, 45]    // 
+s5 = [40, 50, 60, 10, 20, 30];              // false
+s6 = [1, 2, 5, 3, 5];                       // true
+s7 = [1, 2, 3, 4, 99, 5, 6];                // true
+s8 = [123, -17, -5, 1, 2, 3, 12, 43, 45]    // true
 
-console.log(solution1(s3));
+s = [ [1, 3, 2, 1], [1, 3, 2], [1, 2, 1, 2], [1, 2, 3, 4, 5, 3, 5, 6], [40, 50, 60, 10, 20, 30], [1,  2, 5, 3, 5], [1, 2, 3, 4, 99, 5, 6], [123, -17, -5, 1, 2, 3, 12, 43, 45] ];
+
+solution6(s1);
+
+/*
+for (y = 0; y < s.length; y++)
+{
+    console.log(s[y], solution5(s[y]));
+}
+*/
 
 /*
 
 ********
 BONEYARD
 ********
+
+
+        // if (flatRun(copyArraySansElement(sequence, z)))
+        // {
+            // console.log(true);
+        // }    
+    // console.log(false);
+    
+    /*
+    for (z = 0; z < sequence.length; z++)
+    {
+        if (flatRun(copyArraySansElement(sequence, 0)))
+        {
+            return true;
+        }
+
+        else
+        {
+            //
+            return false;
+        }
+    }
+
+    return false;
+    */
+
+// console.log(flatRun([1, 2]));
+
+// for (i = 0; i < s.length; i++)
+// {
+// console.log(s[1]);
+// }
+
+// for (i = 0; i < sequence.length; i++)
+    // {
+        // tmp = copyArraySansElement(sequence, 1);
+        // console.log(sequence, tmp);
+    // }
+
+    // return false;
+
+    // i = 6;
+    // all = [];
+    // tmp = [];
+
+function hi(i)
+{
+    return "*" + i;
+}
+
+// console.log(all);
+
+// console.log(solution5(s1));
+
+// console.log(i);
+    
+        
+        
+        /*
+        if (flatRun(sequence.slice(i)))
+        {
+            return true;
+        }
+
+        else
+        {
+            //
+        }
+
+tmp = copyArray(sequence);
+        console.log("j: ", j, " ", tmp, " sequence.length: ", sequence.length);
+        tmp = tmp.splice(i)
+        console.log("j: ", j, " ", tmp);
 
 // [1, 3, 2, 1]     // false
 // [1, 3, 2]        // true
