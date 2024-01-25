@@ -282,30 +282,142 @@ function solution5(sequence)
 // send to flatrun
 function solution6(sequence)
 {
+    // console.log("prev\t\t", "curr\t\t", "next");
+    // console.log("----\t\t", "----\t\t", "----");
+
     for (x = sequence.length - 1; x > 0; x--)
     {   
+        // 0...(x - 1)...x...x + 1...sequence.length
+        // 0....prev...next...curr....sequence.length
+
+        prev = x - 1;
+        curr = x;
+        next = x + 1;
+
+        // console.log(sequence[prev], "\t\t", sequence[curr], "\t\t", sequence[next]);        
+
         // last element
-        if ((x == sequence.length - 1) && (sequence[x] <= sequence[x - 1]))
+        // if ((x == sequence.length - 1) && (sequence[x] <= sequence[x - 1]))
+        // if ((x == sequence.length - 1) && (sequence[x - 1] >= sequence[x]))
+        if ((curr == sequence.length - 1) && (sequence[prev] >= sequence[curr]))
         {
-            return flatRun(copyArraySansElement(sequence, x));
+            console.log("check #1");
+            return flatRun(copyArraySansElement(sequence, curr));
         }
         
         // first element
-        else if ((x == 1) && (sequence[x] >= sequence[x - 1]))
+        // else if ((x == 1) && (sequence[x] >= sequence[x - 1]))
+        else if ((curr == 1) && (sequence[prev] >= sequence[curr]))
         {
-            return flatRun(copyArraySansElement(sequence, x - 1));
+            console.log("check #2");
+            return flatRun(copyArraySansElement(sequence, prev));
         }
         
         // look both ways
-        else if ((sequence[x] >= sequence[x + 1]) && (sequence[x] >= sequence[x - 1]))
+        // else if ((sequence[x] >= sequence[x - 1]) && (sequence[x] >= sequence[x + 1]))
+        else if ((sequence[prev] <= sequence[curr]) && (sequence[curr] >= sequence[next]))
         {
-            return flatRun(copyArraySansElement(sequence, x + 1));
+            console.log("check #3\t");
+
+            // doubles
+            if (sequence.includes(sequence[next]))
+            {
+                console.log("a");
+                return flatRun(copyArraySansElement(sequence, next));
+            }
+            
+            else
+            {
+                console.log("b");
+                return flatRun(copyArraySansElement(sequence, curr));
+            }
         }
 
-        // look right
-        else if ((sequence[x] > sequence[x - 1]) && (sequence[x] >= sequence[x + 1]))
+        // look left
+        // else if ((sequence[x] <= sequence[x - 1]) && (sequence[x] <= sequence[x + 1]))
+        // else if ((sequence[x - 1] >= sequence[x]) && (sequence[x] <= sequence[x + 1]))
+        else if ((sequence[prev] >= sequence[curr]) && (sequence[curr] <= sequence[next]))
         {
-            return flatRun(copyArraySansElement(sequence, x + 1));
+            console.log("check #4\t");
+            
+            // doubles
+            if (sequence.includes(sequence[curr]))
+            {
+                console.log("a");
+                return flatRun(copyArraySansElement(sequence, curr));
+            }
+            else
+            {
+                console.log("b");
+                return flatRun(copyArraySansElement(sequence, prev));
+            }
+        }
+        
+        /*
+        // look right
+        else if ((sequence[x] >= sequence[x - 1]) && (sequence[x] <= sequence[x + 1]))
+        {
+            return flatRun(copyArraySansElement(sequence, x));
+        }
+        */
+
+        // peachy
+        else
+        {
+            // 
+        }
+    }
+
+    return true;
+
+}
+
+/*
+    run through array backwards
+    out of sequence, leverage flatrun for criteria
+    the truth is out there
+    
+    prev    curr    next
+    curr-2  curr-1  curr
+    a       b       c
+    
+    1 b == c
+    2 a < b && b < c
+    3 a > b && b < c
+    4 a < b && b > c
+    5 a > b && b > c
+
+    0...(x - 1)...x...x + 1...sequence.length
+    0....prev...next...curr...sequence.length
+    0.....a......b......c.....sequence.length
+
+*/
+function solution7(sequence)
+{
+    c = sequence.length;
+    b = null;
+    a = null;
+
+    console.log("  a  \t\t", "  b  \t\t", "  c  ");
+    console.log("-----\t\t", "-----\t\t", "-----");
+
+    for (w = sequence.length - 1; w > 1; w--)
+    {   
+        c = w;
+        b = c - 1;
+        a = b - 1;
+
+        console.log(sequence[a], "\t\t", sequence[b], "\t\t", sequence[c]);
+        
+        // doubles
+        if (sequence.includes(c, b))
+        {
+            console.
+        }
+        /*
+        if (1)
+        {
+
         }
 
         // peachy
@@ -313,6 +425,7 @@ function solution6(sequence)
         {
             // 
         }
+        */
     }
 
     return true;
@@ -330,20 +443,34 @@ s8 = [123, -17, -5, 1, 2, 3, 12, 43, 45]    // true
 s9 = [1, 2, 3, 4, 3, 6];                    // true
 s10 = [3, 5, 67, 98, 3];                    // true
 
-s = [ s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
+s = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
 
-// console.log(solution6(s[1]));
+console.log(solution7(s[8]));
 
+/*
 for (y = 0; y < s.length; y++)
 {
     console.log(s[y], solution6(s[y]));
 }
+*/
 
 /*
 
 ********
 BONEYARD
 ********
+
+// console.log(solution6(s[1]));
+// console.log(s9.includes(3));
+
+        /*
+        // doubles
+        
+        else if (sequence.includes(sequence[x], x - 1))
+        {
+            return flatRun(copyArraySansElement(sequence, x));
+        }
+        */
 
 // console.log("***", flatRun(copyArraySansElement(sequence, x)));
             // tmp = copyArraySansElement(sequence, x - 1);
