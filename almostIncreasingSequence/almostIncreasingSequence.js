@@ -381,13 +381,14 @@ function solution6(sequence)
     curr-2  curr-1  curr
     a       b       c
     
-    1 sequence[a] == sequence[c]
+    1 a == c
     2 a < b && b < c
     3 a > b && b < c
     4 a < b && b > c
     5 a > b && b > c
-    6 sequence[a] == sequence[b]
-    7 sequence[b] == sequence[c]
+    6 a == b
+    7 b == c
+    8 a > b && a > c
 
     0...(x - 1)...x...x + 1...sequence.length
     0....prev...next...curr...sequence.length
@@ -411,7 +412,6 @@ function solution7(sequence)
 
         // console.log(sequence[a], "\t\t", sequence[b], "\t\t", sequence[c]);
         
-        // doubles ex: [3, 4, 3]
         if (sequence[a] == sequence[c])
         {
             // console.log("*1")
@@ -430,26 +430,33 @@ function solution7(sequence)
             return flatRun(copyArraySansElement(sequence, c));
         }
         
-        else if (a < b && b < c)
+        else if (sequence[a] < sequence[b] && sequence[b] < sequence[c])
         {
-            // console.log("*4")
+            // console.log("*4");
         }
         
-        else if (a > b && b < c)
+        else if (sequence[a] > sequence[b] && sequence[a] > sequence[c])
         {
             // console.log("*5")
-            return false;
+            return flatRun(copyArraySansElement(sequence, a));
         }
 
-        else if (a < b && b > c)
+        else if (sequence[a] > sequence[b] && sequence[b] < sequence[c])
         {
             // console.log("*6")
-            // return flatRun(copyArraySansElement(sequence, c));
+            return flatRun(copyArraySansElement(sequence, b));
         }
 
-        else if (a < b && b > c)
+        else if (sequence[a] < sequence[b] && sequence[b] > sequence[c])
         {
-            console.log("*7")
+            // console.log("*7")
+            return flatRun(copyArraySansElement(sequence, c));
+        }
+
+        else if (sequence[a] > sequence[b] && sequence[b] > sequence[c])
+        {
+            // console.log("*8")
+            return false;
         }
 
         // peachy
@@ -477,14 +484,12 @@ s10 = [3, 5, 67, 98, 3];                    // true
 
 s = [s1, s2, s3, s4, s5, s6, s7, s8, s9, s10];
 
-console.log(solution7(s[8]));
+// console.log(solution7(s10));
 
-/*
 for (y = 0; y < s.length; y++)
 {
-    console.log(s[y], solution6(s[y]));
+    console.log(s[y], solution7(s[y]));
 }
-*/
 
 /*
 
