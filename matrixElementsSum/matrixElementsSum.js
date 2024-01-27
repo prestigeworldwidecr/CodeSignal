@@ -51,21 +51,48 @@ The total price of all the rooms that are suitable for the CodeBots to live in.
 
 */
 
-function solution(matrix) 
+function solution(matrix)
 {
+    var i = 0;
+    var j = 0;
+    var rowLength = matrix.length;
+    var columnLength = matrix[i].length;
+    cnt = 0;
 
-}
+    // console.log("rowLength:", rowLength, " columnLength: ", columnLength);
+    // console.log("i", "\t", "j", "\t", "matrix[i][j]");
 
-// print 2D array
-function printMatrix(matrix)
-{
-    for (i = 0; i < matrix[i][j].length; i++)
+    for (i; i < rowLength; i++)
     {
-        for (j = 0; j < matrix[i][j].length; j++)
+        j = 0;
+        
+        for (j; j < columnLength; j++)
         {
-            console.log(matrix[i][j])
+            if (matrix[i][j] == 0)
+            {
+                // console.log("row: ", i, "\tcolumn: ", j);
+                // var tmp = i + ", ", j;
+
+                for (k = i; k < rowLength; k++)
+                {
+                    // console.log("row: ", i, "\tcolumn: ", j);
+                    // console.log(k, ", ", j, "\t", matrix[k][j]);
+                    cnt = cnt + matrix[k][j];
+                    // k = rowLength; // break
+                }
+            }
+
+            else
+            {
+
+            }
+            
         }
+
     }
+
+    return cnt;
+
 }
 
 m1 = [[0, 1, 1, 2], 
@@ -73,11 +100,11 @@ m1 = [[0, 1, 1, 2],
         [2, 0, 3, 3]];
 
 m2 = [[1, 1, 1, 0], 
-        [0, 5, 0, 1], 
+        [0, 5, 0, 1],
         [2, 1, 3, 10]];
 
-printMatrix(m1);
-printMatrix(m2);
+console.log(solution(m1));
+// printMatrix(m2);
 
 /*
 
@@ -86,3 +113,12 @@ BONEYARD
 ********
 
 */
+
+// console.log(tmp);
+            // console.log(i," \t", j);
+            // tmp = "\t" + tmp
+            // console.log(i, "\t", j, "\t", tmp);
+            // console.log("tmp", tmp);
+
+            // tmp = tmp + "\t" + matrix[i][j]; 
+        
