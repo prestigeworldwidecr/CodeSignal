@@ -381,11 +381,13 @@ function solution6(sequence)
     curr-2  curr-1  curr
     a       b       c
     
-    1 b == c
+    1 sequence[a] == sequence[c]
     2 a < b && b < c
     3 a > b && b < c
     4 a < b && b > c
     5 a > b && b > c
+    6 sequence[a] == sequence[b]
+    7 sequence[b] == sequence[c]
 
     0...(x - 1)...x...x + 1...sequence.length
     0....prev...next...curr...sequence.length
@@ -398,8 +400,8 @@ function solution7(sequence)
     b = null;
     a = null;
 
-    console.log("  a  \t\t", "  b  \t\t", "  c  ");
-    console.log("-----\t\t", "-----\t\t", "-----");
+    // console.log("  a  \t\t", "  b  \t\t", "  c  ");
+    // console.log("-----\t\t", "-----\t\t", "-----");
 
     for (w = sequence.length - 1; w > 1; w--)
     {   
@@ -407,17 +409,47 @@ function solution7(sequence)
         b = c - 1;
         a = b - 1;
 
-        console.log(sequence[a], "\t\t", sequence[b], "\t\t", sequence[c]);
+        // console.log(sequence[a], "\t\t", sequence[b], "\t\t", sequence[c]);
         
-        // doubles
-        if (sequence.includes(c, b))
+        // doubles ex: [3, 4, 3]
+        if (sequence[a] == sequence[c])
         {
-            console.
+            // console.log("*1")
+            return flatRun(copyArraySansElement(sequence, a));
         }
-        /*
-        if (1)
-        {
 
+        else if (sequence[b] == sequence[c])
+        {
+            // console.log("*2")
+            return flatRun(copyArraySansElement(sequence, c));
+        }
+
+        else if (sequence[a] == sequence[c])
+        {
+            // console.log("*3")
+            return flatRun(copyArraySansElement(sequence, c));
+        }
+        
+        else if (a < b && b < c)
+        {
+            // console.log("*4")
+        }
+        
+        else if (a > b && b < c)
+        {
+            // console.log("*5")
+            return false;
+        }
+
+        else if (a < b && b > c)
+        {
+            // console.log("*6")
+            // return flatRun(copyArraySansElement(sequence, c));
+        }
+
+        else if (a < b && b > c)
+        {
+            console.log("*7")
         }
 
         // peachy
@@ -425,7 +457,7 @@ function solution7(sequence)
         {
             // 
         }
-        */
+        
     }
 
     return true;
