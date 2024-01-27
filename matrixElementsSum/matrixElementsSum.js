@@ -70,15 +70,9 @@ function solution(matrix)
         {
             if (matrix[i][j] == 0)
             {
-                // console.log("row: ", i, "\tcolumn: ", j);
-                // var tmp = i + ", ", j;
-
                 for (k = i; k < rowLength; k++)
                 {
-                    // console.log("row: ", i, "\tcolumn: ", j);
-                    // console.log(k, ", ", j, "\t", matrix[k][j]);
                     cnt = cnt + matrix[k][j];
-                    // k = rowLength; // break
                 }
             }
 
@@ -113,6 +107,12 @@ BONEYARD
 ********
 
 */
+
+// console.log("row: ", i, "\tcolumn: ", j);
+                // var tmp = i + ", ", j;
+                // console.log("row: ", i, "\tcolumn: ", j);
+                    // console.log(k, ", ", j, "\t", matrix[k][j]);
+                    // k = rowLength; // break
 
 // console.log(tmp);
             // console.log(i," \t", j);
