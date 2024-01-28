@@ -57,10 +57,8 @@ function solution(matrix)
     var j = 0;
     var rowLength = matrix.length;
     var columnLength = matrix[i].length;
-    cnt = 0;
-
-    // console.log("rowLength:", rowLength, " columnLength: ", columnLength);
-    // console.log("i", "\t", "j", "\t", "matrix[i][j]");
+    total = 0;
+    below = 0;
 
     for (i; i < rowLength; i++)
     {
@@ -68,24 +66,26 @@ function solution(matrix)
         
         for (j; j < columnLength; j++)
         {
+            total = total + matrix[i][j];
+            
             if (matrix[i][j] == 0)
             {
                 for (k = i; k < rowLength; k++)
                 {
-                    cnt = cnt + matrix[k][j];
+                    below = below + matrix[k][j];
                 }
             }
 
             else
             {
-
+                // 
             }
             
         }
 
     }
 
-    return cnt;
+    return total - below;
 
 }
 
@@ -97,7 +97,7 @@ m2 = [[1, 1, 1, 0],
         [0, 5, 0, 1],
         [2, 1, 3, 10]];
 
-console.log(solution(m1));
+console.log(solution(m2));
 // printMatrix(m2);
 
 /*
