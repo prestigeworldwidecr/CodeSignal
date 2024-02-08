@@ -57,35 +57,31 @@ function solution(matrix)
     var j = 0;
     var rowLength = matrix.length;
     var columnLength = matrix[i].length;
-    total = 0;
-    below = 0;
+    cnt = 0;
 
-    for (i; i < rowLength; i++)
+    for (j; j < columnLength; j++)
     {
-        j = 0;
+        i = 0;
         
-        for (j; j < columnLength; j++)
+        for (i; i < rowLength; i++)
         {
-            total = total + matrix[i][j];
+            // console.log(i, ", ", j, "\t", matrix[i][j]);
             
             if (matrix[i][j] == 0)
             {
-                for (k = i; k < rowLength; k++)
-                {
-                    below = below + matrix[k][j];
-                }
+                i = rowLength;
             }
 
             else
             {
-                // 
+                cnt = cnt + matrix[i][j]
             }
             
         }
 
     }
 
-    return total - below;
+    return cnt;
 
 }
 
@@ -97,8 +93,7 @@ m2 = [[1, 1, 1, 0],
         [0, 5, 0, 1],
         [2, 1, 3, 10]];
 
-console.log(solution(m2));
-// printMatrix(m2);
+console.log(solution(m1));
 
 /*
 
@@ -106,7 +101,11 @@ console.log(solution(m2));
 BONEYARD
 ********
 
-*/
+                for (k = i; k < rowLength; k++)
+                {
+                    // 
+                    // below = below + matrix[k][j];
+                }
 
 // console.log("row: ", i, "\tcolumn: ", j);
                 // var tmp = i + ", ", j;
