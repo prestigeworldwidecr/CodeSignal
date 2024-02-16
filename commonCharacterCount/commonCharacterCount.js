@@ -67,16 +67,51 @@ function string2DSansDuplicate(s)
     var i = 0;
     var tmp = [];
 
-    // s = alphabetizeString(s);
     s = removeDuplicates(s);
 
     for (i; i < s.length; i++)
     {
-        tmp.push(s[i], 0);
+        tmp.push([s[i], 0]);
     }
+
+    // console.log(tmp [1][0]);
 
     return tmp;
 
+}
+
+// input: alphabetized string, 2D array containing corresponding characters non-dup
+// output: same 2D array w/character counts in column 2
+function countCharacterInstances(s, s2d)
+{
+    var i = 0;
+    var j = 0;
+    var tmp = 0;
+
+    // console.log(s, " ", s2d);
+
+    for (i; i < s2d.length; i++)
+    {
+        tmp = 0;
+        j = 0;
+        
+        for (j; j < s.length; j++)
+        {
+            if (s[j] == s2d[i][0])
+            {
+                tmp++;
+                s2d[i][1] = tmp;
+            }
+
+            else
+            {
+                //
+            }
+
+        }
+    }
+
+    return s2d;
 }
 
 function solution(s1, s2) 
@@ -89,8 +124,10 @@ function solution(s1, s2)
 s1 = "aabcc";
 s2 = "adcaa";
 
+s3 = alphabetizeString(s2);
+
 // console.log(solution(s1, s2));
-console.log(string2D(alphabetizeString(s1)));
+console.log(countCharacterInstances(s3, string2DSansDuplicate(s3)));
 
 
 /*
@@ -98,6 +135,14 @@ console.log(string2D(alphabetizeString(s1)));
 ********
 BONEYARD
 ********
+
+            else if (j == s.length - 1)
+            {
+                // tmp++;
+                // console.log("*");
+                // s2d[i][1] = tmp;
+                // console.log("tmp: ", tmp, "s[j]: ", s[j], " s2d[i][0]: ", s2d[i][0]);
+            }
 
 // console.log(s);
 
