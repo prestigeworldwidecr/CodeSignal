@@ -61,7 +61,6 @@ function removeDuplicates(s)
     c   0
 
 */
-
 function string2DSansDuplicate(s)
 {
     var i = 0;
@@ -74,8 +73,6 @@ function string2DSansDuplicate(s)
         tmp.push([s[i], 0]);
     }
 
-    // console.log(tmp [1][0]);
-
     return tmp;
 
 }
@@ -87,8 +84,6 @@ function countCharacterInstances(s, s2d)
     var i = 0;
     var j = 0;
     var tmp = 0;
-
-    // console.log(s, " ", s2d);
 
     for (i; i < s2d.length; i++)
     {
@@ -114,27 +109,68 @@ function countCharacterInstances(s, s2d)
     return s2d;
 }
 
+function compare2DStrings(s1, s2)
+{
+    var i = 0;
+    var j = 0;
+    var result = 0;
+
+    for (i; i < s1.length; i++)
+    {
+        j = 0;
+
+        for (j; j < s2.length; j++)
+        {
+            if (s1[i][0] == s2[j][0])
+            {
+                result = result + Math.min(s1[i][1], s2[j][1]);
+                j = s2.length; // break
+            }
+
+            else
+            {
+                //
+            }
+        }
+    }
+
+    return result;
+}
+
 function solution(s1, s2) 
 {
-    var result = 0;
+    s1 = alphabetizeString(s1);
+    s1 = countCharacterInstances(s1, string2DSansDuplicate(s1));
+    s2 = alphabetizeString(s2);
+    s2 = countCharacterInstances(s2, string2DSansDuplicate(s2));
     
-    return result;
+    return compare2DStrings(s1, s2);
 }
 
 s1 = "aabcc";
 s2 = "adcaa";
 
-s3 = alphabetizeString(s2);
-
-// console.log(solution(s1, s2));
-console.log(countCharacterInstances(s3, string2DSansDuplicate(s3)));
-
+console.log(solution(s1, s2));
 
 /*
 
 ********
 BONEYARD
 ********
+
+
+    // console.log(s1);
+    // console.log(s2);
+
+// console.log("s1[i][0]: ", s1[i][0], " s2[j][0]: ", s2[j][0]);
+
+// s3 = alphabetizeString(s2);
+
+// console.log(solution(s1, s2));
+// console.log(countCharacterInstances(s3, string2DSansDuplicate(s3)));
+
+// console.log(tmp [1][0]);
+// console.log(s, " ", s2d);
 
             else if (j == s.length - 1)
             {
