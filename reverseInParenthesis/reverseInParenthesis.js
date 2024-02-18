@@ -38,22 +38,6 @@ Return inputString, with all the characters that were in parentheses reversed.
 
 */
 
-function readReverseString(inputString, left)
-{
-    // console.log("inputString: ", inputString, " left: ", left);
-    // receiving inputString as empty or '0'
-    
-    if (left == -1) // || inputString == '0')
-    {
-        return inputString;
-    }
-
-    else
-    {
-        return readReverseString(innerMostSubstring(inputString), left);
-    }
-}
-
 function innerMostSubstring(inputString)
 {
     var i = 0;
@@ -125,6 +109,23 @@ console.log(innerMostSubstring(inputString2));
 ********
 BONEYARD
 ********
+
+
+function readReverseString(inputString, left)
+{
+    // console.log("inputString: ", inputString, " left: ", left);
+    // receiving inputString as empty or '0'
+    
+    if (left == -1) // || inputString == '0')
+    {
+        return inputString;
+    }
+
+    else
+    {
+        return readReverseString(innerMostSubstring(inputString), left);
+    }
+}
 
 // console.log("*: ", tmp, " left: ", left, " right: ", right);
 
