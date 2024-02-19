@@ -41,18 +41,18 @@ Return inputString, with all the characters that were in parentheses reversed.
 function innerMostSubstring(inputString)
 {
     var i = 0;
-    var left = -1; // lastLeftParenLocation
+    var left = -1; // leftParenLocation
     var right = -1; // firstRightParenLocation
     var tmp = "";
     
     while (i < inputString.length)
     {
-        if (inputString[i] == '(')
+        if (inputString[i] == '(' && right == -1)
         {
             left = i;
         }
 
-        else if(inputString[i] == ')')
+        else if(inputString[i] == ')' && right == -1)
         {
             right = i;
         }
@@ -77,32 +77,17 @@ function innerMostSubstring(inputString)
         return innerMostSubstring(tmp);
     }
 
-    // tmp = inputString.substring(0, left) + reverseStringAtom(inputString.substring(left + 1, right)) + inputString.substring(right + 1, inputString.length);
-
-    // return (tmp, left);
 }
 
 function reverseStringAtom(inputString)
 {
-    // console.log(inputString.split("").reverse().join(""));
     return inputString.split("").reverse().join("");
 }
 
 function solution(inputString) 
 {
-
+    return innerMostSubstring(inputString);
 }
-
-inputString1 = "(bar)" // solution(inputString) = "rab";
-inputString2 = "foo(bar)baz" // solution(inputString) = "foorabbaz";
-inputString3 = "foo(bar)baz(blim)" // solution(inputString) = "foorabbazmilb";
-inputString4 = "foo(bar(baz))blim" // solution(inputString) = "foobazrabblim";
-
-// reverseStringAtom(inputString1);
-console.log(innerMostSubstring(inputString2));
-// console.log(inputString1.substring(1,3));
-
-// console.log(readReverseString(inputString1, 0));
 
 /*
 
@@ -110,6 +95,25 @@ console.log(innerMostSubstring(inputString2));
 BONEYARD
 ********
 
+// console.log("left: ", left, " right: ", right, " tmp: ", tmp);
+
+// inputString1 = "(bar)" // solution(inputString) = "rab";    ok
+// inputString2 = "foo(bar)baz" // solution(inputString) = "foorabbaz";    ok
+// inputString3 = "foo(bar)baz(blim)" // solution(inputString) = "foorabbazmilb";  ok
+// inputString4 = "foo(bar(baz))blim" // solution(inputString) = "foobazrabblim";
+
+// console.log("final: ", innerMostSubstring(inputString4));
+// innerMostSubstring(inputString4);
+
+// console.log(inputString.split("").reverse().join(""));
+// reverseStringAtom(inputString1);
+// console.log(inputString1.substring(1,3));
+
+// console.log(readReverseString(inputString1, 0));
+
+// tmp = inputString.substring(0, left) + reverseStringAtom(inputString.substring(left + 1, right)) + inputString.substring(right + 1, inputString.length);
+
+    // return (tmp, left);
 
 function readReverseString(inputString, left)
 {
