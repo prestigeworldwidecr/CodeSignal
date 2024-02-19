@@ -34,15 +34,59 @@ The same matrix of characters, framed with a border of asterisks of width 1
 
 */
 
+function addBorder(picture)
+{
+    var i = 0;
+    var tmp = "";
+    var bottomTopBorder = "**";
+    var result = [];
+    
+    for (i; i < picture[0].length; i++)
+    {
+        bottomTopBorder = bottomTopBorder + "*";
+    }
+
+    result.push(bottomTopBorder);
+
+    for (i = 0; i < picture.length; i++)
+    {
+        tmp = "*" + picture[i] + "*";
+        result.push(tmp);
+    }
+
+    result.push(bottomTopBorder);
+
+    return result;
+}
+
 function solution(picture) 
 {
-
+    // return addBorder(picture);
 }
+
+picture = ["abc",
+            "ded"];
+
+// console.log(picture);
+console.log(addBorder(picture));
 
 /*
 
 ********
 BONEYARD
 ********
+
+picture = ["abc",
+            "ded"];
+
+addBorder(picture);
+
+// solution(picture) = ["*****",
+//                      "*abc*",
+//                      "*ded*",
+//                      "*****"];
+
+// console.log("i: ", picture[i]);
+    // console.log(result);
 
 */
