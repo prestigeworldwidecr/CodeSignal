@@ -49,10 +49,126 @@ true if a and b are similar, false otherwise.
 
 */
 
+function onePairSwap(a, b)
+{
+    var i = 0;
+    var cnt = 0;
+    
+    for (i; i < a.length; i++)
+    {
+        console.log("i: ", i, " cnt: ", cnt, "a[i]: ", a[i], " b[i]: ", b[i]);
+        
+        if (cnt > 1)
+        {
+            return false;
+        }
+
+        else
+        {
+            if (a[i] != b[i])
+            {
+                cnt++;
+            }
+
+            else
+            {
+                //
+            }
+        }
+    }
+
+    return true;
+}
+
+function removeDuplicates(s)
+{
+    var tmp = [...new Set(s)].join("");
+
+    return tmp;
+}
+
+function isArrayEqual(a, b)
+{
+    var i = 0;
+    
+    for (i; i < a.length; i++)
+    {
+        if (a[i] != b[i])
+        {
+            return false;
+        }
+
+        else
+        {
+            //
+        }
+    }
+
+    return true;
+}
+
+/*
+    *****
+    STRAT
+    *****
+
+    immediate no if length not equal    x
+    immediate no if sorted elements arent equal x
+    immediate no if elements removed arent equal    x
+    check if elements are in same position
+    first strike, let pass
+    2nd reject
+*/
+
+function areSimilar(a, b)
+{
+    if (a.length != b.length)
+    {
+        // console.log("*1");
+        return false;
+    }
+
+    else if (!isArrayEqual(a.sort(), b.sort()))
+    {
+        // console.log("*2", " a sorted: ", a.sort(), " b sorted: ", b.sort());
+        // console.log("*2: ", a.sort() == b.sort());
+        return false;
+    }
+
+    else if (!isArrayEqual(removeDuplicates(a), removeDuplicates(b)))
+    {
+        // console.log("*3");
+        return false;
+    }
+
+    else
+    {
+        console.log("*4");
+        return onePairSwap(a, b);
+    }
+
+}
+
 function solution(a, b) 
 {
 
 }
+
+// a = [1, 2, 3] and b = [1, 2, 3] solution(a, b) = true.
+// a = [1, 2, 3] and b = [2, 1, 3] solution(a, b) = true.
+// a = [1, 2, 2] and b = [2, 1, 1] solution(a, b) = false.
+
+a = [1, 2, 3];
+b = [1, 2, 3];
+// a = [1, 2, 3];
+// b = [2, 1, 3];
+// a = [1, 2, 2];
+// b = [2, 1, 1];
+
+// console.log(a == b);
+// console.log(a.eq)
+
+// console.log(areSimilar(a, b));
 
 /*
 
