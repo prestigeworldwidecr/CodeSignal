@@ -49,16 +49,27 @@ true if a and b are similar, false otherwise.
 
 */
 
+/*
+    *****
+    STRAT
+    *****
+
+    immediate no if length not equal    x
+    immediate no if sorted elements arent equal x
+    immediate no if elements removed arent equal    x
+    check if elements are in same position
+    first strike, let pass
+    2nd reject
+*/
+
 function onePairSwap(a, b)
 {
     var i = 0;
     var cnt = 0;
-    
+
     for (i; i < a.length; i++)
     {
-        console.log("i: ", i, " cnt: ", cnt, "a[i]: ", a[i], " b[i]: ", b[i]);
-        
-        if (cnt > 1)
+        if (cnt > 2)
         {
             return false;
         }
@@ -107,37 +118,26 @@ function isArrayEqual(a, b)
     return true;
 }
 
-/*
-    *****
-    STRAT
-    *****
-
-    immediate no if length not equal    x
-    immediate no if sorted elements arent equal x
-    immediate no if elements removed arent equal    x
-    check if elements are in same position
-    first strike, let pass
-    2nd reject
-*/
-
 function areSimilar(a, b)
 {
+    var aCopy =  [...a];
+    var bCopy =  [...b];
+    
     if (a.length != b.length)
     {
-        // console.log("*1");
+        console.log("*1");
         return false;
     }
 
-    else if (!isArrayEqual(a.sort(), b.sort()))
+    else if (!isArrayEqual(aCopy.sort(), bCopy.sort()))
     {
-        // console.log("*2", " a sorted: ", a.sort(), " b sorted: ", b.sort());
-        // console.log("*2: ", a.sort() == b.sort());
+        console.log("*2");
         return false;
     }
 
-    else if (!isArrayEqual(removeDuplicates(a), removeDuplicates(b)))
+    else if (!isArrayEqual(removeDuplicates(aCopy), removeDuplicates(bCopy)))
     {
-        // console.log("*3");
+        console.log("*3");
         return false;
     }
 
@@ -151,15 +151,33 @@ function areSimilar(a, b)
 
 function solution(a, b) 
 {
-
+    return areSimilar(a, b);
 }
+
+/*
+
+********
+BONEYARD
+********
+
+
+    console.log("a: ", a, " b: ", b);
+    console.log("i: ", i, " a[i]: ", a [i], " b[i]", b[i], " cnt: ", cnt);
+
+a = [832, 998, 148, 570, 533, 561, 894, 147, 455, 279];
+b = [832, 570, 148, 998, 533, 561, 455, 147, 894, 279];
+
+// aCopy.sort();
+    // bCopy.sort();
+
+console.log(areSimilar(a, b));
 
 // a = [1, 2, 3] and b = [1, 2, 3] solution(a, b) = true.
 // a = [1, 2, 3] and b = [2, 1, 3] solution(a, b) = true.
 // a = [1, 2, 2] and b = [2, 1, 1] solution(a, b) = false.
 
-a = [1, 2, 3];
-b = [1, 2, 3];
+// a = [1, 2, 3];
+// b = [1, 2, 3];
 // a = [1, 2, 3];
 // b = [2, 1, 3];
 // a = [1, 2, 2];
@@ -168,13 +186,13 @@ b = [1, 2, 3];
 // console.log(a == b);
 // console.log(a.eq)
 
-// console.log(areSimilar(a, b));
-
-/*
-
-********
-BONEYARD
-********
+// console.log("*4");
+        // console.log("*3");
+        // else if (a.sort() != )
+        // console.log("i: ", i, " cnt: ", cnt, "a[i]: ", a[i], " b[i]: ", b[i]);
+        // console.log("*1");
+        // console.log("*2", " a sorted: ", a.sort(), " b sorted: ", b.sort());
+        // console.log("*2: ", a.sort() == b.sort());
 
 
 
