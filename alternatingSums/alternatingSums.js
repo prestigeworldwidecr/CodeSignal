@@ -25,7 +25,52 @@ Guaranteed constraints:
 
 */
 
+function alternatingSums(a)
+{
+    var i = 0;
+    var isEven = false;
+    var evenSum = 0;
+    var oddSum = 0;
+    var result = [0, 0];
+
+    for(i; i < a.length; i++)
+    {
+        isEven = (i + 1) % 2;
+
+        if (isEven)
+        {
+            evenSum = evenSum + a[i];
+        }
+
+        else
+        {
+            oddSum = oddSum + a[i];
+        }
+    }
+
+    result [0] = evenSum;
+    result [1] = oddSum;
+
+    return result;
+}
+
 function solution(a) 
 {
-
+    return alternatingSums(a);
 }
+
+/*
+
+********
+BONEYARD
+********
+
+a = [50, 60, 60, 45, 70];   // solution(a) = [180, 105]
+
+alternatingSums(a);
+
+    // console.log("i: ", i, " even? ", isEven);
+    // console.log("evenSum: ", evenSum, " oddSum: ", oddSum);
+    // console.log(result);
+
+*/
