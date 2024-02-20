@@ -111,12 +111,7 @@ function eligibleRearrange(inputString)
     
     for (i; i < inputString.length; i++)
     {
-        if (cnt > 1)
-        {
-            return false;
-        }
-        
-        else if (inputString[i][1] % 2 == 0)
+        if (!(inputString[i][1] % 2))
         {
             // 
         }
@@ -124,6 +119,16 @@ function eligibleRearrange(inputString)
         else
         {
             cnt++;
+
+            if (cnt > 1)
+            {
+                return false;
+            }
+
+            else
+            {
+                // 
+            }
         }
     }
 
@@ -132,21 +137,23 @@ function eligibleRearrange(inputString)
 
 function solution(inputString) 
 {
-
+    inputString = alphabetizeString(inputString);
+    inputString = countCharacterInstances(inputString, string2DSansDuplicate(inputString));
+    
+    return eligibleRearrange(inputString);
 }
-
-inputString = "aabb"; // solution(inputString) = true
-inputString = alphabetizeString(inputString);
-inputString = countCharacterInstances(inputString, string2DSansDuplicate(inputString));
-
-console.log(eligibleRearrange(inputString));
-// console.log(inputString);
-// console.log(4 % 2);
 
 /*
 
 ********
 BONEYARD
 ********
+
+// inputString = "aabb"; // solution(inputString) = true
+// inputString = "abac"; // solution(inputString) = false
+// inputString = "abccba"; // solution(inputString) = true
+// inputString = "racecar"; // solution(inputString) = true
+// console.log(inputString);
+// console.log(4 % 2);
 
 */
