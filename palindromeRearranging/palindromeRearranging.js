@@ -28,10 +28,23 @@ true if the characters of the inputString can be rearranged to form a palindrome
 
 */
 
+/*
+*****
+STRAT
+*****
+
+if odd, 
+if evencount of 
+
+*/
+
+
 function solution(inputString) 
 {
 
 }
+
+inputString = "aabb"; // solution(inputString) = true
 
 /*
 
