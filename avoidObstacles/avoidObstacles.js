@@ -128,29 +128,23 @@ function lineGuide(line)
 {
     let cnt = 0;
     var guide = new Array(line.length);
-
-    // console.log("! ", line);
     
     for (let i = 0; i < line.length; i++)
     {
         if (line[i] == "X" || line[i] == "O" )
         {
-            // console.log(".", line[i],".");
             guide[i] = cnt;
-            // console.log(".", guide[i],".");
             cnt++;
         }
 
         else
         {
-            // console.log(line[i]);
-            // guide[i] = "-";
+            // 
         }
     }
 
     guide = guide.toString();
     guide = guide.replaceAll(",,", "\t");
-    // console.log(guide.toString());
     return guide;
     
 }
@@ -170,10 +164,10 @@ function solution(inputArray)
 
 }
 
-inputArray = [5, 3, 6, 7, 9]    // solution(inputArray) = 4
-
+let inputArray = [5, 3, 6, 7, 9]    // solution(inputArray) = 4
 let course = remapCourse(inputArray.sort());
 let guide = lineGuide(course);
+
 console.log(safePosition(inputArray));
 
 /*
@@ -181,6 +175,15 @@ console.log(safePosition(inputArray));
 ********
 BONEYARD
 ********
+
+
+            // console.log("! ", line);
+            // console.log(".", line[i],".");
+            // console.log(".", guide[i],".");
+
+// console.log(line[i]);
+            // guide[i] = "-";
+            // console.log(guide.toString());
 
 // console.log(inputArray);
 // console.log(course);
