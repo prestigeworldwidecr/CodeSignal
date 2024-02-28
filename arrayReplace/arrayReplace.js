@@ -33,9 +33,28 @@ Guaranteed constraints:
 
 */
 
+function arrayReplace(inputArray, elemToReplace, substitutionElem)
+{
+    
+    for (let i = 0; i < inputArray.length; i++)
+    {
+        if (inputArray [i] == elemToReplace)
+        {
+            inputArray [i] = substitutionElem;
+        }
+
+        else
+        {
+            //
+        }
+    }
+
+    return inputArray;
+}
+
 function solution(inputArray, elemToReplace, substitutionElem) 
 {
-
+    return arrayReplace(inputArray, elemToReplace, substitutionElem);
 }
 
 /*
@@ -43,5 +62,24 @@ function solution(inputArray, elemToReplace, substitutionElem)
 ********
 BONEYARD
 ********
+
+let inputArray = [1, 2, 1];
+console.log(arrayReplace(inputArray, 1, 3));
+
+// console.log(inputArray.indexOf(elemToReplace));
+// console.log(inputArray.replaceAll(elemToReplace, substitutionElem));
+
+// let inputArray = ["1", "2", "1"]; // solution(inputArray, elemToReplace, substitutionElem) = [3, 2, 3]
+// const paragraph = "I think Ruth's dog is cuter than your dog!";
+// solution(paragraph, "dog", "monkey");
+
+let inputArray = [1, 2, 1];
+let tmp = "," + inputArray.toString() + ",";
+
+tmp = tmp.replaceAll(",1,", ",3,").split(",");
+
+console.log(Number(tmp[1]));
+
+// solution(inputArray, 1, 3);
 
 */
