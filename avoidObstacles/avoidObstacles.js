@@ -62,7 +62,7 @@ function safePosition(inputArray)
 {
     // can jump one
     // goto second occupied, back one until not occupied
-        // worry about inputArray.length == 2 later, that's fucking easy
+        // worry about inputArray.length == 2 later
     let safePosition = inputArray[1] - 1;
 
     for (let i = safePosition; i >= 0; i--)
@@ -83,7 +83,7 @@ function safePosition(inputArray)
             safePosition = i - 1;
             i = -1;
         }
-        
+
         else
         {
             i--;
@@ -149,26 +149,74 @@ function lineGuide(line)
     
 }
 
-function scramble(inputArray)
+function scramble(inputArray, pos)
 {
-    inputArray = inputArray.sort();
+    let tmp = -1;
+    let step = -1;
+    
+    if (pos == NaN)
+    {
+        return NaN; // send safePosition
+    }
 
-    console.log(inputArray);
+    // goal state
+    else if (pos >= inputArray.length)
+    {
+        return pos;
+    }
 
-    // when biggest gap dont work, stuff a NaN in the array
+    else
+    {
+        step = pos;
+        
+        for (let i = 0; i < inputArray.length; i++)
+        {
+            // 
+            if (step == inputArray[i] || inputArray[i] == "P")
+            {
+                inputArray [i] = "P";
+                return scramble(inputArray, step);
+            }
+
+            else
+            {
+                step = step + pos;
+            }
+        }
+
+        return pos;
+
+    }
+        
 }
 
 
 function solution(inputArray) 
 {
+    let tmp = -1;
+    tmp = scramble(inputArray, safePosition(inputArray));
+    console.log(tmp);
 
+    return tmp;
 }
 
-let inputArray = [5, 3, 6, 7, 9]    // solution(inputArray) = 4
+// let inputArray = [5, 3, 6, 7, 9];    // solution(inputArray) = 4
+let inputArray = [2, 3];    // solution(inputArray) = 4
+
+// let inputArray = [5, 44, 444, 4444, 9]; [5, 3, 6, 7, 9]
+
+// console.log(scramble(inputArray, safePosition(inputArray)));
+
 let course = remapCourse(inputArray.sort());
 let guide = lineGuide(course);
 
-console.log(safePosition(inputArray));
+solution(inputArray);
+
+// console.log(course);
+// console.log(guide);
+
+// console.log(safePosition(inputArray));
+// console.log(inputArray.includes(4));
 
 /*
 
@@ -176,6 +224,46 @@ console.log(safePosition(inputArray));
 BONEYARD
 ********
 
+// let inputArray = [9, 99, 999, 9999, 4444];
+
+function numMatch(inputArray, n)
+{
+    let copy = [...inputArray];
+    let tmp = "," + n + ",";
+
+    copy = copy.toString();
+    copy = "," + copy;
+    tmp = copy.search(tmp);
+
+    return tmp;
+
+}
+
+// console.log(numMatch(inputArray, "9"));
+
+    // console.log("copy: ", copy, " find: ", tmp, " ! ", copy.search(tmp));
+
+    // const regex = /[^\w\s']/g;
+    // console.log(tmp.search(regex));
+
+
+    // inputArray = inputArray.sort();
+    // console.log(inputArray);
+
+        // for (let i = pos; i < inputArray.length; i++)
+        // {
+
+        // }
+
+Object.is(a, b)
+
+function pass(inputArray)
+{
+    inputArray [3] = NaN;
+}
+
+pass(inputArray);
+console.log(inputArray);
 
             // console.log("! ", line);
             // console.log(".", line[i],".");
