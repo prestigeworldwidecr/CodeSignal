@@ -57,6 +57,26 @@ function threeByThree(image)
 
 function avgOfThreeByThree(image)
 {
+    let i = 0;
+    let j = 0;
+    let rowLength = image.length;
+    let columnLength = image[i].length;
+    let avg = -1;
+    let sum = 0;
+
+    for (j; j < columnLength; j++)
+    {
+        i = 0;
+        
+        for (i; i < rowLength; i++)
+        {
+            sum = sum + image[i][j];
+        }
+    }
+
+    avg = sum / 9;
+
+    return avg;
     
 }
 
@@ -70,11 +90,15 @@ let image = [[1, 1, 1],
          [1, 7, 1], 
          [1, 1, 1]];    // the output should be solution(image) = [[1]]
 
+console.log(avgOfThreeByThree(image));
+
+/*
 image = [[7, 4, 0, 1], 
          [5, 6, 2, 2], 
          [6, 10, 7, 8], 
          [1, 4, 2, 0]]; // the output should be solution(image) = [[5, 4], 
                                                                     // [4, 4]]
+*/
 
 /*
 
