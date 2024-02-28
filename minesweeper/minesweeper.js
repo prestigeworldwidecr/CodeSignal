@@ -41,32 +41,137 @@ Rectangular matrix of the same size as matrix each cell of which contains an int
 function countNeighbors(matrix, i, j)
 {
     cnt = 0;
-    tmp = [i, j];
-
-    console.log(tmp);
-
-    // (1+1==2) ? "Pass" : "Fail"
+    // tmp = [i, j];
 
     // up
-    // [i - 1, j]
-    cnt = matrix [i - 1, j] ? cnt++ : cnt;
+    // [i - 1] [j]
+    if (i - 1 >= 0)
+    {
+        cnt = matrix [i - 1] [j] ? cnt + 1 : cnt;
+    }
+
+    else
+    {
+        //
+    }
 
     // down
-    // [i + 1, j]
+    // [i + 1] [j]
+    if (i + 1 < matrix.length)
+    {
+        cnt = matrix [i + 1] [j] ? cnt + 1 : cnt;
+    }
+
+    else
+    {
+        //
+    }
 
     // left
-    // [i, j - 1]
+    // [i] [j - 1]
+    if (j - 1 >= 0)
+    {
+        cnt = matrix [i] [j - 1] ? cnt + 1 : cnt;
+    }
+
+    else
+    {
+        //
+    }
 
     // right
-    // [i, j + 1]
+    // [i] [j + 1]
+    if (j + 1 < matrix[0].length)
+    {
+        cnt = matrix [i] [j + 1] ? cnt + 1 : cnt;
+    }
 
-    console.log(cnt);
+    else
+    {
+        //
+    }
 
+    // up-left
+    // [i - 1] [j - 1]
+    if (i - 1 >= 0 && j - 1 >= 0)
+    {
+        cnt = matrix [i - 1] [j - 1] ? cnt + 1 : cnt;
+    }
+
+    else
+    {
+        // 
+    }
+
+    // up-right
+    // [i - 1] [j + 1]
+    if (i - 1 >= 0 && j + 1 < matrix[0].length)
+    {
+        cnt = matrix [i - 1] [j + 1] ? cnt + 1 : cnt;
+    }
+
+    else
+    {
+        // 
+    }
+
+    // down-left
+    // [i + 1] [j - 1]
+    if (i + 1 < matrix.length && j - 1 >= 0)
+    {
+        cnt = matrix [i + 1] [j - 1] ? cnt + 1 : cnt;
+    }
+
+    else
+    {
+        // 
+    }
+
+    // down-right
+    // [i + 1] [j + 1]
+    if (i + 1 < matrix.length && j + 1 < matrix[0].length)
+    {
+        cnt = matrix [i + 1] [j + 1] ? cnt + 1 : cnt;
+    }
+
+    else
+    {
+        // 
+    }
+
+    return cnt;
+
+}
+
+function sweepMines(matrix)
+{
+    let row = matrix.length;
+    let column = matrix[0].length;
+    // let mineMap = [...matrix];
+    let mineMap = [row];
+    let cnt = 0;
+    let tmp = 0;
+    
+    for (let i = 0; i < row; i++)
+    {
+        mineMap[i] = [column];
+
+        for (let j = 0; j < column; j++)
+        {
+            tmp = countNeighbors(matrix, i, j);
+            mineMap [i][j] = tmp;
+            // console.log("matrix[", i, "][", j, "]: ", matrix[i][j], " neighbors: ", tmp);
+            // tmp = countNeighbors(matrix, i, j);
+            // console
+        }
+    }
+
+    return mineMap;
 }
 
 function solution(matrix) 
 {
-
+    return sweepMines(matrix);
 }
 
 matrix = [[true, false, false],
@@ -80,12 +185,17 @@ solution(matrix) = [[1, 2, 1],
                     [1, 1, 1]]
 */
 
-countNeighbors(matrix, 1, 1);
+// console.log(countNeighbors(matrix, 0, 1));
+console.log(sweepMines(matrix));
 
 /*
 
 ********
 BONEYARD
 ********
+
+// console.log(tmp, matrix[i] [j]);
+
+    // (1+1==2) ? "Pass" : "Fail"
 
 */
