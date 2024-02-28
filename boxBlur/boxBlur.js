@@ -55,6 +55,41 @@ function threeByThree(image)
 
 }
 
+function runBlocks(image)
+{
+    // 3 x 3 => 1 x 1
+    // 4 x 4 => 2 x 2
+    // 5 x 5 => 3 x 3
+
+    let i = 0;
+    let j = 0;
+    let rowLength = image.length - 2;
+    let columnLength = image[i].length - 2;
+    let result = 0;
+
+    if (rowLength == 1)
+    {
+        result = new Array(1);
+    }
+
+    else
+    {
+        result = new Array(rowLength, columnLength);
+    
+        for (j; j < columnLength; j++)
+        {
+            i = 0;
+        
+            for (i; i < rowLength; i++)
+            {
+                // sum = sum + image[i][j];
+            }
+        }
+    }
+
+    return result;
+}
+
 function avgOfThreeByThree(image)
 {
     let i = 0;
@@ -76,7 +111,7 @@ function avgOfThreeByThree(image)
 
     avg = sum / 9;
 
-    return avg;
+    return Math.floor(avg);
     
 }
 
@@ -90,7 +125,9 @@ let image = [[1, 1, 1],
          [1, 7, 1], 
          [1, 1, 1]];    // the output should be solution(image) = [[1]]
 
-console.log(avgOfThreeByThree(image));
+// console.log(avgOfThreeByThree(image));
+
+runBlocks(image);
 
 /*
 image = [[7, 4, 0, 1], 
