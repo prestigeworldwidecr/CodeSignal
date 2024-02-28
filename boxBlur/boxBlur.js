@@ -50,7 +50,36 @@ A blurred image represented as integers, obtained through the process in the des
 
 */
 
+function threeByThree(image)
+{
+
+}
+
+function avgOfThreeByThree(image)
+{
+    
+}
+
+
 function solution(image) 
 {
 
 }
+
+let image = [[1, 1, 1], 
+         [1, 7, 1], 
+         [1, 1, 1]];    // the output should be solution(image) = [[1]]
+
+image = [[7, 4, 0, 1], 
+         [5, 6, 2, 2], 
+         [6, 10, 7, 8], 
+         [1, 4, 2, 0]]; // the output should be solution(image) = [[5, 4], 
+                                                                    // [4, 4]]
+
+/*
+
+********
+BONEYARD
+********
+
+*/
