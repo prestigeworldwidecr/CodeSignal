@@ -33,13 +33,41 @@ Guaranteed constraints:
 
 */
 
+function circleOfNumbers(n, firstNumber)
+{
+    let diameter = n / 2;
+    let result = -1;
+    
+    // console.log(diameter);
+
+    if (firstNumber < diameter)
+    {
+        result = firstNumber + diameter;
+    }
+
+    else if (firstNumber >= diameter)
+    {
+        result = firstNumber - diameter;
+    }
+
+    else
+    {
+        //
+    }
+    
+    return result;
+
+}
+
 function solution(n, firstNumber) 
 {
-
+    return circleOfNumbers(n, firstNumber);
 }
 
 let n = 10
 let firstNumber = 2  // output should be solution(n, firstNumber) = 7.
+
+console.log(solution(n, firstNumber));
 
 /*
 
