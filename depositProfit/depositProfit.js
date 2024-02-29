@@ -57,7 +57,7 @@ function depositProfit(deposit, rate, threshold)
 
     while (total < threshold)
     {
-        console.log("total: ", total, " threshold: ", threshold);
+        // console.log("total: ", total, " threshold: ", threshold);
 
         total = total * ((rate + 100) / 100);
         year++;
