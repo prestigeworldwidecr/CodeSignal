@@ -27,19 +27,24 @@ The resulting string after replacing each of its characters.
 
 function alphabeticShift(inputString)
 {
+    let cur = -1;
+    let result = [];
+    result.length = inputString.length;
+
     for (let i = 0; i < inputString.length; i++)
     {
-        let tmp = inputString.charCodeAt(i);
+        let cur = inputString.charCodeAt(i);
+        console.log("cur: ", cur, " String.fromCharCode(cur): ", String.fromCharCode(cur));
         
-        if (tmp == 122)   // z
+        if (cur == 122)   // z
         {
-            inputString[i] = "a";
+            result.push("a");
         }
 
-        else if (97 <= tmp && tmp <= 121)   // a - y
+        else if (97 <= cur && cur <= 121)   // a - y
         {
-            tmp++;
-            inputString[i] = String.fromCharCode(tmp);
+            cur++;
+            result.push(String.fromCharCode(cur));
         }
 
         else
@@ -47,6 +52,9 @@ function alphabeticShift(inputString)
             //
         }
     }
+
+    return result;
+
 }
 
 function solution(inputString) 
@@ -56,13 +64,19 @@ function solution(inputString)
 
 let inputString = "crazy"; // output should be solution(inputString) = "dsbaz".
 
-
+console.log(alphabeticShift(inputString));
 
 /*
 
 ********
 BONEYARD
 ********
+
+// inputString = inputString.split("");
+        // let tmp = inputString.split("");
+        // console.log("tmp[", i, "]: ", tmp[i], " cur: ", cur, " String.fromCharCode(cur): ", String.fromCharCode(cur));
+            // tmp[i] = "a";
+            // tmp[i] = String.fromCharCode(cur);
 
 let text = String.fromCharCode(72, 69, 76, 76, 79);
 
