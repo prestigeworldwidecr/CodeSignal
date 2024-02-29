@@ -61,12 +61,14 @@ function solution(inputArray)
 
 }
 
-let inputArray = ["aba", "bbb", "bab"]  // the output should be solution(inputArray) = false
-// let inputArray = ["ab", "bb", "aa"];    // the output should be solution(inputArray) = true
+// let inputArray = ["aba", "bbb", "bab"]  // the output should be solution(inputArray) = false
+let inputArray = ["ab", "bb", "aa"];    // the output should be solution(inputArray) = true
 
 console.log(asciiStringSum(inputArray[0]));
 console.log(asciiStringSum(inputArray[1]));
 console.log(asciiStringSum(inputArray[2]));
+
+console.log(inputArray.sort());
 
 /*
 
