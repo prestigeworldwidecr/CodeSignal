@@ -25,15 +25,45 @@ The resulting string after replacing each of its characters.
 
 */
 
+function alphabeticShift(inputString)
+{
+    for (let i = 0; i < inputString.length; i++)
+    {
+        let tmp = inputString.charCodeAt(i);
+        
+        if (tmp == 122)   // z
+        {
+            inputString[i] = "a";
+        }
+
+        else if (97 <= tmp && tmp <= 121)   // a - y
+        {
+            tmp++;
+            inputString[i] = String.fromCharCode(tmp);
+        }
+
+        else
+        {
+            //
+        }
+    }
+}
+
 function solution(inputString) 
 {
 
 }
+
+let inputString = "crazy"; // output should be solution(inputString) = "dsbaz".
+
+
 
 /*
 
 ********
 BONEYARD
 ********
+
+let text = String.fromCharCode(72, 69, 76, 76, 79);
 
 */
