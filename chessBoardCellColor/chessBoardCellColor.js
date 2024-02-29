@@ -40,20 +40,41 @@ function chessBoardCellColor(cell1, cell2)
 {
     let val1 = cell1.charCodeAt(0) + cell1.charCodeAt(1);
     let val2 = cell2.charCodeAt(0) + cell2.charCodeAt(1);
+    let result = "";
 
-    console.log("val1: ", val1, " val2: ", val2);
+    // console.log("val1: ", val1, " val2: ", val2);
+
+    if (val1 % 2 == 0 && val2 % 2 == 0)
+    {
+        result = true;
+    }
+
+    else if (val1 % 2 == 1 && val2 % 2 == 1)
+    {
+        result = true;
+    }
+
+    else
+    {
+        result = false;
+    }
+
+    return result;
+
 }
 
 function solution(cell1, cell2) 
 {
-
+    return chessBoardCellColor(cell1, cell2);
 }
 
 let cell1 = "A1";
 let cell2 = "C3";    // the output should be solution(cell1, cell2) = true
 
-let cell1 = "A1"; 
-let cell2 = "H3";    // , the output should be solution(cell1, cell2) = false
+let cell3 = "A1"; 
+let cell4 = "H3";    // the output should be solution(cell1, cell2) = false
+
+console.log(chessBoardCellColor(cell3, cell4));
 
 /*
 
