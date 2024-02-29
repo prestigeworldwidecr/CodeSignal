@@ -48,10 +48,35 @@ The number of years it would take to hit the threshold.
 
 */
 
-function solution(deposit, rate, threshold) 
+function depositProfit(deposit, rate, threshold)
 {
+    let total = deposit;
+    let year = 0;
+
+    // console.log("deposit: ", deposit, " rate: ", rate ," threshold: ", threshold);
+
+    while (total < threshold)
+    {
+        console.log("total: ", total, " threshold: ", threshold);
+
+        total = total * ((rate + 100) / 100);
+        year++;
+    }
+
+    return year;
 
 }
+
+function solution(deposit, rate, threshold) 
+{
+    return depositProfit(deposit, rate, threshold);
+}
+
+let deposit = 100;
+let rate = 20;
+let threshold = 170 // output should be solution(deposit, rate, threshold) = 3.
+
+console.log(depositProfit(deposit, rate, threshold));
 
 /*
 
