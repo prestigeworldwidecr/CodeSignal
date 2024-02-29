@@ -44,15 +44,36 @@ Return true if the strings can be reordered in such a way that each neighbouring
 
 */
 
+function asciiStringSum(str)
+{
+    sum = 0;
+
+    for (let i = 0; i < str.length; i++)
+    {
+        sum = sum + str.charCodeAt(i);
+    }
+
+    return sum;
+}
+
 function solution(inputArray) 
 {
 
 }
+
+let inputArray = ["aba", "bbb", "bab"]  // the output should be solution(inputArray) = false
+// let inputArray = ["ab", "bb", "aa"];    // the output should be solution(inputArray) = true
+
+console.log(asciiStringSum(inputArray[0]));
+console.log(asciiStringSum(inputArray[1]));
+console.log(asciiStringSum(inputArray[2]));
 
 /*
 
 ********
 BONEYARD
 ********
+
+can i use ASCII values?
 
 */
