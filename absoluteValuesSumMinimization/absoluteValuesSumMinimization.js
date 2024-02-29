@@ -43,7 +43,83 @@ An integer representing the element from a that minimizes the sum of its absolut
 
 */
 
-function solution(a) 
+function absValueSum(a, x)
 {
+    let sum = 0;
+
+    for (let i = 0; i < a.length; i++)
+    {                
+        sum = sum + Math.abs(a [i] - x);    // abs(a[0] - x) + abs(a[1] - x) + ... + abs(a[a.length - 1] - x)
+    }
+
+    return sum;
 
 }
+
+function absoluteValuesSumMinimization(a)
+{
+    let min = Number.MAX_SAFE_INTEGER;
+    let sum = 0;
+    let x = -1;
+
+    for (let i = 0; i < a.length; i++)
+    {
+        sum = absValueSum(a, a [i]);
+        // console.log("sum: ", sum);
+        
+        if (min > sum)
+        {
+            min = sum;
+            x = a [i];
+        }
+
+        else
+        {
+            //
+        }
+
+    }
+
+    // console.log("min: ", min, " sum: ", sum, " x: ", x);
+    return x;
+
+}
+
+function solution(a) 
+{
+    return absoluteValuesSumMinimization(a);
+}
+
+// let a = [2, 4, 7];   // output should be solution(a) = 4.
+// let a = [2, 3];  // the output should be solution(a) = 2.
+
+// absoluteValuesSumMinimization(a);
+
+/*
+
+********
+BONEYARD
+********
+
+for (let i = 0; i < a.length; i++)
+    {
+        x = a [i];
+        sum = 0;
+        
+        if (sum < min)
+        { 
+            min = sum;
+
+            
+
+            
+        }
+
+        else 
+        {
+            //
+        }
+
+    }
+
+*/
