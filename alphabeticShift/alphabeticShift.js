@@ -34,17 +34,17 @@ function alphabeticShift(inputString)
     for (let i = 0; i < inputString.length; i++)
     {
         let cur = inputString.charCodeAt(i);
-        console.log("cur: ", cur, " String.fromCharCode(cur): ", String.fromCharCode(cur));
+        console.log("cur: ", cur, " String.fromCharCode(cur): ", String.fromCharCode(cur), result.length);
         
         if (cur == 122)   // z
         {
-            result.push("a");
+            result[i] = "a";
         }
 
         else if (97 <= cur && cur <= 121)   // a - y
         {
             cur++;
-            result.push(String.fromCharCode(cur));
+            result[i] = String.fromCharCode(cur);
         }
 
         else
@@ -53,13 +53,14 @@ function alphabeticShift(inputString)
         }
     }
 
+    result = result.toString().replaceAll(",", "");
     return result;
 
 }
 
 function solution(inputString) 
 {
-
+    return alphabeticShift(inputString);
 }
 
 let inputString = "crazy"; // output should be solution(inputString) = "dsbaz".
