@@ -46,7 +46,7 @@ Return true if the strings can be reordered in such a way that each neighbouring
 
 function asciiStringSum(str)
 {
-    sum = 0;
+    let sum = 0;
 
     for (let i = 0; i < str.length; i++)
     {
@@ -61,9 +61,9 @@ function asciiStringSum(str)
 // tmp1 shall represent 1, tmp2 then tmp1 will be 2 and so on...
 function isAsciiConsecutive(inputArray)
 {
-    tmp1 = -1;
-    tmp2 = -1;
-    result = false;
+    let tmp1 = -1;
+    let tmp2 = -1;
+    let result = false;
 
     for (let i = 0; i < inputArray.length - 1; i++)
     {
@@ -87,12 +87,44 @@ function isAsciiConsecutive(inputArray)
 
 function stringRearrange(inputArray)
 {
+    let cnt = 0;    // each neighbouring pair of strings differ by exactly one character
+    let tmp1 = "";
+    let tmp2 = "";
+    let result = false;
 
+    for (let i = 0; i < inputArray.length - 1; i++)
+    {
+        cnt = 0;
+        tmp1 = inputArray[i].split("");
+        tmp2 = inputArray[i + 1].split("");
+
+        for (let j = 0; j < tmp1.length; j++)
+        {
+            // console.log("tmp1: ", tmp1, " tmp2: ", tmp2, " i: ", i, " j: ", j, " tmp1[j]: ", tmp1[j], " tmp2[j]: ", tmp2[j], " cnt: ", cnt);
+            
+            if (cnt > 1)
+            {
+                return false;
+            }
+            
+            else if (tmp1 [j] == tmp2 [j])
+            {
+                result = true;
+            }
+
+            else
+            {
+                cnt++;
+            }
+        }
+    }
+
+    return result;
 }
 
 function solution(inputArray) 
 {
-
+    stringRearrange(inputArray.sort());
 }
 
 // let inputArray = ["aba", "bbb", "bab"]  // the output should be solution(inputArray) = false
@@ -104,7 +136,8 @@ let inputArray = ["ab", "bb", "aa"];    // the output should be solution(inputAr
 
 // console.log(inputArray.sort());
 
-console.log(isAsciiConsecutive(inputArray));
+// console.log(isAsciiConsecutive(inputArray.sort()));
+console.log(stringRearrange(inputArray.sort()));
 
 /*
 
@@ -115,8 +148,6 @@ BONEYARD
 can i use ASCII values?
 1 sort -> send along
 2 consecutive ascii sum ^ same?
-
-
 3 sort substring
 4 letter by letter check
 
