@@ -56,6 +56,40 @@ function asciiStringSum(str)
     return sum;
 }
 
+
+// 1, 2...n
+// tmp1 shall represent 1, tmp2 then tmp1 will be 2 and so on...
+function isAsciiConsecutive(inputArray)
+{
+    tmp1 = -1;
+    tmp2 = -1;
+    result = false;
+
+    for (let i = 0; i < inputArray.length - 1; i++)
+    {
+        tmp1 = asciiStringSum(inputArray[i]);
+        tmp2 = asciiStringSum(inputArray[i + 1]);
+
+        if (tmp1 + 1 != tmp2)
+        {
+            return false;
+        }
+
+        else
+        {
+            result = true;
+        }
+    }
+
+    return result;
+
+}
+
+function stringRearrange(inputArray)
+{
+
+}
+
 function solution(inputArray) 
 {
 
@@ -64,11 +98,13 @@ function solution(inputArray)
 // let inputArray = ["aba", "bbb", "bab"]  // the output should be solution(inputArray) = false
 let inputArray = ["ab", "bb", "aa"];    // the output should be solution(inputArray) = true
 
-console.log(asciiStringSum(inputArray[0]));
-console.log(asciiStringSum(inputArray[1]));
-console.log(asciiStringSum(inputArray[2]));
+// console.log(asciiStringSum(inputArray[0]));
+// console.log(asciiStringSum(inputArray[1]));
+// console.log(asciiStringSum(inputArray[2]));
 
-console.log(inputArray.sort());
+// console.log(inputArray.sort());
+
+console.log(isAsciiConsecutive(inputArray));
 
 /*
 
@@ -77,5 +113,11 @@ BONEYARD
 ********
 
 can i use ASCII values?
+1 sort -> send along
+2 consecutive ascii sum ^ same?
+
+
+3 sort substring
+4 letter by letter check
 
 */
