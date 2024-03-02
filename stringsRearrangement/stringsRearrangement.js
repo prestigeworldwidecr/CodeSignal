@@ -85,15 +85,20 @@ function isAsciiConsecutive(inputArray)
 
 }
 
-function charMatchCount(str1, str2)
+function charMismatchCount(str1, str2)
 {
-    let cnt = 0;
+    let cnt = 0;    // each neighbouring pair of strings differ by exactly one character
 
     for (let i = 0; i < str1.length; i++)
     {
-        console.log("i: ", i, " j: ", j, " str1[j]: ", str1[j], " str2[j]: ", str2[j], " cnt: ", cnt);
+        console.log("i: ", i, " str1[i]: ", str1[i], " str2[i]: ", str2[i], " cnt: ", cnt);
         
-        if (str1 [i] == str2 [i])
+        if (cnt > 1)
+        {
+            return cnt;
+        }
+
+        else if (str1 [i] != str2 [i])
         {
             cnt++;
         }
@@ -111,34 +116,27 @@ function charMatchCount(str1, str2)
 
 function stringRearrange(inputArray)
 {
-    let cnt = 0;    // each neighbouring pair of strings differ by exactly one character
+    let cnt = 0;
     let tmp1 = "";
     let tmp2 = "";
     let result = false;
 
     for (let i = 0; i < inputArray.length - 1; i++)
     {
+        tmp1 = inputArray[i].split("");
+        tmp2 = inputArray[i + 1].split("");
+        cnt = charMismatchCount(tmp1, tmp2);
 
-        // console.log("tmp1: ", tmp1, " tmp2: ", tmp2, " i: ", i, " j: ", j, " tmp1[j]: ", tmp1[j], " tmp2[j]: ", tmp2[j], " cnt: ", cnt);
-
-        if (cnt == 1 && i > 0)
+        console.log("!", " cnt: ", cnt);
+        
+        if (cnt == 1)
         {
-            return true;
-        }
-
-        else if (cnt > 1)
-        {
-            return false;
+            result = true;
         }
 
         else
         {
-            cnt = 0;
-            tmp1 = inputArray[i].split("");
-            tmp2 = inputArray[i + 1].split("");
-
-            --> send to stringMatchCount
-
+            return false;
         }
 
     }
@@ -154,8 +152,9 @@ function solution(inputArray)
 // let inputArray = ["aba", "bbb", "bab"]  // the output should be solution(inputArray) = false
 // inputArray = ["ab", "bb", "aa"];    // the output should be solution(inputArray) = true
 // inputArray = ["q", "q"];    // answer false
-inputArray = ["abc", "abx", "axx",  "abc"];  // answer: false
-inputArray = ["zzzzab", "zzzzbb", "zzzzaa"];    // answer: true
+inputArray = ["abc", "abx", "axx",  "abc"];  // answer: true    abc, abc, abx, axx
+// inputArray = ["zzzzab", "zzzzbb", "zzzzaa"];  // answer: true
+inputArray = ["ff",  "gf",  "af",  "ar",  "hf"];    // answer: true
 
 // console.log(asciiStringSum(inputArray[0]));
 // console.log(asciiStringSum(inputArray[1]));
@@ -171,6 +170,21 @@ console.log(stringRearrange(inputArray.sort()));
 ********
 BONEYARD
 ********
+
+// console.log("tmp1: ", tmp1, " tmp2: ", tmp2, " i: ", i, " j: ", j, " tmp1[j]: ", tmp1[j], " tmp2[j]: ", tmp2[j], " cnt: ", cnt);
+
+        if (cnt == 1 && i > 0)
+        {
+            return true;
+        }
+
+        else if (cnt > 1)
+        {
+            return false;
+        }
+
+        else
+        {
 
 if (cnt > 1)
                 {
