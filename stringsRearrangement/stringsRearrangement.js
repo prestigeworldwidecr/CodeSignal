@@ -144,6 +144,46 @@ function stringRearrange(inputArray)
     return result;
 }
 
+function createAsciiString(inputArray)
+{
+    tmp = "";
+    result = [];
+    result.length = inputArray.length;
+
+    for (let i = 0; i < inputArray.length; i++)
+    {
+        result[i] = asciiStringSum(inputArray[i]);
+    }
+
+    return result;
+}
+
+function makeArrayConsecutive2(str)
+{
+    str = str.sort((a,b) => a-b);   // (a,b) => a-b
+    cnt = 0;
+    dif = 0;
+
+    console.log(str);
+
+    for(i = 0; i < str.length - 1; i++)
+    {
+        if (str[i] == str[i + 1])
+        {
+            //
+        }
+
+        else
+        {
+            dif = str[i + 1] - str[i] - 1;
+            cnt = cnt + dif;
+        }
+
+    }
+
+    return cnt;
+}
+
 function solution(inputArray) 
 {
     // stringRearrange(inputArray.sort());
@@ -154,7 +194,7 @@ function solution(inputArray)
 // inputArray = ["q", "q"];    // answer false
 inputArray = ["abc", "abx", "axx",  "abc"];  // answer: true    abc, abc, abx, axx
 // inputArray = ["zzzzab", "zzzzbb", "zzzzaa"];  // answer: true
-inputArray = ["ff",  "gf",  "af",  "ar",  "hf"];    // answer: true
+inputArray = ["ff",  "gf",  "af",  "ar",  "hf"];    // answer: true --ideal: 211 199 204 205 206
 
 // console.log(asciiStringSum(inputArray[0]));
 // console.log(asciiStringSum(inputArray[1]));
@@ -163,7 +203,9 @@ inputArray = ["ff",  "gf",  "af",  "ar",  "hf"];    // answer: true
 // console.log(inputArray.sort());
 
 // console.log(isAsciiConsecutive(inputArray.sort()));
-console.log(stringRearrange(inputArray.sort()));
+// console.log(stringRearrange(inputArray.sort()));
+
+console.log(createAsciiString(inputArray));
 
 /*
 
