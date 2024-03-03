@@ -42,37 +42,43 @@ The maximal possible sum.
 
 function maxPower(inputArray, k)
 {
-    var sum = -1;
-    var max = 0;
-    var babyK = []; // array containing 0 ... k - 1
-    babyK.length = k;
-
-    for (var i = 0; i < babyK.length; i++)
-    {
-        // console.log("i: ", i, " k: ", k);
-        
-        babyK[i] = i;
-    }
+    var max = Number.MIN_SAFE_INTEGER;
+    var sum = 0;
+    var tmp = [...inputArray];
 
     for (var i = 0; i < inputArray.length; i++)
     {
-        // console.log("i: ", i, " j: ", j, " sum: ", sum);
-        
-        for (var j = i; j < babyK.length; j++)
+        if (sum > max)
         {
-            
-            sum = inputArray[j] + sum;
-            console.log("i: ", i, " j: ", j, " sum: ", sum, " inputArray[j]: ", inputArray[j]);
+            max = sum;
         }
+
+        else
+        {
+            // 
+        }
+        
+        tmp = tmp.slice(i, i + k);
+        // console.log("tmp: ", tmp, " inputArray: ", inputArray, " sum: ", sum);
+        sum = 0;
+
+        for (var j = 0; j < tmp.length; j++)
+        {
+            sum = sum + tmp[j];
+        }
+
+        tmp = [...inputArray];
+
     }
 
+    // console.log(max);
     return max;
 
 }
 
 function solution(inputArray, k) 
 {
-
+    return maxPower(inputArray, k);
 }
 
 
@@ -86,5 +92,27 @@ maxPower(inputArray, k);
 ********
 BONEYARD
 ********
+
+// var babyK = []; // array containing 0 ... k - 1
+    // babyK.length = k;
+    for (var i = 0; i < babyK.length; i++)
+    {
+        // console.log("i: ", i, " k: ", k);
+        
+        babyK[i] = i;
+    }
+        
+        // consoleinputArray
+        
+        // console.log("i: ", i, " j: ", j, " sum: ", sum);
+        
+        if 
+
+        for (var j = 0; j < babyK.length; j++)
+        {
+            // console.log("!i: ", i, " j: ", j, " sum: ", sum, " inputArray[j]: ", inputArray[j]);
+            sum = inputArray[i] + sum;
+            // console.log("@i: ", i, " j: ", j, " sum: ", sum, " inputArray[j]: ", inputArray[j]);
+        }
 
 */
