@@ -55,11 +55,93 @@ The number of days that it will take for the plant to reach / pass desiredHeight
 
 */
 
+/*
+
+    produce
+    -------
+    #	Day	Night
+1	100	90
+2	190	180
+3	280	270
+4	370	360
+5	460	450
+6	550	540
+7	640	630
+8	730	720
+9	820	810
+10	910	900
+
+*/
+function trackProgress(upSpeed, downSpeed, desiredHeight)
+{
+    var progress = new Array();
+    var upSpeedStep = upSpeed;
+    var downSpeedStep = downSpeed;
+
+    for (var i = 0; i < 10; i++)
+    {
+        progress[i] = new Array();
+        
+        for (var j = 0; j < 5; j++)
+        {
+            progress [i] [j] = new Array();
+
+            if (i == 0)
+            {
+                progress [0] [0] = "#";
+                progress [0] [1] = "upspeed";
+                progress [0] [2] = "downspeed";
+                progress [0] [3] = "Day";
+                progress [0] [4] = "Night";
+            }
+
+            else if (j == 0)
+            {
+                progress [i] [j] = i;
+            }
+
+            else if (j == 1)
+            {
+                progress [i] [j] = upSpeedStep;
+                upSpeedStep = upSpeedStep + upSpeed;
+            }
+
+            else if (j == 2)
+            {
+                progress [i] [j] = downSpeedStep;
+                downSpeedStep = downSpeedStep + downSpeed;
+            }
+
+            else
+            {
+                //
+            }
+
+            // console.log("i: ", i, " j: ", j, " ", progress[i][j], "\t");
+
+        }
+    }
+
+    for (var i = 0; i < progress.length; i++)
+    {
+        console.log(progress[i]);
+    }
+
+    console.log("row: ", progress.length, " column: ", progress[0].length);
+    // console.log(progress [3][2]);
+
+}
+
 function solution(upSpeed, downSpeed, desiredHeight) 
 {
 
 }
 
+var upSpeed = 100;
+var downSpeed = 10;
+var desiredHeight = 910;    // the output should be solution(upSpeed, downSpeed, desiredHeight) = 10.
+
+trackProgress(upSpeed, downSpeed, desiredHeight);
 
 /*
 
