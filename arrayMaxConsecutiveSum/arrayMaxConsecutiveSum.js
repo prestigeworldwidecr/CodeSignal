@@ -44,20 +44,25 @@ function maxPower(inputArray, k)
 {
     var sum = -1;
     var max = 0;
-    var babyK = new Array(k); // array containing 0 ... k - 1
+    var babyK = []; // array containing 0 ... k - 1
+    babyK.length = k;
 
-    for (var i = 0; i < k.length; i++)
+    for (var i = 0; i < babyK.length; i++)
     {
-        babyK.push(i);
+        // console.log("i: ", i, " k: ", k);
+        
+        babyK[i] = i;
     }
 
     for (var i = 0; i < inputArray.length; i++)
     {
-        console.log("sum: ", sum);
+        // console.log("i: ", i, " j: ", j, " sum: ", sum);
         
-        for (var j = i; j < k.length; j++)
+        for (var j = i; j < babyK.length; j++)
         {
+            
             sum = inputArray[j] + sum;
+            console.log("i: ", i, " j: ", j, " sum: ", sum, " inputArray[j]: ", inputArray[j]);
         }
     }
 
