@@ -42,13 +42,39 @@ The maximal possible sum.
 
 function maxPower(inputArray, k)
 {
-    
+    var sum = -1;
+    var max = 0;
+    var babyK = new Array(k); // array containing 0 ... k - 1
+
+    for (var i = 0; i < k.length; i++)
+    {
+        babyK.push(i);
+    }
+
+    for (var i = 0; i < inputArray.length; i++)
+    {
+        console.log("sum: ", sum);
+        
+        for (var j = i; j < k.length; j++)
+        {
+            sum = inputArray[j] + sum;
+        }
+    }
+
+    return max;
+
 }
 
 function solution(inputArray, k) 
 {
 
 }
+
+
+var inputArray = [2, 3, 5, 1, 6];
+var k = 2;  // the output should be solution(inputArray, k) = 8.
+
+maxPower(inputArray, k);
 
 /*
 
