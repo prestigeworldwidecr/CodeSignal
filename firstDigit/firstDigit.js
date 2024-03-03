@@ -29,14 +29,16 @@ Guaranteed constraints:
 
 function solution(inputString) 
 {
-    let text = "123456789";
-    let pattern = /[0-9]/g;
-    console.log(text.search(pattern));
+    let index = inputString.search(/\d/);
+
+    return inputString[index];
 }
 
-let inputString = "var_1__Int"; // the output should be solution(inputString) = '1';
-let inputString = "q2q-q";   // the output should be solution(inputString) = '2';
-let inputString = "0ss";    // the output should be solution(inputString) = '0'.
+// let inputString = "var_1__Int"; // the output should be solution(inputString) = '1';
+// inputString = "q2q-q";   // the output should be solution(inputString) = '2';
+inputString = "0ss";    // the output should be solution(inputString) = '0'.
+
+solution(inputString);
 
 /*
 
@@ -44,8 +46,27 @@ let inputString = "0ss";    // the output should be solution(inputString) = '0'.
 BONEYARD
 ********
 
+// var numberRegex = /^\d+$/;
+    
+    // Validate numbers
+    // result = inputString.indexOf(numberRegex);   // Returns true
+    // result = numberRegex.test('Hey12122022x');   // Returns false
+
+var numberRegex = /^\d+$/;
+// Validate numbers
+numberRegex.test('12122022'); // Returns true
+numberRegex.test('Hey12122022x'); // Returns false
+
+// Extract a number from a string
+var numberRegexG = /\d$/g;
+'Your message was viewed 203 times'.match(numberRegexG); // returns ['203']
+
 let text = "123456789";
 let pattern = /[0-9]/g;
 text.search(pattern)
+
+let digit = /\d$/g;
+
+    console.log(inputString.match(/\d$/g));
 
 */
