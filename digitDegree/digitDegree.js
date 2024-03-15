@@ -29,10 +29,22 @@ Guaranteed constraints:
 
 */
 
+function sumIndividualDigit(n)
+{
+
+}
+
 function solution(n) 
 {
 
 }
+
+
+var n = 5;  // the output should be solution(n) = 0;
+var n = 100 // the output should be solution(n) = 1.
+var n = 91  // the output should be solution(n) = 2.
+
+sumIndividualDigit(n);
 
 /*
 
