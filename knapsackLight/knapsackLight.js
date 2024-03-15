@@ -56,10 +56,70 @@ Guaranteed constraints:
 
 */
 
-function solution(value1, weight1, value2, weight2, maxW) 
+function grabbingHands(value1, weight1, value2, weight2, maxW) 
 {
+    var totalValue = value1 + value2;
+    var totalWeight = weight1 + weight2;
+
+    if (totalWeight <= maxW)
+    {
+        return totalValue;
+    }
+
+    else if (maxW < weight1 && maxW < weight2)
+    {
+        return 0;
+    }
+
+    else if (weight1 <= maxW && weight2 <= maxW)
+    {
+        if (value1 > value2)
+        {
+            return value1;
+        }
+
+        else
+        {
+            return value2;
+        }
+    }
+
+    else if (weight1 <= maxW && maxW < weight2)
+    {
+        return value1;
+    }
+
+    else
+    {
+        return value2;
+    }
 
 }
+
+function solution(value1, weight1, value2, weight2, maxW) 
+{
+    return grabbingHands(value1, weight1, value2, weight2, maxW);
+}
+
+var value1 = 10;
+var weight1 = 5;
+var value2 = 6;
+var weight2 = 4;
+var maxW = 8;   // solution(value1, weight1, value2, weight2, maxW) = 10
+
+var value1 = 10;
+var weight1 = 5;
+var value2 = 6;
+var weight2 = 4;
+var maxW = 9;   // solution(value1, weight1, value2, weight2, maxW) = 16
+
+var value1 = 5;
+var weight1 = 3;
+var value2 = 7;
+var weight2 = 4;
+var maxW = 6;   // solution(value1, weight1, value2, weight2, maxW) = 7
+
+console.log(solution(value1, weight1, value2, weight2, maxW));
 
 /*
 
