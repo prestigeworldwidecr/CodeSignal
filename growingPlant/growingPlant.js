@@ -75,49 +75,61 @@ The number of days that it will take for the plant to reach / pass desiredHeight
 function trackProgress(upSpeed, downSpeed, desiredHeight)
 {
     var progress = new Array();
-    var upSpeedStep = upSpeed;
-    var downSpeedStep = downSpeed;
+
+    console.log("  # ", "Day ", "Night");
 
     for (var i = 0; i < 10; i++)
     {
+
         progress[i] = new Array();
         
-        for (var j = 0; j < 5; j++)
+        for (var j = 0; j < 3; j++)
         {
-            progress [i] [j] = new Array();
-
-            if (i == 0)
+            
+            if (j == 0)
             {
-                progress [0] [0] = "#";
-                progress [0] [1] = "upspeed";
-                progress [0] [2] = "downspeed";
-                progress [0] [3] = "Day";
-                progress [0] [4] = "Night";
-            }
-
-            else if (j == 0)
-            {
-                progress [i] [j] = i;
+                progress[i][j] = i;
             }
 
             else if (j == 1)
             {
-                progress [i] [j] = upSpeedStep;
-                upSpeedStep = upSpeedStep + upSpeed;
+                if (i <= 1)
+                {
+                    progress[i][j] = upSpeed;
+                }
+
+                
+                else if (i > 1)
+                {
+                    progress [i] [j] = progress [i - 1] [j] - progress [i - 1] [j + 1] + upSpeed;                   
+                }
+                
+
+                else
+                {
+                    progress[i][j] = upSpeed;
+                }
+
             }
 
             else if (j == 2)
             {
-                progress [i] [j] = downSpeedStep;
-                downSpeedStep = downSpeedStep + downSpeed;
+                if (i <= 1)
+                {
+                    progress[i][j] = downSpeed;
+                }
+
+                else
+                {
+                    progress [i] [j] = progress [i] [j - 1] - downSpeed;
+                    progress[i][j] = downSpeed;
+                }
             }
 
             else
             {
                 //
             }
-
-            // console.log("i: ", i, " j: ", j, " ", progress[i][j], "\t");
 
         }
     }
@@ -126,9 +138,6 @@ function trackProgress(upSpeed, downSpeed, desiredHeight)
     {
         console.log(progress[i]);
     }
-
-    console.log("row: ", progress.length, " column: ", progress[0].length);
-    // console.log(progress [3][2]);
 
 }
 
@@ -148,5 +157,38 @@ trackProgress(upSpeed, downSpeed, desiredHeight);
 ********
 BONEYARD
 ********
+
+// console.log("progress [i - 1] [j]: ", progress [i - 1] [j], " progress [i - 1] [j + 1]: ", progress [i - 1] [j + 1]);
+                    // console.log("i: ", i, " j: ", j);
+                    // console.log(progress [i - 1] [j]);
+                    // console.log(progress [i - 1] [j + 1]);
+                    // console.log("i: ", i, " j: ", j);
+
+// console.log("row: ", progress.length, " column: ", progress[0].length);
+
+else if (j == 1)
+            {
+                progress [i] [j] = upSpeedStep;
+                // upSpeedStep = upSpeedStep + upSpeed;
+            }
+
+            else if (j == 2)
+            {
+                progress [i] [j] = downSpeedStep;
+                // downSpeedStep = downSpeedStep + downSpeed;
+            }
+
+// console.log("i: ", i, " j: ", j, " ", progress[i][j], "\t");
+
+if (i == 0)
+            {
+                progress [0] [0] = "#";
+                // progress [0] [1] = "upspeed";
+                // progress [0] [2] = "downspeed";
+                progress [0] [1] = "Day";
+                progress [0] [2] = "Night";
+            }
+
+    // console.log(progress [3][2]);
 
 */
