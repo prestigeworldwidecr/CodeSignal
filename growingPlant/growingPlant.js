@@ -55,7 +55,56 @@ The number of days that it will take for the plant to reach / pass desiredHeight
 
 */
 
+function dayAndNight(upSpeed, downSpeed, desiredHeight)
+{
+    var day = 0;
+    var night = 0;
+    var currentHeight = 0;
+    var totalDays = 1;
+
+    while (currentHeight < desiredHeight)
+    {
+        day = night + upSpeed;
+        // console.log("start: ", "totalDays: ", totalDays, " day: ", day, " night: ", night, " currentHeight: ", currentHeight);
+
+        if (day >= desiredHeight)
+        {
+            return totalDays;
+        }
+
+        else
+        {
+            night = day - downSpeed;
+            currentHeight = night;
+        }
+        
+        // console.log("end: ", "totalDays: ", totalDays, " day: ", day, " night: ", night, " currentHeight: ", currentHeight);
+        totalDays++;
+    }
+
+    return totalDays;
+
+}
+
+function solution(upSpeed, downSpeed, desiredHeight) 
+{
+    return dayAndNight(upSpeed, downSpeed, desiredHeight);
+}
+
+var upSpeed = 100;
+var downSpeed = 10;
+var desiredHeight = 910;    // the output should be solution(upSpeed, downSpeed, desiredHeight) = 10.
+
+// dayAndNight(upSpeed, downSpeed, desiredHeight);
+
 /*
+
+********
+BONEYARD
+********
+
+trackProgress(upSpeed, downSpeed, desiredHeight);
+
 
     produce
     -------
@@ -71,7 +120,6 @@ The number of days that it will take for the plant to reach / pass desiredHeight
 9	820	810
 10	910	900
 
-*/
 function trackProgress(upSpeed, downSpeed, desiredHeight)
 {
     var progress = new Array();
@@ -80,7 +128,6 @@ function trackProgress(upSpeed, downSpeed, desiredHeight)
 
     for (var i = 0; i < 10; i++)
     {
-
         progress[i] = new Array();
         
         for (var j = 0; j < 3; j++)
@@ -99,15 +146,10 @@ function trackProgress(upSpeed, downSpeed, desiredHeight)
                 }
 
                 
-                else if (i > 1)
-                {
-                    progress [i] [j] = progress [i - 1] [j] - progress [i - 1] [j + 1] + upSpeed;                   
-                }
-                
-
+                // else if (i > 1)
                 else
                 {
-                    progress[i][j] = upSpeed;
+                    progress[i][j] = progress[i - 1][j] - progress[i - 1][j + 1] + upSpeed;                   
                 }
 
             }
@@ -121,7 +163,7 @@ function trackProgress(upSpeed, downSpeed, desiredHeight)
 
                 else
                 {
-                    progress [i] [j] = progress [i] [j - 1] - downSpeed;
+                    // progress [i][j] = progress [i][j - 1] - downSpeed;
                     progress[i][j] = downSpeed;
                 }
             }
@@ -141,22 +183,6 @@ function trackProgress(upSpeed, downSpeed, desiredHeight)
 
 }
 
-function solution(upSpeed, downSpeed, desiredHeight) 
-{
-
-}
-
-var upSpeed = 100;
-var downSpeed = 10;
-var desiredHeight = 910;    // the output should be solution(upSpeed, downSpeed, desiredHeight) = 10.
-
-trackProgress(upSpeed, downSpeed, desiredHeight);
-
-/*
-
-********
-BONEYARD
-********
 
 // console.log("progress [i - 1] [j]: ", progress [i - 1] [j], " progress [i - 1] [j + 1]: ", progress [i - 1] [j + 1]);
                     // console.log("i: ", i, " j: ", j);
