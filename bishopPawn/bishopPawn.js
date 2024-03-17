@@ -46,7 +46,25 @@ function slopeBetweenTwoPoints(pos1, pos2)
 {
     var m = Number.MIN_SAFE_INTEGER;
 
-    m = pos2 [1] - pos1 [1] / pos2 [0] - pos1 [0]   // slope equation: y2-y1/x2-x1
+    console.log("pos1: ", pos1, " pos2: ", pos2);
+
+    m = (pos2 [1] - pos1 [1]) / (pos2 [0] - pos1 [0]);   // slope equation: m = y2-y1/x2-x1
+
+    return m;
+}
+
+function bishopEats(m)
+{
+    if (Math.abs(m) == 1)
+    {
+        return true;
+    }
+
+    else
+    {
+        return false;
+    }
+
 }
 
 // convert chess position letter, number to [x, y]
@@ -117,7 +135,7 @@ function convertXYPosition(pos)
 
 function solution(bishop, pawn) 
 {
-
+    return bishopEats(slopeBetweenTwoPoints(convertXYPosition(bishop), convertXYPosition(pawn)));
 }
 
 var bishop = "a1";  // 146
@@ -133,14 +151,22 @@ var pawn = "f7";    // 157
 var bishop = "e8";  // 157
 var pawn = "a4";    // 149
 
-// bad
 var bishop = "c4";  // 151
 var pawn = "f7";    // 157
 
 var bishop = "e8";  // 157
 var pawn = "a4";    // 149
 
-console.log(convertXYPosition(bishop));
+// bad
+
+var bishop = "a2";  // 157
+var pawn = "c2";    // 149
+
+var bishop = "a2";  // 157
+var pawn = "c1";    // 149
+
+// console.log(convertXYPosition(bishop));
+console.log(bishopEats(slopeBetweenTwoPoints(convertXYPosition(bishop), convertXYPosition(pawn))));
 
 /*
 
