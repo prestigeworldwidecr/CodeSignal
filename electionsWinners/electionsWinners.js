@@ -17,17 +17,105 @@ The third candidate can win even if none of the remaining candidates vote for hi
 The last candidate can't win no matter what (for the same reason as the first candidate).
 Thus, only 2 candidates can win (the second and the third), which is the answer.
 
+Input/Output
+
+[execution time limit] 4 seconds (js)
+
+[memory limit] 1 GB
+
+[input] array.integer votes
+
+A non-empty array of non-negative integers. Its ith element denotes the number of votes cast for the ith candidate.
+
+Guaranteed constraints:
+4 ≤ votes.length ≤ 105,
+0 ≤ votes[i] ≤ 104.
+
+[input] integer k
+
+The number of voters who haven't cast their vote yet.
+
+Guaranteed constraints:
+0 ≤ k ≤ 105.
+
+[output] integer
+
 */
+
+function electionsWinners(votes, k)
+{
+    var max = Math.max(...votes);
+    var cnt = 0;
+    var cntMax = 0; // count of candidates w/votes equal to max
+
+    // console.log(votes, max);
+
+    for (var i = 0; i < votes.length; i++)
+    {
+        tmp = votes[i] + k;
+
+        if (max < tmp)
+        {
+            cnt++;
+        }
+
+        else
+        {
+            //
+        }
+
+    }
+
+    return cnt;
+
+}
 
 function solution(votes, k) 
 {
-
+    return electionsWinners(votes, k);
 }
+
+var votes = [2, 3, 5, 2];
+var k = 3;  // the output should be solution(votes, k) = 2
+votes = [1, 3, 3, 1, 1];    // 0
+k = 0;
+votes = [1, 1, 1, 1] // 0
+k = 0;
+votes = [5, 1, 3, 4, 1];    // 1
+k = 0;
+votes = [2, 3, 5, 2];   // 2
+k = 3;
+votes = [3, 1, 1, 3, 1] // 2
+k = 2;
+
+
+console.log(electionsWinners(votes, k));
 
 /*
 
 ********
 BONEYARD
 ********
+
+
+        else if (tmp == max)
+        {
+            cntMax++;
+        }
+
+    if (cntMax > 1)
+    {
+        return 0;
+    }
+
+    else if (cntMax == 1)
+    {
+        return 1;
+    }
+
+    else
+    {
+        return cnt;
+    }
 
 */
