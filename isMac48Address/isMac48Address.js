@@ -32,28 +32,130 @@ true if inputString corresponds to MAC-48 address naming rules, false otherwise
 
 */
 
-// return false if does not meed ASCII/MAC requirements:
-// CAPS A-F: 65-70 , 0-9: 48-57
-function ASCIIBoot(s)
+// check MAC Address: A1--93 ... "-": 45
+function isDoubleDashComplaint(s)
 {
     var result = false;
-    var tmp = s.split("-");
 
-    console.log(s);
+    for (var i = 0; i < s.length; i++)
+    {
+        var cur = s.charCodeAt(i);
 
-    // for (var i = 0; i < )
+        if (cur == 45)
+        {
+            var next = s.charCodeAt(i + 1);
+            
+            // console.log("cur: ", cur, " next: ", next);
+            
+            if (next == 45)
+            {
+                return false;
+            }
+
+            else
+            {
+                result = true;
+            }
+
+        }
+
+        else
+        {
+            result = true;
+        }
+
+    }
+
+    return result;
+
+}
+
+function dashCount(s)
+{
+    var cnt = 0;
+
+    for(var i = 0; i < s.length; i++)
+    {
+        var cur = s.charCodeAt(i);
+
+        if (cur == 45)
+        {
+            cnt++;
+        }
+
+        else
+        {
+            //
+        }
+    }
+    
+    return cnt;
+}
+
+// return false if does not meed ASCII/MAC requirements:
+// CAPS A-F: 65-70 , 0-9: 48-57
+function isASCIICompliant(s)
+{
+    var result = false;
+    var tmp = s.replaceAll("-", "");
+
+    // console.log(tmp);
+
+    for (var i = 0; i < tmp.length; i++)
+    {
+        var cur = tmp.charCodeAt(i)
+
+        // console.log("cur: ", cur, " : ", tmp.charAt(i));
+
+        if (65 <= cur && cur <= 70|| 48 <= cur && cur <= 57)
+        {
+            result = true;
+        }
+
+        else
+        {
+            return false;
+        }
+
+    }
+
+    return result;
+
+}
+
+function isMAC48Address(s)
+{
+    var result = false;
+
+    if (dashCount(s) == 5 && isASCIICompliant(s) && isDoubleDashComplaint(s))
+    {
+        result = true;
+    }
+
+    else
+    {
+        result = false;
+    }
+
+    return result;
+
 }
 
 function solution(inputString) 
 {
-
+    return isMAC48Address(inputString);
 }
 
-var inputString = "00-1B-63-84-45-E6"   // the output should be solution(inputString) = true;
-inputString = "Z1-1B-63-84-45-E6"   // the output should be solution(inputString) = false;
-inputString = "not a MAC-48 address"    // the output should be solution(inputString) = false.
+// var inputString = "00-1B-63-84-45-E6"   // the output should be solution(inputString) = true;
+// inputString = "Z1-1B-63-84-45-E6"   // the output should be solution(inputString) = false;
+// inputString = "not a MAC-48 address"    // the output should be solution(inputString) = false.
+// inputString = "---";
 
-ASCIIBoot(inputString);
+// console.log(isASCIICompliant(inputString));
+// console.log(isDoubleDashComplaint(inputString));
+// console.log(dashCount(inputString));
+
+console.log(isMAC48Address(inputString));
 
 /*
 
@@ -61,6 +163,23 @@ ASCIIBoot(inputString);
 BONEYARD
 ********
 
+// var prev = s.charAt(0);
+    // var cur = prev;
+    var cnt = 0;
+    
 
+            if (cnt > 1)
+            {
+                return false;
+            }
+
+            else
+            {
+                result = true;
+            }
+
+// tmp = tmp.split("");
+        // console.log(tmp.charCodeAt(1));
+        // console.log(tmp.length, " tmp[i]: ", tmp[i]);
 
 */
