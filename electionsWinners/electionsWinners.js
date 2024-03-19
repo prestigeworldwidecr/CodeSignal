@@ -42,6 +42,21 @@ Guaranteed constraints:
 
 */
 
+function votesWithK(votes, k)
+{
+    var tmp = [...votes];
+
+    console.log(tmp);
+
+    for (var i = 0; i < tmp.length; i++)
+    {
+        tmp [i] = tmp [i] + k;
+    }
+
+    return tmp;
+
+}
+
 function electionsWinners(votes, k)
 {
     var max = Math.max(...votes);
@@ -90,6 +105,7 @@ k = 2;
 
 
 console.log(electionsWinners(votes, k));
+// console.log(isElectionTie(votes, k));
 
 /*
 
@@ -97,6 +113,43 @@ console.log(electionsWinners(votes, k));
 BONEYARD
 ********
 
+// If two or more candidates receive the same (maximum) number of votes
+// assume there is no winner at all.
+function isElectionTie(votes, k)
+{
+    var max = Number.MIN_SAFE_INTEGER;
+    var maxCnt = 0;
+
+    // console.log(tmp);
+    max = Math.max([...tmp]);
+
+    for (var i = 0; i < tmp.length; i++)
+    {
+        if (tmp [i] == max)
+        {
+            maxCnt++;
+
+            if (maxCnt > 1)
+            {
+                return true;
+            }
+
+            else
+            {
+                result = false;
+            }
+        }
+
+        else
+        {
+            result = false;
+        }
+
+    }
+
+    return result;
+
+}
 
         else if (tmp == max)
         {
