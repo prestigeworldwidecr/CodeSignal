@@ -14,6 +14,7 @@ For inputString = "Z1-1B-63-84-45-E6", the output should be
 solution(inputString) = false;
 For inputString = "not a MAC-48 address", the output should be
 solution(inputString) = false.
+
 Input/Output
 
 [execution time limit] 4 seconds (js)
@@ -31,10 +32,28 @@ true if inputString corresponds to MAC-48 address naming rules, false otherwise
 
 */
 
+// return false if does not meed ASCII/MAC requirements:
+// CAPS A-F: 65-70 , 0-9: 48-57
+function ASCIIBoot(s)
+{
+    var result = false;
+    var tmp = s.split("-");
+
+    console.log(s);
+
+    // for (var i = 0; i < )
+}
+
 function solution(inputString) 
 {
 
 }
+
+var inputString = "00-1B-63-84-45-E6"   // the output should be solution(inputString) = true;
+inputString = "Z1-1B-63-84-45-E6"   // the output should be solution(inputString) = false;
+inputString = "not a MAC-48 address"    // the output should be solution(inputString) = false.
+
+ASCIIBoot(inputString);
 
 /*
 
