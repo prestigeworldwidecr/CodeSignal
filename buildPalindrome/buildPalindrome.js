@@ -91,19 +91,19 @@ function alphabetizeString(s)
     return tmp;
 }
 
-function indexMaxS2D(s2d)
+function indexMinS2d(s2d)
 {
-    var indexMax = Number.MIN_SAFE_INTEGER;
-    var max = Number.MIN_SAFE_INTEGER;
+    var indexMin = Number.MAX_SAFE_INTEGER;
+    var min = Number.MAX_SAFE_INTEGER;
 
     for (var i = 0; i < s2d.length; i++)
     {
         var cur = i;
         
-        if (max <= s2d[i][1])
+        if (min >= s2d[i][1])
         {
-            max = s2d[i][1];
-            indexMax = cur;
+            min = s2d[i][1];
+            indexMin = cur;
         }
 
         else
@@ -117,20 +117,79 @@ function indexMaxS2D(s2d)
 
 }
 
-// function equalize s2d
+function indexMaxS2d(s2d)
+{
+    // var indexMax = Number.MIN_SAFE_INTEGER;
+    var max = Number.MIN_SAFE_INTEGER;
+
+    for (var i = 0; i < s2d.length; i++)
+    {
+        var cur = i;
+        
+        if (max <= s2d[i][1])
+        {
+            max = s2d[i][1];
+            // indexMax = cur;
+        }
+
+        else
+        {
+            //
+        }
+
+    }
+
+    return max;
+
+}
+
+function equalizeS2d(s2d)
+{
+    var max = indexMaxS2d(s2d);
+
+    for(var i = 0; i < s2d.length; i++)
+    {
+        s2d[i][1] = s2d[i][max];
+    }
+
+    // return s2d;
+}
+
+function buildPrePalindromeString(s2d)
+{
+    var s = "";
+
+    for (var i = 0; i < s2d.length; i++)
+    {
+        max = s2d[0][1];
+        
+        for (var j = 0; j < max; j++)
+        {
+            s = s + s2d[i][0];
+        }
+
+    }
+
+    return s;
+
+}
 
 function buildPalindrome(s, s2d)
 {
+    var tmp = "";
     var result = "";
 
     if (s.length % 2 == 0)
     {
-        // console.log(indexMaxS2D(s2d));
+        // tmp = [...equalizeS2d(s2d)];
+        // console.log("!", s2d);
+        equalizeS2d(s2d);
+        console.log(s2d);   // create n instances of each letter
     }
 
     else
     {
-        // console.log(indexMaxS2D(s2d));
+        // console.log(indexMaxS2d(s2d));
     }
 
     return result;
@@ -142,11 +201,14 @@ function solution(st)
 
 }
 
-var st = "abcdc"    // the output should be solution(st) = "abcdcba"
+// var st = "abcdc";    // the output should be solution(st) = "abcdcba"
+st = "abcd";    // the output should be solution(st) = "abcdcba"
 var tmp1 = alphabetizeString(st);
 var tmp2 = string2DSansDuplicate(st);
 var tmp3 = countCharacterInstances(tmp1, tmp2);
 
+
+// console.log(indexMaxS2d(tmp3));
 buildPalindrome(st, tmp3);
 
 /*
@@ -154,6 +216,8 @@ buildPalindrome(st, tmp3);
 ********
 BONEYARD
 ********
+
+
 
 // console.log("odd");
  // console.log(s.length, s2d);
