@@ -42,19 +42,46 @@ Guaranteed constraints:
 
 */
 
-function votesWithK(votes, k)
+function votesPlusK(votes, k)
 {
     var tmp = [...votes];
 
-    console.log(tmp);
+    // console.log(tmp);
 
     for (var i = 0; i < tmp.length; i++)
     {
         tmp [i] = tmp [i] + k;
     }
 
+    // console.log("$", tmp, " k: ", k);
+
     return tmp;
 
+}
+
+function winnerCount(votes)
+{
+    var max = Math.max(...votes);
+    var cnt = 0;
+
+    // console.log("!", " max: ", max, " @votes: ", votes);
+
+    for (var i = 0; i < votes.length; i++)
+    {
+        if (votes[i] == max)
+        {
+            // console.log("i: ", i, " max: ", max, " votes[i]", votes[i]);
+            cnt++;
+        }
+
+        else
+        {
+            // 
+        }
+
+    }
+
+    return cnt;
 }
 
 function electionsWinners(votes, k)
@@ -62,6 +89,9 @@ function electionsWinners(votes, k)
     var max = Math.max(...votes);
     var cnt = 0;
     var cntMax = 0; // count of candidates w/votes equal to max
+    var tmp = votesPlusK(votes, k);
+    console.log("#", tmp);
+    var tmp1 = winnerCount(tmp);
 
     // console.log(votes, max);
 
@@ -81,7 +111,21 @@ function electionsWinners(votes, k)
 
     }
 
-    return cnt;
+    if (tmp1 > 1 && k == 0)
+    {
+        // console.log("%");
+        return 0;
+    }
+
+    else if (tmp1 == 1 && k == 0)
+    {
+        return 1;
+    }
+
+    else
+    {
+        return cnt;
+    }
 
 }
 
