@@ -99,6 +99,7 @@ function convertXYPosition(pos)
 
 function countMoves(xyPos)
 {
+    var cnt = 0;
     var moves = [ [xyPos[0] - 2, xyPos[1] + 1], 
                   [xyPos[0] - 1, xyPos[1] + 2],
                   [xyPos[0] + 1, xyPos[1] + 2], 
@@ -110,20 +111,32 @@ function countMoves(xyPos)
 
     for (var i = 0; i < moves.length; i++)
     {
-        console.log(moves[i]);
+        // console.log("moves[i]: ", moves[i], " moves[i][0]: ", moves[i][0], " moves[i][1]: ", moves[i][1]);
+
+        if (moves[i][0] < 1 || moves[i][0] > 8 || moves[i][1] < 1 || moves[i][1] > 8)
+        {
+            //
+        }
+
+        else
+        {
+            cnt++;
+        }
     }
+
+    return cnt;
                   
 }
 
 function solution(cell) 
 {
-
+    return countMoves(convertXYPosition(cell));
 }
 
 var cell = "a1"; //the output should be solution(cell) = 2.
-var cell = "c2"; // the output should be solution(cell) = 6.
+var cell = "c2"; // the output should be solution(cell) = 6.    3, 2
 
-console.log(convertXYPosition(cell));
+console.log(countMoves(convertXYPosition(cell)));
 
 /*
 
