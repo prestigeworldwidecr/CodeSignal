@@ -77,7 +77,7 @@ function solution(inputString)
 }
 
 var inputString = "2 apples, 12 oranges";   // the output should be solution(inputString) = 14.
-
+inputString = "42+781"; // 823
 /*
 
 ********
