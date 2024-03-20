@@ -56,6 +56,31 @@ function cleanWord(s)
     return result;
 }
 
+function cleanWordASCII(s)
+{
+    var result = "";
+
+    for (var i = 0; i < s.length; i++)
+    {
+        var tmp = s.charCodeAt(i);
+
+                // A-Z 65-90                    a-z 97-122              space
+        if ( (65 <= tmp && tmp <= 90) || (97 <= tmp && tmp <= 122) || tmp == 32)
+        {
+            result = result + s.charAt(i);
+        }
+
+        else
+        {
+
+        }
+
+    }
+
+    return result;
+
+}
+
 function longestWord(s)
 {
     var tmp = cleanWord(s);
@@ -89,12 +114,16 @@ function solution(text)
 
 var text = "Ready, steady, go!";    // the output should be solution(text) = "steady".
 
-console.log(longestWord(text));
+// console.log(longestWord(text));
+console.log(cleanWordASCII(text));
 
 /*
 
 ********
 BONEYARD
 ********
+
+// console.log(s);
+// console.log(s.charAt(i));
 
 */
