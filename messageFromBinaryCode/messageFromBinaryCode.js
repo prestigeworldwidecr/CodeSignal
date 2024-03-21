@@ -33,9 +33,6 @@ The decrypted message.
 
 function convert8Bit(s)
 {
-    // console.log(s);
-    // let result = "";
-
     let c = "";
     let tmp = new Array();
 
@@ -45,7 +42,6 @@ function convert8Bit(s)
 
         if ( ((i + 1) % 8) == 0)
         {
-            // console.log(i, s.length);
             tmp.push(c);
             c = "";
         }
@@ -57,18 +53,29 @@ function convert8Bit(s)
 
     }
 
-    console.log(tmp);
+    return tmp;
 
+}
+
+function convert8BittoASCII(a)
+{
+    let result = "";
+    
+    for (let i = 0; i < a.length; i++)
+    {
+        result = result + String.fromCharCode(parseInt(a[i], 2));
+    }
+
+    return result;
+    
 }
 
 function solution(code) 
 {
-
+    return convert8BittoASCII(convert8Bit(code));
 }
 
 let code = "010010000110010101101100011011000110111100100001"   // the output should be solution(code) = "Hello!".
-
-convert8Bit(code);
 
 /*
 
