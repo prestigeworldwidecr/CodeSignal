@@ -28,6 +28,9 @@ function solution(product)
 
 }
 
+let product = 12;   // the output should be solution(product) = 26;
+product = 19;       // the output should be solution(product) = -1.
+
 /*
 
 ********
