@@ -79,16 +79,16 @@ function is2x2Different(m1, m2)
 
 function printMatrix(matrix)
 {
-    var tmp = "";
+    let tmp = "";
 
     console.log("matrix[i][j]");
     console.log("============");
 
-    for (var i = 0; i < matrix.length; i++)
+    for (let i = 0; i < matrix.length; i++)
     {
         tmp = "";
 
-        for (var j = 0; j < matrix[0].length; j++)
+        for (let j = 0; j < matrix[0].length; j++)
         {
             tmp = tmp + matrix[i][j] + "\t";
         }
@@ -101,65 +101,108 @@ function printMatrix(matrix)
 
 function createAll2x2s(matrix)
 {
-    // var tmp = [ [1, 2],
-    //             [3, 4]];
-
     const all2x2s = new Array();
-    var cnt = 0;
 
-    for (var i = 0; i < matrix.length - 1; i++)
+    for (let i = 0; i < matrix.length - 1; i++)
     {
-        var tmp = [ [0, 0],
-                    [0, 0]];
-
-        for (var j = 0; j < matrix[0].length - 1; j++)
+        for (let j = 0; j < matrix[0].length - 1; j++)
         {
+            let tmp = [ [1, 2],
+                        [3, 4]];
+
             tmp[0][0] = matrix[i][j];
             tmp[0][1] = matrix[i][j + 1];
             tmp[1][0] = matrix[i + 1][j];
             tmp[1][1] = matrix[i + 1][j + 1];
-            console.log(tmp, "cnt:", cnt);
+
+            // console.log(all2x2s.includes(tmp), tmp);
+            
             all2x2s.push(tmp);
-            // cnt++;
         }
 
     }
 
-    console.log(all2x2s[1]);
+    return all2x2s;
+
+}
+
+function differentSquares(a)
+{
+    // a = [...new Set(a)].join("");
+    // console.log(a.toString());
+    let tmp = a.toString();
+    let i = 0;
+    // for (let i = 0; i % 4 == 0; i++)
+    console.log(tmp.length)
+    while (i < tmp.length)
+    {
+        // console.log(i);
+        i = i + 4;
+    }
 
 }
 
 function solution(matrix) 
 {
-
+    
 }
 
-var matrix = [[1, 2, 1],
+let matrix = [[1, 2, 1],
           [2, 2, 2],
           [2, 2, 2],    // height: 5
           [1, 2, 3],    // width: 3
           [2, 2, 1]];   // the output should be solution(matrix) = 6.
 
-var m1 = [  [1, 1],
+let m1 = [  [1, 1],
         [1, 1]  ];
-var m2 = [  [2, 2],
+let m2 = [  [2, 2],
         [2, 2]  ];
 
-matrix = [  [1, 2, 3],
-            [4, 5, 6],
-            [7, 8, 9],    // height: 5
-            [10, 11, 12],    // width: 3
-            [13, 14, 15]];   // the output should be solution(matrix) = 6.
+let matrix1 = [ [1, 2, 3],
+                [4, 5, 6],
+                [7, 8, 9],    // height: 5
+                [10, 11, 12],    // width: 3
+                [13, 14, 15]];   // the output should be solution(matrix) = 6.
 
-// console.log(is2x2Different(m1, m1));
-// printMatrix(matrix);
-createAll2x2s(matrix);
+let tmp = createAll2x2s(matrix);
+differentSquares(tmp);
 
 /*
 
 ********
 BONEYARD
 ********
+
+
+function removeDuplicates(s)
+{
+    let tmp = [...new Set(s)].join("");
+
+    return tmp;
+}
+
+// let tmp = createAll2x2s
+    // const result =
+
+    
+    // return result;
+// console.log(is2x2Different(m1, m1));
+// printMatrix(matrix);
+// createAll2x2s(matrix);
+
+// console.log(i, j, tmp);
+        // all2x2s(i) = tmp;
+    // console.log(all2x2s);
+
+ // all2x2s.length = (matrix.length - 1) * (matrix[0].length - 1);
+    // console.log(all2x2s.length);
+
+// console.log(tmp, "cnt:", cnt);
+            // all2x2s.push(tmp);
+            // console.log("(", i, ",", j, ")", "(", i, ",", j + 1, ")", "(", i + 1, ",", j, ")", "(", i + 1, ",", j + 1, ")");
+            // console.log(matrix[i][j], "\t", matrix[i][j + 1], "\t", matrix[i + 1][j], "\t", matrix[i + 1][j + 1])
+            // cnt++;
+            // console.log(tmp[0][0], tmp[0][1], tmp[1][0], tmp[1][1]);
 
 // tmp = ;
         // const all2x2s = new Array();
