@@ -31,10 +31,44 @@ The decrypted message.
 
 */
 
+function convert8Bit(s)
+{
+    // console.log(s);
+    // let result = "";
+
+    let c = "";
+    let tmp = new Array();
+
+    for (let i = 0; i < s.length; i++)
+    {
+        c = c + s.charAt(i);
+
+        if ( ((i + 1) % 8) == 0)
+        {
+            // console.log(i, s.length);
+            tmp.push(c);
+            c = "";
+        }
+
+        else
+        {
+            //
+        }
+
+    }
+
+    console.log(tmp);
+
+}
+
 function solution(code) 
 {
 
 }
+
+let code = "010010000110010101101100011011000110111100100001"   // the output should be solution(code) = "Hello!".
+
+convert8Bit(code);
 
 /*
 
