@@ -60,21 +60,145 @@ function createNxNArray(n)
 
     }
 
-    // console.log(a);
-
     return m;
 }
 
 function spiralNumbers(n)
 {
     let m = createNxNArray(n); 
-    let cnt = moveRight(m, 1);
+    let cnt = 1;
+    let rightBorderX = 0;
+    let rightBorderY = m.length;
+    let downBorderX = m.length;
+    let downBorderY = 0;
+    let leftBorderX = m.length - 1;
+    let leftBorderY = 0;
+    let upBorderX = m.length - 1;
+    let upBorderY = 0;
 
-    cnt = moveDown(m, cnt - 1);
-    cnt = moveLeft(m, cnt - 1);
-    cnt = moveUp(m, cnt - 1);
+    // for (let i = 0; i < Math.pow(m.length, 2); i++)
+    while (cnt <= Math.pow(m.length, 2))
+    {
+        // console.log(i);       
+        
+        cnt = moveRight(m, cnt, rightBorderX, rightBorderY);
+        rightBorderX++;
+        rightBorderY--;
+        
+        if (cnt <= Math.pow(m.length, 2))
+        {
+            // console.log(i);
+            
+            cnt = moveDown(m, cnt - 1, downBorderX, downBorderY);
+            downBorderX++;
+            downBorderY--;
+        }
+
+        else
+        {
+            
+        }
+
+        if (cnt <= Math.pow(m.length, 2))
+        {
+            cnt = moveLeft(m, cnt - 1, leftBorderX, leftBorderY);
+            leftBorderX--;
+            leftBorderY++;
+        }
+
+        else
+        {
+
+        }
+
+        if (cnt <= Math.pow(m.length, 2))
+        {
+            cnt = moveUp(m, cnt - 1, upBorderX, upBorderY);
+            upBorderX--;
+            upBorderY++;
+        }
+
+        else
+        {
+
+        }
+
+    }
+    
     printMatrix(m);
 }
+
+function moveRight(a, cnt, rightBorderX, rightBorderY)
+{
+
+    for (let i = rightBorderX; i < rightBorderY; i++)
+    {
+        a [rightBorderX] [i] = cnt++;
+    }
+
+    return cnt;
+}
+
+function moveDown(a, cnt, downBorderX, downBorderY)
+{
+
+    for (let i = downBorderY; i < downBorderX; i++)
+    {
+        // console.log(i, cnt, downBorderX, downBorderY);
+        a [i] [downBorderX - 1] = cnt;
+        cnt++;
+    }
+
+    return cnt;
+}
+
+function moveLeft(a, cnt, leftBorderX, leftBorderY)
+{
+
+    for (let i = leftBorderX; i >= leftBorderY; i--)
+    {
+        a [leftBorderX] [i] = cnt;
+        cnt++;
+    }
+
+    return cnt;
+}
+
+function moveUp(a, cnt, upBorderX, upBorderY)
+{
+
+    for (let i = upBorderX; i > upBorderY; i--)
+    {
+        a [i] [upBorderY] = cnt;
+        cnt++;
+    }
+
+    return cnt;
+}
+
+function solution(n) 
+{
+
+}
+
+let n = 3;  // the output should be solution(n) =  [[1, 2, 3],
+//                                                  [8, 9, 4],
+//                                                  [7, 6, 5]]
+
+
+spiralNumbers(n);
+
+/*
+
+********
+BONEYARD
+********
+
+var spiral =    [moveRight(m, 1, rightBorderX, rightBorderY), 
+        moveDown(m, cnt - 1, downBorderX, downBorderY), 
+        moveLeft(m, cnt - 1, leftBorderX, leftBorderY),
+        moveUp(m, cnt - 1, upBorderX, upBorderY)];
+    spiral[0](m, 1, rightBorderX, rightBorderY);
 
 function moveRight(a, cnt)
 {
@@ -117,33 +241,17 @@ function moveUp(a, cnt)
 
     for (let i = a.length - 1; i > 0; i--)
     {
-        console.log(i, cnt);
-        a [i] [a.length - 1] = cnt;
+        a [i] [0] = cnt;
         cnt++;
     }
 
     return cnt;
 }
 
-function solution(n) 
-{
-
-}
-
-let n = 3;  // the output should be solution(n) =  [[1, 2, 3],
-//                                                  [8, 9, 4],
-//                                                  [7, 6, 5]]
-
-
+console.log(i, cnt);
+        
 // createNxNArray(n);
-spiralNumbers(n);
-
-/*
-
-********
-BONEYARD
-********
-
+// console.log(i, cnt);
 // console.log("$");
         // console.log("i:", i, "r:", r, "c:", c);
     // console.log("$");
