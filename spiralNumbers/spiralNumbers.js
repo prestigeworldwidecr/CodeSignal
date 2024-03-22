@@ -71,8 +71,8 @@ function spiralNumbers(n)
     let cnt = 1;
     let rightBorderX = 0;
     let rightBorderY = m.length;
-    let downBorderX = m.length - 1;
-    let downBorderY = 0;
+    let downBorderX = 0;
+    let downBorderY = m.length;
     let leftBorderX = m.length - 1;
     let leftBorderY = 0;
     let upBorderX = m.length - 1;
@@ -87,7 +87,7 @@ function spiralNumbers(n)
         rightBorderX++;
         rightBorderY--;
         
-        if (cnt <= Math.pow(m.length, 2) && downBorderX < m.length && downBorderY >= 0)
+        if (cnt <= Math.pow(m.length, 2)) // && downBorderX < m.length && downBorderY >= 0)
         {
             // console.log(i);
             
@@ -127,8 +127,8 @@ function spiralNumbers(n)
 
     }
     
-    printMatrix(m);
-    // return m;
+    // printMatrix(m);
+    return m;
 
 }
 
@@ -137,7 +137,9 @@ function moveRight(a, cnt, rightBorderX, rightBorderY)
 
     for (let i = rightBorderX; i < rightBorderY; i++)
     {
-        a [rightBorderX] [i] = cnt++;
+        // console.log("! i:", i, "cnt:", cnt, "rightBorderX:", rightBorderX, "rightBorderY:", rightBorderY);
+        a [rightBorderX] [i] = cnt;
+        cnt++;
     }
 
     return cnt;
@@ -146,10 +148,13 @@ function moveRight(a, cnt, rightBorderX, rightBorderY)
 function moveDown(a, cnt, downBorderX, downBorderY)
 {
 
-    for (let i = downBorderY; i < downBorderX; i++)
+    for (let i = downBorderX; i < downBorderY; i++)
     {
-        // console.log("i:", i, "cnt:", cnt, "downBorderX:", downBorderX, "downBorderY:", downBorderY);
-        a [i] [downBorderX] = cnt;
+        // let downBorderX = 0;
+        // let downBorderY = m.length;
+        
+        // console.log("@ i:", i, "cnt:", cnt, "downBorderX:", downBorderX, "downBorderY:", downBorderY);
+        a [i] [downBorderY - 1] = cnt;
         cnt++;
     }
 
@@ -161,6 +166,7 @@ function moveLeft(a, cnt, leftBorderX, leftBorderY)
 
     for (let i = leftBorderX; i >= leftBorderY; i--)
     {
+        // console.log("# i:", i, "cnt:", cnt, "leftBorderX:", leftBorderX, "leftBorderY:", leftBorderX);
         a [leftBorderX] [i] = cnt;
         cnt++;
     }
@@ -173,6 +179,7 @@ function moveUp(a, cnt, upBorderX, upBorderY)
 
     for (let i = upBorderX; i > upBorderY; i--)
     {
+        // console.log("$ i:", i, "cnt:", cnt, "upBorderX:", upBorderX, "upBorderY:", upBorderY);
         a [i] [upBorderY] = cnt;
         cnt++;
     }
@@ -190,7 +197,7 @@ let n = 3;  // the output should be solution(n) =  [[1, 2, 3],
 //                                                  [7, 6, 5]]
 
 
-spiralNumbers(3);
+spiralNumbers(5);
 
 /*
 
