@@ -60,6 +60,8 @@ function createNxNArray(n)
 
     }
 
+    // printMatrix(m);
+
     return m;
 }
 
@@ -69,7 +71,7 @@ function spiralNumbers(n)
     let cnt = 1;
     let rightBorderX = 0;
     let rightBorderY = m.length;
-    let downBorderX = m.length;
+    let downBorderX = m.length - 1;
     let downBorderY = 0;
     let leftBorderX = m.length - 1;
     let leftBorderY = 0;
@@ -77,15 +79,15 @@ function spiralNumbers(n)
     let upBorderY = 0;
 
     // for (let i = 0; i < Math.pow(m.length, 2); i++)
-    while (cnt <= Math.pow(m.length, 2))
+    while (cnt <= Math.pow(m.length, 2) && cnt > 0)
     {
-        // console.log(i);       
+        // console.log(cnt);       
         
         cnt = moveRight(m, cnt, rightBorderX, rightBorderY);
         rightBorderX++;
         rightBorderY--;
         
-        if (cnt <= Math.pow(m.length, 2))
+        if (cnt <= Math.pow(m.length, 2) && downBorderX < m.length && downBorderY >= 0)
         {
             // console.log(i);
             
@@ -99,7 +101,7 @@ function spiralNumbers(n)
             
         }
 
-        if (cnt <= Math.pow(m.length, 2))
+        if (cnt <= Math.pow(m.length, 2)) // && leftBorderX >= 0 && leftBorderX < m.length)
         {
             cnt = moveLeft(m, cnt - 1, leftBorderX, leftBorderY);
             leftBorderX--;
@@ -111,7 +113,7 @@ function spiralNumbers(n)
 
         }
 
-        if (cnt <= Math.pow(m.length, 2))
+        if (cnt <= Math.pow(m.length, 2)) // && upBorderX >= 0 && upBorderY < m.length)
         {
             cnt = moveUp(m, cnt - 1, upBorderX, upBorderY);
             upBorderX--;
@@ -126,6 +128,8 @@ function spiralNumbers(n)
     }
     
     printMatrix(m);
+    // return m;
+
 }
 
 function moveRight(a, cnt, rightBorderX, rightBorderY)
@@ -144,8 +148,8 @@ function moveDown(a, cnt, downBorderX, downBorderY)
 
     for (let i = downBorderY; i < downBorderX; i++)
     {
-        // console.log(i, cnt, downBorderX, downBorderY);
-        a [i] [downBorderX - 1] = cnt;
+        // console.log("i:", i, "cnt:", cnt, "downBorderX:", downBorderX, "downBorderY:", downBorderY);
+        a [i] [downBorderX] = cnt;
         cnt++;
     }
 
@@ -178,7 +182,7 @@ function moveUp(a, cnt, upBorderX, upBorderY)
 
 function solution(n) 
 {
-
+    return spiralNumbers(n);
 }
 
 let n = 3;  // the output should be solution(n) =  [[1, 2, 3],
@@ -186,9 +190,11 @@ let n = 3;  // the output should be solution(n) =  [[1, 2, 3],
 //                                                  [7, 6, 5]]
 
 
-spiralNumbers(n);
+spiralNumbers(3);
 
 /*
+
+
 
 ********
 BONEYARD
