@@ -39,15 +39,79 @@ Guaranteed constraints:
 
 */
 
+function killKthBit(n, k)
+{
+    let tmp = n.toString(2).split("");
+    let s = "";
+    
+    tmp[tmp.length - k] = '0';
+
+    for (let i = 0; i < tmp.length; i++)
+    {
+        s = s + tmp[i];
+    }
+
+    s = parseInt(s, 2);
+    
+    // console.log(s);
+    return s;
+}
+
 function solution(n, k) 
 {
-  return ...;
+    return killKthBit(n, k);
 }
+
+let n = 37;
+let k = 3;      // the output should be solution(n, k) = 33.
+
+n = 37;
+k = 4;          // the output should be solution(n, k) = 37.
+
+solution(n, k);
 
 /*
 
 ********
 BONEYARD
 ********
+
+// console.log(parseInt(tmp, 2));
+    
+
+    // console.log(tmp[tmp.length - k]);
+    // tmp[tmp.length - k] = 0;
+
+    // tmp = tmp.join();
+    // tmp = tmp.replace(",");
+
+let tmp = n.toString(2).split("").reverse();
+    let result = "";
+
+    tmp[2] = Number(0);
+    tmp.reverse();
+    // tmp.join();
+    // console.log(tmp);
+    
+
+    for (let i = tmp.length - 1; i >= 0; i--)
+    {
+        result = result + tmp[i];
+    }
+
+    // result = result.reverse();
+    result = parseInt(result, 2);
+    console.log(result);
+    return result;
+
+// console.log(result[k - 1]);
+
+function digittoBinary(n)
+{
+    
+    let binary = n.toString(2);
+
+    console.log(binary);
+}
 
 */
