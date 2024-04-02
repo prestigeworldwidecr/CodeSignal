@@ -34,15 +34,51 @@ Guaranteed constraints:
 
 */
 
-function solution(a) 
+function decimalto8Bit(n)
 {
+    let tmp = n.toString(2);
+    let s = "";
+    
+    for (let i = 0; i < 8 - tmp.length; i++) 
+    {
+        s = s + "0";
+    }
+
+    s = s + tmp;
+    return s;
 
 }
+
+function arrayPacking(a)
+{
+    let s = "";
+
+    for (let i = 0; i < a.length; i++)
+    {
+        s = s + decimalto8Bit(a[i]);
+    }
+
+    return parseInt(s, 2);
+
+}
+
+function solution(a) 
+{
+    return arrayPacking(a.reverse());
+}
+
+let a = [24, 85, 0];    // the output should be solution(a) = 21784.
+
+arrayPacking(a.reverse());
+// decimalto8Bit(24);
 
 /*
 
 ********
 BONEYARD
 ********
+
+// tmp.length = 8;
+// console.log(tmp);
 
 */
