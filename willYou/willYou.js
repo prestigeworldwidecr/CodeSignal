@@ -38,15 +38,132 @@ true if the person contradicts Mary's belief, false otherwise.
 
 */
 
-function solution(young, beautiful, loved) 
+function booleantoBinary(b)
 {
+    if (b == 0)
+    {
+        return 0;
+    }
+
+    else
+    {
+        return 1;
+    }
+}
+
+function willYou(young, beautiful, loved)
+{
+    let binary = "" + booleantoBinary(young) + booleantoBinary(beautiful) + booleantoBinary(loved);
+    let digit = parseInt(binary, 2);
+
+    switch (digit)
+    {
+        case 0:
+            return false;
+        case 1:
+            return true;
+        case 2:
+            return false;   //
+        case 3:
+            return true;   //
+        case 4:
+            return false;
+        case 5:
+            return true;
+        case 6:
+            return true;
+        case 7:
+            return false;
+    }
 
 }
+
+function solution(young, beautiful, loved) 
+{
+    return willYou(young, beautiful, loved);
+}
+
+let young = true;
+let beautiful = true;
+let loved = true;       // the output should be solution(young, beautiful, loved) = false.
+
+young = true;
+beautiful = false;
+loved = true;       // the output should be solution(young, beautiful, loved) = true.
+
+young = false;
+beautiful = false;
+loved = false;      // the output should be solution(young, beautiful, loved) = false.
+
+young = false;
+beautiful = false;
+loved = true;      // the output should be solution(young, beautiful, loved) = true.
+
+// solution(young, beautiful, loved);
+willYou(young, beautiful, loved);
 
 /*
 
 ********
 BONEYARD
 ********
+
+let cnt = 0;
+
+    if (young)
+    {
+        cnt++;
+    }
+
+    else
+    {
+        // 
+    }
+
+    if (beautiful)
+    {
+        cnt++;
+    }
+
+    else
+    {
+        //
+    }
+
+    if (loved)
+    {
+        cnt++;
+    }
+
+    else
+    {
+        //
+    }
+
+    if (cnt == 1 || cnt == 2)
+    {
+        return true;
+    }
+
+    else
+    {
+        return false;
+    }
+
+// return !(young && beautiful && loved) || !(young == beautiful == loved);
+
+let result = !(young && beautiful && loved);
+
+    if (young == false && beautiful == false && loved == false)
+    {
+        result = false;
+    }
+
+    else
+    {
+
+    }
+
+    return result;    
 
 */
