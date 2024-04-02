@@ -49,15 +49,89 @@ Guaranteed constraints:
 
 */
 
-function solution(min1, min2_10, min11, s) 
+function phoneCall(min1, min2_10, min11, s)
 {
+    let total = 0;
+
+    if (min1 > s)
+    {
+        return 0;
+    }
+
+    else
+    {
+        total = 1;
+        s = s - min1;
+        let tmp = min2_10 * 9;
+
+        if (s - tmp >= 0)
+        {
+            total = total + 9;
+            s = s - tmp;
+            
+            if (s > 0)
+            {
+                let r = Math.floor(Number(s / min11));
+            
+                total = total + r;
+            }
+
+            else
+            {
+                return total;
+            }
+        }
+
+        else
+        {
+            // console.log("!");
+
+            let r = Math.floor(Number(s / min2_10));
+            
+            total = total + r;
+            
+            return total;
+        }
+    }
+
+    return total;
 
 }
+
+function solution(min1, min2_10, min11, s) 
+{
+    return phoneCall(min1, min2_10, min11, s);
+}
+
+let min1 = 3;
+let min2_10 = 1;
+let min11 = 2;
+let s = 20;     // the output should be solution(min1, min2_10, min11, s) = 14.
+
+min1 = 1;
+min2_10 = 2;
+min11 = 1;
+s = 6;  // 3
+
+console.log(phoneCall(min1, min2_10, min11, s));
 
 /*
 
 ********
 BONEYARD
 ********
+
+// console.log("s:", s);
+                // let remaining = maxMultiple(s, min11) / min11;
+                // total = total + remaining;
+
+                // console.log(r);
+
+function maxMultiple(divisor, bound) 
+{
+    let mod = bound % divisor;
+
+    return bound - mod;
+}
 
 */
