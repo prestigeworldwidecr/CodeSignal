@@ -27,10 +27,27 @@ Guaranteed constraints:
 
 */
 
+function mirrorBits(n)
+{
+    let tmp = n.toString(2);
+
+    tmp = tmp.split("");
+    tmp = tmp.reverse();
+    tmp = tmp.join(",");
+    tmp = tmp.replaceAll(",", "");
+
+    // console.log(parseInt(tmp, 2));
+    return parseInt(tmp, 2);
+}
+
 function solution(a) 
 {
-
+    return mirrorBits(a);
 }
+
+let a = 8;      // the output should be solution(a) = 1.
+
+// mirrorBits(a);
 
 /*
 

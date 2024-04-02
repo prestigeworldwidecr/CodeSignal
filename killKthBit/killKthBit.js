@@ -59,7 +59,10 @@ function killKthBit(n, k)
 
 function solution(n, k) 
 {
-    return killKthBit(n, k);
+    // return killKthBit(n, k);
+    return (function (n, k) {
+        return "hello";
+    });
 }
 
 let n = 37;
@@ -68,7 +71,7 @@ let k = 3;      // the output should be solution(n, k) = 33.
 n = 37;
 k = 4;          // the output should be solution(n, k) = 37.
 
-solution(n, k);
+console.log(solution(n, k));
 
 /*
 
