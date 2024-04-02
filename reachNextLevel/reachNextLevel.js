@@ -39,8 +39,19 @@ true if you reach the next level, false otherwise.
 
 function solution(experience, threshold, reward) 
 {
-
+    console.log(experience + reward >= threshold);
+    
+    return experience + reward >= threshold;
 }
+
+let experience = 10;
+let threshold = 15;
+let reward = 5;     //the output should be solution(experience, threshold, reward) = true;
+// experience = 10;
+// threshold = 15;
+// reward = 4;     // the output should be solution(experience, threshold, reward) = false.
+
+solution(experience, threshold, reward);
 
 /*
 
