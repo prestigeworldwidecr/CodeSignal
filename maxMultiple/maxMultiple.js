@@ -38,8 +38,16 @@ The largest integer not greater than bound that is divisible by divisor.
 
 function solution(divisor, bound) 
 {
+    let mod = bound % divisor;
 
+    // console.log(bound - result);
+    return bound - mod;
 }
+
+let divisor = 3;
+let bound = 10;     // the output should be solution(divisor, bound) = 9.
+
+solution(divisor, bound);
 
 /*
 
