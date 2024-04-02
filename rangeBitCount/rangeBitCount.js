@@ -29,15 +29,64 @@ a ≤ b ≤ 10.
 
 */
 
+function buildInclusiveArray(a, b)
+{
+    let tmp = Array();
+
+    for (let i = a; i <= b; i++)
+    {
+        tmp.push(i.toString(2));
+    }
+
+    return tmp;
+}
+
+function rangeBitCount(a)
+{
+    let cnt = 0;
+
+    for (let i = 0; i < a.length; i++)
+    {
+        let tmp = a[i];
+        
+        for (let j = 0; j < tmp.length; j++)
+        {
+            if (tmp.charAt(j) == 1)
+            {
+                cnt++;
+            }
+
+            else
+            {
+                //
+            }
+        }
+    }
+
+    return cnt;
+}
+
 function solution(a, b) 
 {
-
+    return rangeBitCount(buildInclusiveArray (a, b));
 }
+
+let a = 2;
+let b = 7;      // the output should be solution(a, b) = 11.
+
+// rangeBitCount(buildInclusiveArray (a, b));
 
 /*
 
 ********
 BONEYARD
 ********
+
+// console.log(i);
+    // console.log(tmp);
+// console.log(cnt);
+// console.log(a);
+        // console.log(tmp);
+                // console.log(a[cnt][i]);
 
 */
