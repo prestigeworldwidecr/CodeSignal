@@ -37,10 +37,38 @@ The sum of the digits the digital timer would show.
 
 */
 
-function solution(n) 
+function calcTimeMinutes(n)
 {
+    let h = Number.parseInt(n / 60).toString();
+    let m = (n % 60).toString();
+    let hourMinute = (h + m).toString().split("");
+    let result = 0;
+
+    for (let i = 0; i < hourMinute.length; i++)
+    {
+        // result = Number(result) + Number(result[i]);
+        // console.log(hourMinute[i]);
+        result = result + Number(hourMinute[i]);
+    }
+
+    // console.log(result);
+    return result;
 
 }
+
+function solution(n) 
+{
+    return calcTimeMinutes(n);
+}
+
+let n = 240;    // the output should be solution(n) = 4.
+n = 808;    // the output should be solution(n) = 14.
+n = 1439;   // 19
+n = 0;      // 0
+n = 23;     // 5
+n = 8;      // 8
+
+calcTimeMinutes(n);
 
 /*
 
