@@ -43,11 +43,74 @@ n ≠ m.
 
 */
 
-function 
+function differentRightMostBit(n, m)
+{
+    let pos = 0;
+    let result = 0;
+
+    for (let i = 0; i < n.length; i++)
+    {
+        if (n[i] != m[i])
+        {
+            pos = i;
+        }
+
+        else
+        {
+            //
+        }
+
+    }
+
+    result = n.length - pos - 1;
+    result = Math.pow(2, result);
+
+    // console.log(result);
+    
+    return result;
+}
+
+function determineZeros(n, m)
+{
+    n = n.toString(2);
+    m = m.toString(2);
+
+    // console.log(n, m);
+
+    if (n.length < m.length)
+    {
+        n = addZeros(n, m.length - n.length);
+    }
+
+    else if (m.length < n.length)
+    {
+        m = addZeros(m, n.length - m.length);
+    }
+
+    else
+    {
+        //
+    }
+
+    // console.log(n, m);
+
+    return differentRightMostBit(n, m);
+}
+
+function addZeros(b, len)
+{
+    for (let i = 0; i < len; i++)
+    {
+        b = "0" + b;
+    }
+
+    // console.log(b);
+    return b;
+}
 
 function solution(n, m) 
 {
-  // return ...;
+    return determineZeros(n, m);
 }
 
 let n = 11;
@@ -55,10 +118,31 @@ let m = 13;     // 2
 n = 7;
 m = 23;     // the output should be solution(n, m) = 16.
 
+// console.log(determineZeros(n, m));
+// console.log(wtv);
+
 /*
 
 ********
 BONEYARD
 ********
+
+// console.log(n, m);
+    // console.log(n.length, pos);
+    // console.log(result);
+// console.log(n[i]);
+        
+    // let cnt = 0;
+
+    // console.log(n, m);
+
+    // send sorted array
+    // determine max length
+    // add empty zeroes to the shorter string
+
+function createDescendingArray(n, m)
+{
+
+}
 
 */
