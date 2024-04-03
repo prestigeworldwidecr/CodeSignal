@@ -32,14 +32,14 @@ Input/Output
 A non-negative integer.
 
 Guaranteed constraints:
-0 ≤ param1 < 105.
+0 ≤ param1 < 10^5.
 
 [input] integer param2
 
 A non-negative integer.
 
 Guaranteed constraints:
-0 ≤ param2 < 6 · 104.
+0 ≤ param2 < 6 · 10^4.
 
 [output] integer
 
@@ -47,16 +47,88 @@ The result that the little child will get by using column addition without carry
 
 */
 
+function addZeros(d, len)
+{    
+    for (let i = 0; i < len; i++)
+    {
+        d = "0" + d;
+    }
+
+    return d;
+}
+
+function determineZeros(n, m)
+{
+    n = n.toString();
+    m = m.toString();
+    
+    if (n.length < m.length)
+    {
+        n = addZeros(n, m.length - n.length);
+    }
+
+    else if (m.length < n.length)
+    {
+        m = addZeros(m, n.length - m.length);
+    }
+
+    else
+    {
+        // console.log
+    }
+
+    return additionWithoutCarrying(n, m);
+
+}
+
+function additionWithoutCarrying(param1, param2)
+{
+    let len = -1;
+    let result = "";
+
+    for (let i = 0; i < param1.length; i++)
+    {
+        let tmp1 = parseInt(param1[i]) + parseInt(param2[i]);
+        tmp1 = tmp1.toString();
+        len = tmp1.length - 1;
+        result = result + tmp1[len];
+    }
+    return result;
+}
 
 function solution(param1, param2) 
 {
 
 }
 
+let param1 = 456;
+let param2 = 1734;  // the output should be solution(param1, param2) = 1180.
+
+console.log(determineZeros(param1, param2));
+
 /*
 
 ********
 BONEYARD
 ********
+
+
+    // console.log(result);
+    // console.log(param1, param2);
+    // console.log(param1[0] + param2[1]);
+    
+        // console.log(tmp1[len]);
+//         console.log(tmp1);
+        // result = result + tmp;
+        // console.log(tmp);
+// console.log(d, len);
+        // console.log(d);
+    // console.log(n.length, m.length);
+// console.log(b);
+n = n.toString(2);
+    m = m.toString(2);
+
+    // console.log(n, m);
+
 
 */
