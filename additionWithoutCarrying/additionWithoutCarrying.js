@@ -93,18 +93,19 @@ function additionWithoutCarrying(param1, param2)
         len = tmp1.length - 1;
         result = result + tmp1[len];
     }
-    return result;
+
+    return Number(result);
 }
 
 function solution(param1, param2) 
 {
-
+    return determineZeros(param1, param2);
 }
 
 let param1 = 456;
 let param2 = 1734;  // the output should be solution(param1, param2) = 1180.
 
-console.log(determineZeros(param1, param2));
+// console.log(determineZeros(param1, param2));
 
 /*
 
