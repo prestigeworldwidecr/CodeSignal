@@ -37,13 +37,36 @@ true if it's possible to increase n's roundness, false otherwise.
 
 */
 
+function longestZeroSegment(n)
+{
+    let max = 0;
+    let tmp = n.toString();
+    let last = -1;
+    
+    for (let i = 0; i < tmp.length; i++)
+    {
+        
+        if (tmp [i] == "0")
+        {
+            if (max 
+        }
+
+        else
+        {
+            max = 0;
+        }
+    }
+
+    return max;
+}
+
 function solution(n) 
 {
 
 }
 
 let n = 902200100;      // the output should be solution(n) = true.
-n = 11000;      // the output should be solution(n) = false.
+// n = 11000;      // the output should be solution(n) = false.
 
 /*
 
