@@ -28,7 +28,7 @@ Input/Output
 A positive integer.
 
 Guaranteed constraints:
-1 ≤ value ≤ 108.
+1 ≤ value ≤ 10^8.
 
 [output] integer
 
@@ -36,17 +36,71 @@ The rounded number.
 
 */
 
-function solution(n) 
+// round left, go all the way
+function roundLeft(n)
 {
+    n = n.toString().split("");
+
+    for (let i = n.length - 1; i >= 0; i--)
+    {   
+        if (n[i] >= 5 && i > 0)
+        {
+            n[i - 1] = parseInt(n[i - 1]) + 1;
+            n[i] = 0;
+        }
+
+        else
+        {
+            if (i > 0)
+            {
+                n[i] = 0;
+            }
+
+            else
+            {
+                //
+            }
+        }
+
+    }
+
+    n = parseInt(n.toString().replaceAll(",", ""));
+
+    return n;
 
 }
 
+function solution(n) 
+{
+    return roundLeft(n);
+}
 
+let n = 15;     // the output should be solution(n) = 20;
+n = 1234;       // the output should be solution(n) = 1000.
+// n = 1445;       // the output should be solution(n) = 2000.
+n = 7001;
+
+// roundLeft(n);
 
 /*
 
 ********
 BONEYARD
 ********
+
+    console.log(n);
+
+// gotta round down
+            console.log("!");
+            // console.log(n[i]);
+        // console.log(n[0]);
+
+            // console.log(i, n[i]);
+            // console.log("@");
+
+
+    // n [n.length - 1] = parseInt(n [n.length - 1]) + 1;
+    // console.log(n [i], n [i - 1]);
+            //console.log(n.toString());
 
 */
