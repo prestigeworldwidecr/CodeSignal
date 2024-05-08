@@ -28,6 +28,7 @@ The number of the century the year is in.
 """
 
 def solution(year) :
+    
     tmp = str(year)
 
     if (year < 100) :
