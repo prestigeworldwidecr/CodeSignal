@@ -53,10 +53,18 @@ The total price of all the rooms that are suitable for the CodeBots to live in.
 
 def solution(matrix) :
 # {
-
+    i = 0
+    j = 0
+    # rowlength =
+    print(matrix)
 
 # }
 
+matrix = [[1, 1, 1, 0], 
+          [0, 5, 0, 1], 
+          [2, 1, 3, 10]]
+
+solution(matrix) # = 9.
 
 """
 
