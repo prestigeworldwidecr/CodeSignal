@@ -25,8 +25,8 @@ Input/Output
 [input] array.integer sequence
 
 Guaranteed constraints:
-2 ≤ sequence.length ≤ 105,
--105 ≤ sequence[i] ≤ 105.
+2 ≤ sequence.length ≤ 10^5,
+-105 ≤ sequence[i] ≤ 10^5.
 
 [output] boolean
 
@@ -36,25 +36,60 @@ Return true if it is possible to remove one element from the array in order to g
 
 def solution(sequence) :
 # {
+    cnt = 0
+    cur = sequence[1]
+    next = sequence[2]
 
-    # compare arragned set length to arranged length
-    # run through array, if not in order, remove try again, zero tolerance
-    # print(len(dict.fromkeys(sequence))) --> 3
+    for i in range(0, len(sequence) - 1) :
+    # {
+        cur = sequence[i]
+        next = sequence[i + 1]
+    
+        if (cur >= next) :
+        # {
+            cnt = cnt + 1
+        # }
 
-    s1 = sorted(sequence)
-    s2 = dict.fromkeys(sequence)
+        else :
+        # {
+            "do nothing"
+        # }
 
-    print(s1, s2)
+    # }
+
+    print(cnt)
+
+    if (cnt > 1) :
+    # {
+        return False
+    # }
+    
+    else :
+    # {
+        return True
+    # } 
 
 # }
 
 sequence = [1, 3, 2]
-solution(sequence)
+# sequence = [1, 3, 2, 1]
+# sequence = [1, 2, 1, 2]
+print(solution(sequence))
 
 """
 
 ########
 BONEYARD
 ########
+
+# compare arragned set length to arranged length
+    # run through array, if not in order, remove try again, zero tolerance
+    # print(len(dict.fromkeys(sequence))) --> 3
+
+    # s1 = sorted(sequence)
+    # s2 = dict.fromkeys(sequence)
+    # prev = sequence[0]
+    # print(i, cur, next)
+        print(cnt)
 
 """
