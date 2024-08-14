@@ -35,6 +35,9 @@ Guaranteed constraints:
 
 # sort, count w/dict, compare
 
+dic1 = {}
+
+print(dic1)
 
 """
 
