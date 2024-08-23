@@ -33,9 +33,6 @@ Guaranteed constraints:
 
 """
 
-# sort
-# count w/dict, compare
-
 def solution(s1, s2) :
 # {
 
@@ -73,6 +70,9 @@ print(solution(sorted(s1), sorted(s2)))
 ########
 BONEYARD
 ########
+
+# sort
+# count w/dict, compare
 
 # print(s2.count(j))
 # print(s1.count(i))
