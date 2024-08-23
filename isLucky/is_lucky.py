@@ -31,10 +31,45 @@ true if n is a lucky ticket number, false otherwise.
 
 """
 
+def solution(n) :
+# {
+    a = 0
+    b = 0
+    tmp = str(n)
+
+    for i in range(int(len(tmp) / 2)) :
+    # {
+        a = a + int(tmp[i])
+    # }
+
+    for j in range(int(len(tmp) / 2), int(len(tmp))) :
+    # {
+        b = b + int(tmp[j])
+    # }
+
+    # print(a, b)
+    return a == b
+    
+# }
+
+n = 1230
+
+solution(n)
+
+# For n = 1230, the output should be solution(n) = true;
+# For n = 239017, the output should be solution(n) = false.
+
 """
 
 ********
 BONEYARD
 ********
+
+# print(tmp[j])
+# print(tmp[i])
+i = int((len(tmp) / 2))
+# print(i)
+tmp = int(str(slice(0, i)))
+print(tmp)
 
 """
