@@ -36,52 +36,37 @@ Guaranteed constraints:
 # sort
 # count w/dict, compare
 
-def create_character_count_dict(s) :
-# {
-    d = {}
-
-    for i in range(len(s)) :
-    # {
-        if (s[i] in d) :
-        # {
-            d[s[i]] = d[s[i]] + 1
-        # }
-
-        else :
-        # {
-            d[s[i]] = 1
-        # }
-
-    # }
-
-    return sorted(d)
-
-# }
-
-def determine_common_character_count(s1, s2) :
-# {
-    None
-# }
-
 def solution(s1, s2) :
 # {
 
-    if (len(s1) >= len(s2)) :
+    t = 0
+
+    for i in set(s1) :
     # {
-        determine_common_character_count(s1, s2)
+        for j in set(s2) :
+        # {
+            if (i == j) :
+            # {
+                t = t + min(s1.count(i), s2.count(j))
+            # }
+            
+            else :
+            # {
+                None
+            # }
+
+        # }
+
     # }
 
-    else :
-    # {
-        determine_common_character_count(s2, s1)
-    # }
+    return t
+
 # }
 
 s1 = "aabcc"
 s2 = "adcaa"
 
-solution (s1, s2)
-
+print(solution(sorted(s1), sorted(s2)))
 
 """
 
@@ -89,6 +74,106 @@ solution (s1, s2)
 BONEYARD
 ########
 
+# print(s2.count(j))
+# print(s1.count(i))
+
+# solution (s1, s2)
+# print(set(s1.count(s1)))
+
+create_character_count_dict(s1, s2)
+
+def create_character_count_dict(s1, s2) :
+# {
+    d1 = {}
+    d2 = {}
+    total = 0
+
+    for i in range(len(s1)) :
+    # {
+        if (s1[i] in d1) :
+        # {
+            d1[s1[i]] = d1[s1[i]] + 1
+        # }
+
+        else :
+        # {
+            d1[s1[i]] = 1
+        # }
+
+    # }
+
+    for i in range(len(s2)) :
+    # {
+        if (s2[i] in d2) :
+        # {
+            d2[s2[i]] = d2[s2[i]] + 1
+        # }
+
+        else :
+        # {
+            d2[s2[i]] = 1
+        # }
+
+    # }
+
+    if (len(s1) >= len(s2)) :
+    # {
+        for key, value in d1.items() :
+        # {
+            print (key, value)
+        # }
+
+        for i in range(len(d2)) :
+        # {
+            for j in range (len(d1)) :
+            # {
+                print(d1.keys()[1])
+
+                if (s1[i] == s2[j]) :
+                # {
+                    #total = total + 1
+                    # j = len(s1) # match, go to next letter in s2
+                # }
+
+                else :
+                # {
+                    None
+                # }
+
+            # }
+
+        # }
+
+    # }
+
+    else :
+    # {
+        print(2)
+    # }
+
+    # print (d1.iteritems())
+
+# }
+
+
+
+return sorted(d1)
+
+t = determine_common_character_count(create_character_count_dict(s2),
+                                            create_character_count_dict (s1))
+
+t = determine_common_character_count(create_character_count_dict(s1),
+                                            create_character_count_dict (s2))
+
+# https://stackoverflow.com/questions/21986194/how-to-pass-dictionary-items-as-function-arguments-in-python
+def determine_common_character_count(d1, d2) :
+# {
+    total = 0
+
+    print (d1)
+
+    return total
+# }
 
 # print(len(s1))
 # print(create_character_count_dict(s2))
