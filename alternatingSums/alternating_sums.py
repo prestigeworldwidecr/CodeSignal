@@ -33,7 +33,7 @@ def alternatingSums(a) :
     odd_sum = 0
     result = [0, 0]
 
-    for i in len(a) :
+    for i in range(len(a)) :
     # {
         is_even = (i + 1) % 2
 
@@ -60,7 +60,7 @@ def solution(a) :
 # }
 
 a = [50, 60, 60, 45, 70]
-solution(a)
+print(solution(a))
 # For a = [50, 60, 60, 45, 70], the output should be solution(a) = [180, 105].
 
 """
