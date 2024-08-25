@@ -27,32 +27,34 @@ Sorted array a with all the trees untouched.
 
 """
 
-import sys
-
 def solution(a) :
 # {
-    start_ppl = -1
+    j = 0
     b = a.copy()
     b = sorted(b)
 
-    for i in range(len(b)) :
+    while (b[0] == -1) :
     # {
-        print(i)
-        
-        if (b[i] != -1) :
-        # {
-            start_ppl = i
-            break
-        # }
+        b.pop(0)
+    # }
 
-        else :
+    for i in range(len(a)) :
+    # {
+        if (a[i] == -1) :
         # {
             None
         # }
 
+        else :
+        # {
+            a[i] = b[j]
+            j = j + 1
+        # }
+
     # }
 
-    print(start_ppl)
+    print(a)
+
 # }
 
 a = [-1, 150, 190, 170, -1, -1, 160, 180] # [-1, 150, 160, 170, -1, -1, 180, 190]
@@ -67,6 +69,29 @@ solution(a)
 BONEYARD
 ********
 
+import sys
+
+start_ppl = -1
+
+# for i in range(len(b)) :
+    # {
+        # print(i, len(b), b[i], b)
+        
+        # if (b[i] == -1) :
+        # {
+            # print("hi")
+            # b.pop(i)
+        # }
+
+        # else :
+        # {
+            # None
+        # }
+
+    # }
+
+# start_ppl = i
+# break
 
 # i = sys.maxsize # exit
 # print(i)
