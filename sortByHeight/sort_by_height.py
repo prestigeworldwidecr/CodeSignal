@@ -53,7 +53,7 @@ def solution(a) :
 
     # }
 
-    print(a)
+    return a
 
 # }
 
