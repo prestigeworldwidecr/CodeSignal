@@ -73,20 +73,13 @@ def inner_most_substring(inputString) :
 
     else :
     # {
-        tmp = inputString[0, left] + reverse_string_atom[left + 1, right] + inputString[right + 1, len(inputString)]
-
-        # print(b[2:5])
-        # tmp = inputString.substring(0, left) + reverse_string_atom(inputString.substring(left + 1, right)) + inputString.substring(right + 1, inputString.length)
-
+        
+        flip_mid = inputString[left + 1: right]
+        flip_mid = flip_mid[::-1]
+        tmp = inputString[0: left] + flip_mid + inputString[right + 1: len(inputString)]
         return inner_most_substring(tmp)
     # }
 
-# }
-
-def reverse_string_atom(inputString) :
-# {
-    # return inputString.split("").reverse().join("")
-    return inputString[::-1]
 # }
 
 def solution(inputString) :
@@ -95,9 +88,7 @@ def solution(inputString) :
 # }
 
 inputString = "foo(bar)baz(blim)"
-# inputString = "easy"
-# print (inputString[::-1])
-solution(inputString)
+print(solution(inputString))
 
 """
 
@@ -105,5 +96,21 @@ solution(inputString)
 BONEYARD
 ********
 
+
+        # tmp = inputString[0: left] + inputString[left + 1: right: -1] + inputString[right + 1: len(inputString)]
+        # print(flip_mid)
+        # print(b[2:5])
+        # tmp = inputString.substring(0, left) + reverse_string_atom(inputString.substring(left + 1, right)) + inputString.substring(right + 1, inputString.length)
+
+# For inputString = "foo(bar)baz(blim)", the output should be solution(inputString) = "foorabbazmilb"
+# inputString = "easy"
+# print (inputString[::-1])
+
+
+def reverse_string_atom(inputString) :
+# {
+    # return inputString.split("").reverse().join("")
+    return inputString[::-1]
+# }
 
 """
