@@ -33,13 +33,23 @@ def solution(a) :
     b = a.copy()
     b = sorted(b)
 
-    while (b[0] == -1) :
+    while (len(b) > 0) :
     # {
-        b.pop(0)
+        if (b[0] == -1) :
+        # {
+            b.pop(0)
+        # }
+
+        else :
+        # {
+            break
+        # }
+
     # }
 
     for i in range(len(a)) :
     # {
+
         if (a[i] == -1) :
         # {
             None
@@ -60,6 +70,7 @@ def solution(a) :
 a = [-1, 150, 190, 170, -1, -1, 160, 180] # [-1, 150, 160, 170, -1, -1, 180, 190]
 a1 = [4, 2, 9, 11, 2, 16]
 a2 = [23, 54, -1, 43, 1, -1, -1, 77, -1, -1, -1, 3]
+# a = [-1, -1, -1, -1, -1]
 
 solution(a)
 
@@ -68,6 +79,8 @@ solution(a)
 ********
 BONEYARD
 ********
+
+print(i, len(b), b[j], b)
 
 import sys
 
