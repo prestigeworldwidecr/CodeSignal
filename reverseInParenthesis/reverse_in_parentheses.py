@@ -38,7 +38,7 @@ Return inputString, with all the characters that were in parentheses reversed.
 
 """
 
-def innerMostSubstring(inputString) :
+def inner_most_substring(inputString) :
 # {
     i = 0
     left = -1 # leftParenLocation
@@ -73,27 +73,30 @@ def innerMostSubstring(inputString) :
 
     else :
     # {
-        tmp = inputString[0, left] + reverseStringAtom[left + 1, right] + inputString[right + 1, len(inputString)]
+        tmp = inputString[0, left] + reverse_string_atom[left + 1, right] + inputString[right + 1, len(inputString)]
 
         # print(b[2:5])
-        # tmp = inputString.substring(0, left) + reverseStringAtom(inputString.substring(left + 1, right)) + inputString.substring(right + 1, inputString.length)
+        # tmp = inputString.substring(0, left) + reverse_string_atom(inputString.substring(left + 1, right)) + inputString.substring(right + 1, inputString.length)
 
-        return innerMostSubstring(tmp)
+        return inner_most_substring(tmp)
     # }
 
 # }
 
-def reverseStringAtom(inputString) :
+def reverse_string_atom(inputString) :
 # {
-    return inputString.split("").reverse().join("")
+    # return inputString.split("").reverse().join("")
+    return inputString[::-1]
 # }
 
 def solution(inputString) :
 # {
-    return innerMostSubstring(inputString)
+    return inner_most_substring(inputString)
 # }
 
 inputString = "foo(bar)baz(blim)"
+# inputString = "easy"
+# print (inputString[::-1])
 solution(inputString)
 
 """
