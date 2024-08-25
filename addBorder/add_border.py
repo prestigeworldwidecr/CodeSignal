@@ -34,35 +34,45 @@ The same matrix of characters, framed with a border of asterisks of width 1
 
 """
 
-def addBorder(picture)
+def addBorder(picture) :
 # {
-    i = 0
+    # i = 0
     tmp = ""
     bottomTopBorder = "**"
     result = []
     
-    for (i i < picture[0].length i++)
+    for i in range(len(picture[0])) :
     # {
         bottomTopBorder = bottomTopBorder + "*"
     # }
 
-    result.push(bottomTopBorder)
+    result.append(bottomTopBorder)
 
-    for (i = 0 i < picture.length i++)
+    for i in range(len(picture)) :
     # {
         tmp = "*" + picture[i] + "*"
-        result.push(tmp)
+        result.append(tmp)
     # }
 
-    result.push(bottomTopBorder)
+    result.append(bottomTopBorder)
     
     return result
 # }
 
-def solution(picture) 
+def solution(picture) :
 # {
     return addBorder(picture)
 # }
+
+picture = ["abc",
+           "ded"] # the output should be
+
+# solution(picture) = ["*****",
+#                    "*abc*",
+#                    "*ded*",
+#                    "*****"]
+
+print(solution(picture))
 
 """
 
