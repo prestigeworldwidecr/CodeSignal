@@ -151,6 +151,7 @@ def solution(a, b) :
 
 a = [1, 2, 3]
 b = [1, 2, 3]
+
 print(solution(a, b)) # For a = [1, 2, 3] and b = [1, 2, 3], the output should be solution(a, b) = True.
 
 """
