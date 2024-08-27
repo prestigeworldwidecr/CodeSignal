@@ -30,17 +30,31 @@ true if the characters of the inputString can be rearranged to form a palindrome
 
 def solution(inputString) :
 # {
-    None
+    cnt = 0
+
+    for i in set(inputString) :
+    # {
+        cnt = cnt + inputString.count(i) % 2
+    # }
+
+    return cnt < 2  # can't have more than one solo letter
+
 # }
 
 inputString = "aabb" # For inputString = "aabb", the output should be solution(inputString) = true.
-solution(inputString)
+inputString = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabc"  # false
+print(solution(inputString))
 
 """
 
 ********
 BONEYARD
 ********
+
+# print(i, inputString.count(i) % 2, cnt)
+# print(i, inputString.count(i) % 2)
+        # print(i)
+        # print(set(inputString))
 
 andrew_pudge -- return sum([inputString.count(i)%2 for i in set(inputString)]) <= 1
 
