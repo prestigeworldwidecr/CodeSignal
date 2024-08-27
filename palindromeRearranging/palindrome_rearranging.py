@@ -29,9 +29,9 @@ true if the characters of the inputString can be rearranged to form a palindrome
 """
 
 def solution(inputString) :
-{
-    
-}
+# {
+    None
+# }
 
 inputString = "aabb" # For inputString = "aabb", the output should be solution(inputString) = true.
 solution(inputString)
