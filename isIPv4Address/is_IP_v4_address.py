@@ -43,9 +43,28 @@ def solution(inputString) :
     is_IP_v4_address = False
     tmp = inputString.split('.')
 
+    if (len(tmp) == 4) :
+    # {
+        None
+    # }
+
+    else :
+    # {
+        return False
+    # }
+
     for i in tmp :
     # {
-        
+        if (i.isdigit() and 0 <= int(i) and int(i) < 256) :
+        # {
+            is_IP_v4_address = True
+        # }
+
+        else :
+        # {
+            return False
+        # }
+
     # }
 
     return is_IP_v4_address
@@ -54,7 +73,7 @@ def solution(inputString) :
 
 # For inputString = "172.16.254.1", the output should be solution(inputString) = true;
 inputString = "172.16.254.1"
-solution(inputString)
+print(solution(inputString))
 
 """
 
