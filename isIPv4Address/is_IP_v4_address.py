@@ -40,7 +40,16 @@ true if inputString satisfies the IPv4 address naming rules, false otherwise.
 
 def solution(inputString) :
 # {
-    print(inputString)
+    is_IP_v4_address = False
+    tmp = inputString.split('.')
+
+    for i in tmp :
+    # {
+        
+    # }
+
+    return is_IP_v4_address
+
 # }
 
 # For inputString = "172.16.254.1", the output should be solution(inputString) = true;
@@ -53,5 +62,16 @@ solution(inputString)
 BONEYARD
 ********
 
+# print(i)
+# print(tmp)
+
+# print(inputString)
+
+author: dnl-blkv
+
+def solution(s):
+    p = s.split('.')
+
+    return len(p) == 4 and all(n.isdigit() and 0 <= int(n) < 256 for n in p)
 
 """
