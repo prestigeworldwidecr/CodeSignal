@@ -33,7 +33,7 @@ Guaranteed constraints:
 
 """
 
-def arrayReplace(inputArray, elemToReplace, substitutionElem) :
+def array_replace(inputArray, elemToReplace, substitutionElem) :
 # {
     for i in range(len(inputArray)) :
     # {
@@ -55,7 +55,7 @@ def arrayReplace(inputArray, elemToReplace, substitutionElem) :
 
 def solution(inputArray, elemToReplace, substitutionElem) :
 # {
-    return arrayReplace(inputArray, elemToReplace, substitutionElem)
+    return array_replace(inputArray, elemToReplace, substitutionElem)
 # }
 
 # For inputArray = [1, 2, 1], elemToReplace = 1, and substitutionElem = 3, the output should be solution(inputArray, elemToReplace, substitutionElem) = [3, 2, 3].
