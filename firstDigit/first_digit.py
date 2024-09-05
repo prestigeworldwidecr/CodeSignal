@@ -30,8 +30,20 @@ Guaranteed constraints:
 
 def solution(inputString) :
 # {
-    # print(inputString)
-    return inputString
+    for i in range(len(inputString)) :
+    # {
+        if (inputString[i].isdigit()) :
+        # {
+            return inputString[i]
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+    # }
+    
 # }
 
 # For inputString = "var_1__Int", the output should be solution(inputString) = '1';
@@ -48,5 +60,9 @@ print(solution(inputString))
 ********
 BONEYARD
 ********
+
+return filter(str.isdigit, inputString)
+
+    
 
 """
