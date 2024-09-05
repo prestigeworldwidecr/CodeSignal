@@ -38,7 +38,7 @@ def all_valid_characters(name) :
 
     for i in range(len(name)) :
     # {
-        if (name[i].isletter() or name[i].isdigit()) :
+        if (name[i].isalpha() or name[i].isdigit()) :
         # {
             result = True
         # }
@@ -56,8 +56,9 @@ def all_valid_characters(name) :
 def solution(name) :
 # {
     result = None
+    name = name.replace('_', '')
     
-    if (name[0].isletter()) :
+    if (name[0].isalpha()) :
     # {
         result = all_valid_characters(name)
     # }
