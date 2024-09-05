@@ -49,7 +49,8 @@ def solution(inputString) :
 # }
 
 inputString = "123aa1"  # solution(inputString) = "123"
-# inputString = "0123456789"  # "0123456789"
+inputString = "0123456789"  # "0123456789"
+
 print(solution(inputString))
 
 """
