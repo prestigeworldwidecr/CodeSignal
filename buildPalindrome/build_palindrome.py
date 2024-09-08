@@ -24,17 +24,19 @@ Guaranteed constraints:
 
 """
 
-from collections import Counter
-
-def beautiful_palindrome(st) :
-# {
-    tmp = dict(Counter(list(st)))
-    return tmp
-# }
-
 def solution(st) :
 # {
-    return beautiful_palindrome(st)
+    result = list(st)
+    i = 0
+
+    while (result != result[::-1]) :  # while result isnt a palindrome
+    # {
+        result.insert(len(st), st[i]) # add the ith letter to the end of result
+        i = i + 1
+    # }
+
+    return "".join(result)
+
 # }
 
 # For st = "abcdc", the output should be solution(st) = "abcdcba".
@@ -59,5 +61,13 @@ def solution(st):
 tmp = dict(Counter(list(sorted(inputString))))
 tmp = list(tmp.values())
 result = False
+
+from collections import Counter
+
+def beautiful_palindrome(st) :
+# {
+    tmp = dict(Counter(list(st)))
+    return tmp
+# }
 
 """
