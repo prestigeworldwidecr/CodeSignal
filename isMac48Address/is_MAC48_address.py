@@ -39,13 +39,16 @@ def is_MAC_letter(c) :
 
 def all_MAC_compliant(inputString) :
 # {
+    tmp = "".join(inputString.split('-'))
     result = False
+
+    # print('!', tmp)
     
-    for i in inputString :
+    for i in range(len(tmp)) :
     # {
-        # print(i)
+        # print(tmp, i, tmp[i], len(tmp))
         
-        if (is_MAC_letter(i) or i.isdigit()) :
+        if (is_MAC_letter(tmp[i]) or tmp[i].isdigit()) :
         # {
             result = True
         # }
@@ -62,17 +65,27 @@ def all_MAC_compliant(inputString) :
 
 def solution(inputString) :
 # {
-    tmp = inputString.split('-')
+    
     # print(tmp)
-    return all_MAC_compliant(inputString)
+    if (len(inputString) == 17) :
+    # {
+        return all_MAC_compliant(inputString)
+    # }
+
+    else :
+    # { 
+        return False
+    # }
+    
 # }
 
 # For inputString = "00-1B-63-84-45-E6", the output should be solution(inputString) = true;
 # For inputString = "Z1-1B-63-84-45-E6", the output should be solution(inputString) = false;
 # For inputString = "not a MAC-48 address", the output should be solution(inputString) = false.
-inputString = "00-1B-63-84-45-E6"
+# inputString = "00-1B-63-84-45-E6"
 # inputString = "Z1-1B-63-84-45-E6"
-# inputString = "not a MAC-48 address"
+inputString = "not a MAC-48 address"
+inputString = "02-03-04-05-06-07-"
 print(solution(inputString))
 # print(is_MAC_letter('D'))
 # print(is_MAC_letter('a'))
