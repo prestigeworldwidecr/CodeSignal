@@ -24,11 +24,93 @@ The longest word from text. It's guaranteed that there is a unique output.
 
 """
 
+import string
 import sys
 
 def solution(text) :
 # {
-    punc = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "[", "]", "{", "}", ".", "<", ">", "?", "`", "~"]
+    text = text.replace(' ', '*')
+    tmp = list(text)
+    max = -sys.maxsize
+    result = ""
+    
+    for i in range(len(text)) :
+    # {
+        if (tmp[i] in string.punctuation) :
+        # {
+            tmp[i] = '*'
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+    # }
+
+    tmp = tuple(tmp)
+    tmp = ''.join(tmp)
+    tmp = str(tmp).split('*')
+    
+    for i in range(len(tmp)) :
+    # {
+        if (len(tmp[i]) > max) :
+        # {
+            max = len(tmp[i])
+            result = tmp[i]
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+    # }
+    
+    return result
+# }
+
+text = "Ready, steady, go!"    # the output should be solution(text) = "steady".
+# text = "To be or not to be"
+
+print(solution(text))
+
+"""
+
+********
+BONEYARD
+********
+
+# print(tmp[i], len(tmp[i]))
+        # None
+
+# print(tmp)
+    # print('@', tmp)
+    # print('!', tmp)
+    # print('#', tmp)
+    # print('!', i)
+
+def solution(t):
+    return max("".join([i if i in string.ascii_letters else " " for i in t]).split(),key=len)
+
+# import string library function  
+import string  
+    
+# An input string. 
+Sentence = "Hey, Geeks !, How are you?"
+  
+for i in Sentence: 
+      
+    # checking whether the char is punctuation. 
+    if i in string.punctuation: 
+          
+        # Printing the punctuation values  
+        print("Punctuation: " + i) 
+
+# tmp = list(text)
+    # tmp = tmp.split('[^a-zA-Z]', text)
+
+punc = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "+", "[", "]", "{", "}", ".", "<", ">", "?", "`", "~"]
     # max = -sys.maxsize
     result = ""
     
@@ -67,19 +149,6 @@ def solution(text) :
     # }
 
     return result
-
-# }
-
-text = "Ready, steady, go!"    # the output should be solution(text) = "steady".
-text = "To be or not to be"
-
-print(solution(text))
-
-"""
-
-********
-BONEYARD
-********
 
 tmp = tuple(text.split(","))
     # print(text, tmp, len(tmp))
