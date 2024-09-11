@@ -28,11 +28,22 @@ Guaranteed constraints:
 
 """
 
+def is_similar_filename(s1, s2) :
+# {
+    s1 = str(s1.split('('))
+    s2 = str(s2.split('('))
+    result = False
+
+    # print('!', s1, s2)
+
+    return s1[0] == s2[0]
+# }
+
 # For names = ["doc", "doc", "image", "doc(1)", "doc"], the output should be solution(names) = ["doc", "doc(1)", "image", "doc(1)(1)", "doc(2)"].
 
 def solution(names) :
-# {
-    return names
+# {    
+    return is_similar_filename(names[3], names[4])
 # }
 
 names = ["doc", "doc", "image", "doc(1)", "doc"]
