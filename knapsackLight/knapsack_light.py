@@ -56,7 +56,7 @@ Guaranteed constraints:
 
 """
 
-def grabbingHands(value1, weight1, value2, weight2, maxW) :
+def solution(value1, weight1, value2, weight2, maxW) :
 # {
     total_value = value1 + value2
     total_weight = weight1 + weight2
@@ -82,7 +82,7 @@ def grabbingHands(value1, weight1, value2, weight2, maxW) :
         # {
             return value2
         # }
-
+        
     # }
 
     elif (weight1 <= maxW and maxW < weight2) :
@@ -94,19 +94,26 @@ def grabbingHands(value1, weight1, value2, weight2, maxW) :
     # {
         return value2
     # }
-    
-# }
 
-def solution(value1, weight1, value2, weight2, maxW) :
-# {
-    return grabbingHands(value1, weight1, value2, weight2, maxW)
 # }
 
 value1 = 10
 weight1 = 5
 value2 = 6
 weight2 = 4
-maxW = 9    # solution(value1, weight1, value2, weight2, maxW) = 16
+maxW = 8   # solution(value1, weight1, value2, weight2, maxW) = 10
+
+value1 = 10
+weight1 = 5
+value2 = 6
+weight2 = 4
+maxW = 9   # solution(value1, weight1, value2, weight2, maxW) = 16
+
+value1 = 5
+weight1 = 3
+value2 = 7
+weight2 = 4
+maxW = 6   # solution(value1, weight1, value2, weight2, maxW) = 7
 
 print(solution(value1, weight1, value2, weight2, maxW))
 
