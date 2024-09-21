@@ -42,7 +42,7 @@ def is_infinite_process(a, b):
     result = False
     cnt = 0
 
-    while(True) :
+    while(a != b) :
     # {
 
         if (a == b) :
@@ -61,16 +61,6 @@ def is_infinite_process(a, b):
             a = a + 1
             b = b - 1
             cur = a > b
-        # }
-
-        if (a != b) :
-        # {
-            None
-        # }
-
-        else :
-        # {
-            return result
         # }
 
     # }
@@ -94,5 +84,15 @@ print(solution(a, b))
 ********
 BONEYARD
 ********
+
+if (a != b) :
+        # {
+            None
+        # }
+
+        else :
+        # {
+            return result
+        # }
 
 """
