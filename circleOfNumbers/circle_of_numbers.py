@@ -33,10 +33,34 @@ Guaranteed constraints:
 
 """
 
+def solution(n, first_number) :
+# {
+    diameter = n / 2
+    result = -1
 
+    if (first_number < diameter) :
+    # {
+        result = first_number + diameter
+    # }
+
+    elif (first_number >= diameter) :
+    # {
+        result = first_number - diameter
+    # }
+
+    else :
+    # {
+        None
+    # }
+
+    return result
+
+# }
 
 n = 10
 first_number = 2
+
+print(solution(n, first_number))
 
 """
 
