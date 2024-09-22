@@ -71,6 +71,7 @@ print(solution(commands))
 BONEYARD
 ********
 
+author: 
 def solution(commands):
     weird = False
     total = 0
