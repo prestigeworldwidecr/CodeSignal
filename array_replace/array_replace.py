@@ -35,14 +35,7 @@ Guaranteed constraints:
 
 def solution(inputArray, elemToReplace, substitutionElem) :
 # {
-    # tmp = inputArray.index(elemToReplace)
-    for i in range(inputArray.count(elemToReplace)) :
-    # {
-        print(i, inputArray)
-        inputArray[inputArray.index(elemToReplace)] = substitutionElem
-    # }
-
-    return inputArray
+    return inputArray.replace(elemToReplace, substitutionElem)
 # }
 
 # For inputArray = [1, 2, 1], elemToReplace = 1, and substitutionElem = 3, the output should be solution(inputArray, elemToReplace, substitutionElem) = [3, 2, 3].
@@ -61,5 +54,12 @@ print(solution(inputArray, elemToReplace, substitutionElem))
 ********
 BONEYARD
 ********
+
+# tmp = inputArray.index(elemToReplace)
+    for i in range(inputArray.count(elemToReplace)) :
+    # {
+        print(i, inputArray)
+        inputArray[inputArray.index(elemToReplace)] = substitutionElem
+    # }
 
 """
