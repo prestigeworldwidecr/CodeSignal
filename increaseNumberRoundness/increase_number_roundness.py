@@ -39,16 +39,15 @@ true if it's possible to increase n's roundness, false otherwise.
 
 import sys
 
-# swap
-# count max consecutive zeros
-
-def swap_consecutive_digits(n, i) :  # num, left index of swap
+def swap_digits(n, i, j) :  # num, left index of swap
 # {
     tmp = list(str(n))
     tmp1 = tmp[i]
-    tmp2 = tmp[i + 1]
+    tmp2 = tmp[j]
     tmp[i] = tmp2
-    tmp[i + 1] = tmp1
+    tmp[j] = tmp1
+    
+    # print(tmp)
 
     return tmp
 # }
@@ -90,6 +89,75 @@ def count_max_consecutive_zeroes(l) :
 
 def solution(n) :
 # {
+    og = count_max_consecutive_zeroes(swap_digits(n, 0, 0))    # original roundness
+
+    for i in range(len(str(n))) :
+    # {
+        for j in range(1, len(str(n))):
+        # {
+            if (i != j) :
+            # {
+                tmp = count_max_consecutive_zeroes(swap_digits(n, i, j))
+                print(i, j, og, tmp)
+                
+                if (tmp > og) :
+                # {
+                    return True
+                # }
+
+                else :
+                # {
+                    None
+                # }
+
+            # }
+
+            else :
+            # {
+                None
+            # }
+
+        # }
+
+    # }
+
+    return False
+
+# }
+
+# For n = 902200100, the output should be solution(n) = true.
+# For n = 11000, the output should be solution(n) = false.
+# n = 902200100
+# n = 11000
+n = 1022220
+
+print(solution(n))
+# print(count_max_consecutive_zeroes(swap_consecutive_digits(n, 5)))
+
+"""
+
+********
+BONEYARD
+********
+
+# swap
+# count max consecutive zeros
+
+def swap_consecutive_digits(n, i) :  # num, left index of swap
+# {
+    tmp = list(str(n))
+    tmp1 = tmp[i]
+    tmp2 = tmp[i + 1]
+    tmp[i] = tmp2
+    tmp[i + 1] = tmp1
+
+    return tmp
+# }
+
+# print(i, j, swap_digits(n, i, j))
+# max = -sys.maxsize
+
+    # print(og)
     og = count_max_consecutive_zeroes(swap_consecutive_digits(n, 0))    # original roundness
     max = -sys.maxsize
 
@@ -121,23 +189,6 @@ def solution(n) :
     # {
         return True
     # }
-
-# }
-
-# For n = 902200100, the output should be solution(n) = true.
-# For n = 11000, the output should be solution(n) = false.
-# n = 902200100
-n = 11000
-n = 1022220
-
-print(solution(n))
-# print(count_max_consecutive_zeroes(swap_consecutive_digits(n, 5)))
-
-"""
-
-********
-BONEYARD
-********
 
 # tmp = count_max_consecutive_zeroes(swap_consecutive_digits(n, 0))
 
