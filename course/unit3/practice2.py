@@ -11,23 +11,26 @@ All clear? Time's a-wasting, let's crack on, space cowboy!
 def repeating_elements(nums) :
 # {
     # implement this
-    result = set()
+    # result = set()
+    seen = set()
+    duplicates = set()
     
     for i in nums :
     # {
-        if (nums.count(i) > 1) :
+        # print(i)
+        if (i in seen) :
         # {
-            result.add(i)
+            duplicates.add(i)
         # }
 
         else :
         # {
-            None
+            seen.add(i)
         # }
 
     # }
 
-    return result
+    return duplicates
 
 # }
 
@@ -40,6 +43,36 @@ print(repeating_elements([9, 8, 7, 8, 7, 6, 5]))  # expected output : [8, 7]
 ********
 BONEYARD
 ********
+
+Great start! Your solution works, but using nums.count(i) inside the loop makes it less efficient since it checks the count for each element repeatedly.
+
+Consider using two sets: one to track seen elements and another for duplicates. This way, you can achieve better performance. How might you implement this? 🐾
+
+Sure thing! Here's a small hint to get you started:
+
+Create two sets:
+
+One set to keep track of elements you've seen.
+Another set to store elements that are duplicates.
+Iterate through the list:
+
+If an element is already in the "seen" set, add it to the "duplicates" set.
+If it's not in the "seen" set, add it there.
+Return the list of duplicates
+
+for i in nums :
+    # {
+        if (nums.count(i) > 1) :
+        # {
+            result.add(i)
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+    # }
 
 # print(i, nums.count(i))
 
