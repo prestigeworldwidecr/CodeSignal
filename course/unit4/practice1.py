@@ -17,10 +17,12 @@ def find_unique_string(words) :
     # implement this
     seen = set()
     duplicates = set()
+    tmp = []
+    result = ''
     
     for i in words :
     # {
-        # print(i)
+        
         if (i in seen) :
         # {
             duplicates.add(i)
@@ -33,12 +35,24 @@ def find_unique_string(words) :
 
     # }
 
-    for i in range(len(words) - 1, -1, -1) :
-    # {
-        print(duplicates[i])
+    tmp = list(words)[::-1]
+
+    for i in range(len(tmp)) :
+    # {        
+        if (tmp[i] in duplicates) :
+        # {
+            None
+        # }
+
+        else :
+        # {
+            return tmp[i]
+        # }
+
     # }
 
-    return 0
+    return result
+
 # }
 
 print(find_unique_string(['apple', 'banana', 'apple', 'mango', 'banana']))  # It should print: 'mango'
@@ -51,6 +65,16 @@ print(find_unique_string(['apple', 'banana', 'apple', 'mango', 'banana']))  # It
 ********
 BONEYARD
 ********
+
+# print(i, tmp, list[i])
+        rint(len(tmp))
+
+# print(tmp)
+
+for i in range(len(words) - 1, -1, -1) :
+    # {
+        print(duplicates[i])
+    # }
 
 Great! Let's work through this together. Your current approach uses words.count() to check the frequency of each word, which can be inefficient. Instead, let's use sets to track seen and duplicate words.
 
