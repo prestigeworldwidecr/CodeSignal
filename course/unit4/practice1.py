@@ -15,13 +15,34 @@ Think you can deal with this, Space Voyager? Onwards!
 def find_unique_string(words) :
 # {
     # implement this
+    seen = set()
+    duplicates = set()
     
+    for i in words :
+    # {
+        # print(i)
+        if (i in seen) :
+        # {
+            duplicates.add(i)
+        # }
 
-    return result
+        else :
+        # {
+            seen.add(i)
+        # }
+
+    # }
+
+    for i in range(len(words) - 1, -1, -1) :
+    # {
+        print(duplicates[i])
+    # }
+
+    return 0
 # }
 
-# print(find_unique_string(['apple', 'banana', 'apple', 'mango', 'banana']))  # It should print: 'mango'
-print(find_unique_string(['hello', 'world', 'hello']))  # It should print: 'world'
+print(find_unique_string(['apple', 'banana', 'apple', 'mango', 'banana']))  # It should print: 'mango'
+# print(find_unique_string(['hello', 'world', 'hello']))  # It should print: 'world'
 # print(find_unique_string(['hello', 'world', 'hello', 'world']))  # It should print: ''
 # print(find_unique_string([]))  # It should print: ''
 
@@ -30,6 +51,15 @@ print(find_unique_string(['hello', 'world', 'hello']))  # It should print: 'worl
 ********
 BONEYARD
 ********
+
+Great! Let's work through this together. Your current approach uses words.count() to check the frequency of each word, which can be inefficient. Instead, let's use sets to track seen and duplicate words.
+
+Here's a hint to get you started:
+
+Use two sets: one for words you've seen and another for duplicates.
+Traverse the list from the start, adding words to the seen set. If a word is already in seen, add it to the duplicates set.
+Traverse the list again from the end to find the last word not in duplicates.
+Give it a try and let me know how it goes! 🚀
 
 Good try, but that's not exactly right.
 
