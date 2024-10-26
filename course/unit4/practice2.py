@@ -8,10 +8,51 @@ It's time to go where no programmer has gone before boldly. Happy coding!
 
 '''
 
+def alphabetize(list) :
+# {
+    for i in range(len(list)) :
+    # {
+        list[i] = ''.join(sorted(list[i]))
+    # }
+
+    return list
+
+# }
+
 def find_anagram_words(list_1, list_2) :
 # {
     # implement this
-    pass
+    
+    result = set()
+
+    list_1 = list(dict.fromkeys(list_1))
+    list_2 = list(dict.fromkeys(list_2))
+    list_2 = alphabetize(list_2)
+
+    # print(list_1, list_2)
+
+    for i in list_1 :
+    # {
+
+        # print(i, sorted(i), list_2)
+        tmp = ''.join(sorted(i))
+
+        if (tmp in list_2) :
+        # {
+            result.add(i)
+            # print(tmp, result)
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+    # }
+
+    result = list(result)
+
+    return result
 # }
 
 print(find_anagram_words(['cinema', 'iceman'], ['iceman', 'cinema'])) # should return ['cinema', 'iceman']
@@ -23,5 +64,17 @@ print(find_anagram_words(['cinema', 'iceman'], ['iceman', 'cinema'])) # should r
 ********
 BONEYARD
 ********
+
+# print(i)
+
+    # s1 = set(alphabetize(list_1))
+    # s2 = set(alphabetize(list_2))
+
+    # print(s1, s2)
+    # print(alphabetize(list_1), alphabetize(list_2))
+    # print(list_1, list_2)
+
+# print(alphabetize(list_1), alphabetize(list_2))
+# print(s1, s2)
 
 '''
