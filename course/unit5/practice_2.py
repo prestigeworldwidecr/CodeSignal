@@ -21,7 +21,7 @@ event_system[3] = "Data Science Meetup - Wednesday, 6:00 PM"
 
 # Update upcoming events
 # event_system[1] = "Coding Bootcamp - Thursday, 8:00 AM"
-event_system[2] = "Python Webinar - Friday, 01:00 PM"
+event_system[2] = "Python Webinar clearly stated it's focused on Data Structures - Tuesday, 01:00 PM"
 # event_system[3] = "Data Science Meetup - Saturday, 6:00 PM"
 
 # Print the updated events list
