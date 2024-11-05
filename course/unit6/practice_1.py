@@ -12,7 +12,19 @@ from collections import defaultdict
 def rare_words_finder(text) :
 # {
     # implement this
-    None
+    text = text.lower()
+    word_counts = defaultdict(int)
+    word_list = text.split()
+    result = []
+
+    for word in word_list : 
+    # {
+        word_counts[word] = word_counts[word] + 1
+        result = sorted(word_counts.items(), key=lambda x: x[1], reverse=False)[:5]
+    # }
+
+    return result
+
 # }
 
 print(rare_words_finder("Hey there hot shot Are you ready for a challenge This might be trickier than it looks")) 
@@ -28,5 +40,12 @@ print(rare_words_finder("")) # Expected Output: []
 ********
 BONEYARD
 ********
+
+
+    # print(text)
+    # return text
+    # print("word_counts: ", word_counts)
+    # print("word_list: ", word_list)
+    # print("tmp: ", tmp)
 
 '''
