@@ -73,6 +73,24 @@ It looks like you're on the right track, but there's a small adjustment needed. 
 When you encounter a word that's already in the index, you should check if the current document index is already a key in the nested dictionary. If it is, increment the count. If not, initialize it with a count of 1.
 Try implementing this logic and see how it works! 😊
 
+No worries, let's break it down step by step! Your goal is to create a dictionary where each unique word is a key, and the value is another dictionary. This inner dictionary should have the document index as the key and the count of occurrences of the word in that document as the value.
+
+Here's a simplified approach:
+
+Initialize the Index: Start with an empty dictionary called index.
+
+Iterate Over Documents: Use enumerate to loop through each document, which gives you both the document and its index.
+
+Split and Count Words: For each document, split it into words and iterate over them.
+
+Update the Index:
+
+If the word is already in index, check if the current document index is in the nested dictionary.
+If it is, increment the count.
+If not, set the count to 1.
+If the word is not in index, add it with a nested dictionary containing the current document index and a count of 1.
+Here's a small hint in code form to help you adjust your approach:
+
 
                 # index[word] = {{doc_idx: (index.get(word, 0) + 1)}, index[word + 1]}
                 # None
