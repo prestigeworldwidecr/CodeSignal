@@ -6,10 +6,28 @@ Watch out for the black holes, Galactic Pioneer! The input n can be any integer 
 
 '''
 
+def fib (n, computed = {0: 0, 1: 1}) :
+# {
+    if n not in computed :
+    # {
+        computed[n] = fib(n - 1, computed) + fib(n - 2, computed)
+    # }
+
+    else :
+    # {
+        None
+    # }
+
+    return computed[n]
+
+# }
+
 def alt_fib(n) :
 # {
     # implement this
-    None
+    result = fib (n + 3, computed = {0: 0, 1: 1})
+    
+    return result
 # }
 
 # Test the function with some values
