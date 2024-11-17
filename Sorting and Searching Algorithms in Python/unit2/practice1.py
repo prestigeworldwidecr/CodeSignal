@@ -59,14 +59,14 @@ def search_price(customer_query) :
 # {
     result = binary_search_iterative(products_price, customer_query)
 
-    if result is not None :
+    if (result is not None) :
     # {
-        print("Product of price ", customer_query, " is found at position ", result, " in the price list.")
+        print("Product of price", customer_query, "is found at position ", result, " in the price list.")
     # }
 
     else :
     # {
-        print("No product is found with price ", customer_query, ".")
+        print("No product is found with price", customer_query, ".")
     # }
 
 # }
