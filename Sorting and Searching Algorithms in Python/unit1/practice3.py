@@ -50,8 +50,6 @@ def factorial(num) :
 # {
     # implement this
 
-    # print('!', num)
-
     if (num < 0) :
     # {
         return None
@@ -83,5 +81,7 @@ print(factorials([0, -3, 10])) # should print: [1, 'Error', 3628800]
 ********
 BONEYARD
 ********
+
+# print('!', num)
 
 '''
