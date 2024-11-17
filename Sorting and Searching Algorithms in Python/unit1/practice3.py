@@ -69,7 +69,25 @@ def factorial(num) :
 
 def factorials(nums) :
 # {    
-    return [factorial(num) if factorial(num) is not None else 'Error' for num in nums]
+    result = []
+
+    for num in nums :
+    # {
+        if (factorial(num) is not None) :
+        # {
+            result.append(factorial(num))
+        # }
+
+        else :
+        # {
+            result.append("Error")
+        # }
+
+    # }
+
+    return result
+    
+    # return [factorial(num) if factorial(num) is not None else 'Error' for num in nums]
 # }
 
 # print(factorials([2, 3, 4])) # should print: [2, 6, 24]
