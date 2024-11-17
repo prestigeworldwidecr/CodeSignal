@@ -42,8 +42,6 @@ Start up your thrusters, and let's see what you can do!
 
 Bonus points: Try to think about how to apply the memorization technique here to avoid recursive calculations for the same inputs.
 
-
-
 '''
 
 def factorial(num) :
