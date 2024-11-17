@@ -48,22 +48,26 @@ def binary_search_iterative(data, target) :
     low = 0
     high = len(data)
 
-    while high - low > 1 : # search until the length of the interval > 1
+    # search until the length of the interval > 1
+    while high - low > 1 :
     # {
         mid = (low + high) // 2
 
+        # Continue our search in [low, mid)
         if target < data[mid] :
         # {
-            high = mid # Continue our search in [low, mid)
+            high = mid
         # }
 
+        # Continue our search in [mid, high)
         else:
         # {
-            low = mid # Continue our search in [mid, high)
+            low = mid 
         # }
     
     # }
 
+    # return low if data[low] == target else None
     if (data[low] == target) :
     # { 
         return low
@@ -73,8 +77,6 @@ def binary_search_iterative(data, target) :
     # {
         return None
     # }
-
-    # return low if data[low] == target else None
 
 # }
 
