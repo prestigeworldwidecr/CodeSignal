@@ -58,7 +58,7 @@ def binary_search(func, target, left, right, precision) :
     # {
         middle = (left + right) / 2
 
-        if func(middle) < target :
+        if (func(middle) < target) :
         # if (np.abs(func(middle) - target) > precision) :
         # {
             left = middle
