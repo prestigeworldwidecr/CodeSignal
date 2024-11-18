@@ -81,7 +81,7 @@ end = 5  # ending point of the interval
 
 result = binary_search(f, target, start, end, epsilon)
 # print("taco")
-print("The value of x for which f(x) is approximately 0 within the interval [", str(start), ", " + str(end), ", ", str(target), "] is: ", result)
+print("The value of x for which f(x) is approximately 0 within the interval [" + str(start) + ", " + str(end) + ", " + str(target) + "] is:", result)
 
 '''
 
