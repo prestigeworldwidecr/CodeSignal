@@ -20,11 +20,11 @@ def insert_position(nums, target) :
     # {
         mid = (left + right) // 2
 
-        if (nums[mid] <= target) :
+        if (nums[mid] < target) :
         # {
             left = mid
         # }
-        
+
         else:
         # {
             right = mid
@@ -32,7 +32,7 @@ def insert_position(nums, target) :
         
     # }
 
-    return left
+    return left + 1
 # }
 
 print(insert_position([1, 2, 3, 3, 5], 3))  # Expected output: 2
