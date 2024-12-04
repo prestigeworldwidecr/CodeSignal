@@ -178,6 +178,7 @@ def search_insert(nums, target) :
         # {
             left = mid
         # }
+        
         else:
         # {
             right = mid
