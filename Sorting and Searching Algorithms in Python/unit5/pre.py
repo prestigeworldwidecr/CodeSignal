@@ -68,7 +68,7 @@ import random
 
 def quick_sort(arr) :
 # {
-    if len(arr) <= 1 :
+    if (len(arr) <= 1) :
     # {
         # if the array contains 0 or 1 element, it's already sorted
         return arr
