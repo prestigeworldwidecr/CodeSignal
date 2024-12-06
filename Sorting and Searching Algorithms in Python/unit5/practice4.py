@@ -8,7 +8,7 @@ Specifically, you are to complete missing pieces of code that will execute Quick
 
 '''
 
-import random 
+import random
 
 # TODO: Implement the Quick Sort function
 def quick_sort(arr) :
