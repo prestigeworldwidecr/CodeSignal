@@ -8,10 +8,10 @@ It appears there's a bug in the code. Can you identify and rectify it? Here's yo
 
 '''
 
-import random 
+import random
 
 def partition(arr, low, high) :
-
+# {
     pivot = arr[low]
     i = low + 1
     j = high
@@ -54,6 +54,8 @@ def partition(arr, low, high) :
     arr[j] = tmp
 
     return j
+
+# }
 
 def quick_sort(arr, low, high) :
 # {

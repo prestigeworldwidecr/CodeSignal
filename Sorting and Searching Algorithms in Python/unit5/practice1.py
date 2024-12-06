@@ -9,7 +9,7 @@ Note that we used a slightly different approach for partitioning here - take som
 '''
 
 # Import required libraries
-import random 
+import random
 
 def partition(arr, low, high) :
 # {
@@ -60,7 +60,14 @@ def quick_sort(arr, low, high) :
 # }
         
 # Generate a list of random numbers between 1 and 100
-random_list = random.sample(range(1, 101), 20)
+# random_list = random.sample(range(1, 101), 20)
+random_list = []
+
+for i in range(1, 101) :
+# {
+    random_list.append(i)
+# }
+
 print("Unsorted list:", random_list)
 
 quick_sort(random_list, 0, len(random_list) - 1)

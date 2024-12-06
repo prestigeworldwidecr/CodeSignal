@@ -13,6 +13,8 @@ import random
 # TODO: Implement the Quick Sort function
 def quick_sort(arr) :
 # {
+    # -sys.maxsize
+    
     if (len(arr) <= 1) :
     # {
         return arr
@@ -26,11 +28,11 @@ def quick_sort(arr) :
         pivot = arr[random.randint(0, len(arr) - 1)]
 
         # left = [x for x in arr if x < pivot] # elements less than `pivot`
-        left = []
+        left = [-sys.maxsize] * len(arr)
         # middle = [x for x in arr if x == pivot] # elements equal to `pivot`
-        middle = []
+        middle = [-sys.maxsize] * len(arr)
         # right = [x for x in arr if x > pivot] # elements larger than `pivot`
-        right = []
+        right = [-sys.maxsize] * len(arr)
 
         for i in arr :
         # {
@@ -65,7 +67,7 @@ def quick_sort(arr) :
 # random_numbers = [random.randint(1, 50) for _ in range(15)]
 random_numbers = []
 
-for i in range (15) :
+for i in range(15) :
 # {
     random_numbers.append(random.randint(1, 50))
 # }

@@ -78,9 +78,43 @@ def quick_sort(arr) :
     # {
         # pivot = arr[len(arr) // 2] # select a pivot as a middle element
         pivot = arr[random.randint(0, len(arr) - 1)]
-        left = [x for x in arr if x < pivot] # elements less than `pivot`
-        middle = [x for x in arr if x == pivot] # elements equal to `pivot`
-        right = [x for x in arr if x > pivot] # elements larger than `pivot`
+        # left = [x for x in arr if x < pivot] # elements less than `pivot`
+        # middle = [x for x in arr if x == pivot] # elements equal to `pivot`
+        # right = [x for x in arr if x > pivot] # elements larger than `pivot`
+
+        # left = [x for x in arr if x < pivot] # elements less than `pivot`
+        left = []
+        # middle = [x for x in arr if x == pivot] # elements equal to `pivot`
+        middle = []
+        # right = [x for x in arr if x > pivot] # elements larger than `pivot`
+        right = []
+
+        for i in arr :
+        # {
+            if (i < pivot) :
+            # {
+                left.append(i)
+            # }
+
+            elif (i == pivot) :
+            # {
+                middle.append(i)
+            # }
+            
+            elif (i > pivot) :
+            # {
+                right.append(i)
+            # }
+
+            else :
+            # {
+                None 
+            # }
+
+        # }
+
+    # }    
+
         return quick_sort(left) + middle + quick_sort(right)
     # }
 
