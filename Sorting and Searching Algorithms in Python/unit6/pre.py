@@ -89,6 +89,11 @@ def merge_sort(lst) :
         return lst
     # }
 
+    else :
+    # {
+        None
+    # }
+
     # Find the middle point
     mid = len(lst) // 2
 

@@ -17,6 +17,11 @@ def merge_sort(lst) :
         return lst
     # }
 
+    else :
+    # {
+        None
+    # }
+
     # Find the middle point
     mid = len(lst) // 2
 
@@ -68,7 +73,7 @@ random_strings = []
 
 for i in range(20):
 # {
-    random_strings.append(''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=5)))
+    random_strings.append(''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k = 5)))
 # }
     
 
