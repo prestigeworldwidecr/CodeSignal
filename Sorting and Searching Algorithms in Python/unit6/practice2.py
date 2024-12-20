@@ -23,8 +23,10 @@ def merge_sort(data) :
 
     mid = len(data) // 2
 
-    left = merge_sort(data[0: mid: ])
-    right = merge_sort(data[mid: len(data): ])
+    left = data[0: mid: ]
+    right = data[mid: len(data): ]
+    left = merge_sort(left)
+    right = merge_sort(right)
 
     return merge(left, right)
 

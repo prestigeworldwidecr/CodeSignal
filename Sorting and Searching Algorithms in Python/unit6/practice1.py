@@ -26,8 +26,11 @@ def merge_sort(lst) :
     mid = len(lst) // 2
 
     # Recursively sort both halves
-    left_half = merge_sort(lst[0 : mid: ])
-    right_half = merge_sort(lst[mid: len(lst): ])
+    left_half = lst[0 : mid: ]
+    right_half = lst[mid: len(lst): ]
+    left_half = merge_sort(left_half)
+    right_half = merge_sort(right_half)
+
 
     # Merge the two sorted halves
     return merge(left_half, right_half)
@@ -71,7 +74,7 @@ def merge(left, right) :
 # random_strings = [''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k=5)) for i in range(20)]
 random_strings = []
 
-for i in range(20):
+for i in range(20) :
 # {
     random_strings.append(''.join(random.choices('abcdefghijklmnopqrstuvwxyz', k = 5)))
 # }

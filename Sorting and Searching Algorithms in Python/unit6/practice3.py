@@ -11,7 +11,7 @@ import random
 
 def merge_sort(arr) :
 # {
-    if len(arr) <= 1 :
+    if (len(arr) <= 1) :
     # {
         return arr
     # }
@@ -35,7 +35,10 @@ def merge_sort(arr) :
 def merge(left, right) :
 # {
     res = []
-    left_index, right_index = (0, 0)
+    left_index = 0
+    right_index = 0
+
+    # print("Left: ", left, "Right: ", right)
 
     while (left_index < len(left) and right_index < len(right)) :
     # {
@@ -58,7 +61,7 @@ def merge(left, right) :
     # If we reach the end of either array, append the leftover elements from the other array
     if (left) :
     # {
-        res.extend(left[left_index:])
+        res.extend(left[left_index: : ])
     # }
 
     else :
@@ -68,7 +71,7 @@ def merge(left, right) :
 
     if (right) :
     # {
-        res.extend(right[right_index:])
+        res.extend(right[right_index: : ])
     # }
 
     else :
@@ -102,5 +105,9 @@ print("\nSorted List: \n", sorted_alphabets)
 ********
 BONEYARD
 ********
+
+
+    # left_index = (0, 0)
+    # right_index = (0, 0)
 
 '''
