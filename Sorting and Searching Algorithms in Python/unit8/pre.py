@@ -94,13 +94,13 @@ def find_kth_smallest(numbers, k) :
     # {
         pos = partition(numbers, 0, len(numbers) - 1)
     
-        if k - 1 == pos :
+        if (k - 1 == pos) :
         # {
             # The pivot is the k-th element after partitioning
             return numbers[pos]
         # }
 
-        elif k - 1 < pos :
+        elif (k - 1 < pos) :
         # {
             # The pivot index after partitioning is larger than k
             # We'll keep searching in the left part
@@ -136,7 +136,8 @@ def partition(nums, l, r) :
     # {
         if (nums[i] <= nums[l]) :
         # {
-            pivot_index += 1
+            # pivot_index += 1
+            pivot_index = pivot_index + 1
             # nums[i], nums[pivot_index] = nums[pivot_index], nums[i]
             tmp = nums[i]
             nums[i] = nums[pivot_index]
