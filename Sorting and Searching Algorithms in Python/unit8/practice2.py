@@ -94,7 +94,7 @@ def merge_count_anti_inversions(x, y) :
 
     while (i < len(x) and j < len(y)) :
     # {
-        if (x[i] <= y[j]) :
+        if (x[i] >= y[j]) :
         # {
             merged.append(x[i])
             i = i + 1
