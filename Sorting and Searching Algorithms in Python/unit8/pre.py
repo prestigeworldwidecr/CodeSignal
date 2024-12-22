@@ -172,8 +172,8 @@ def count_inversions(arr) :
     else :
     # {
         middle = int(len(arr) / 2)
-        left, a = count_inversions(arr[:middle])
-        right, b = count_inversions(arr[middle:])
+        left, a = count_inversions(arr[0 : middle:])
+        right, b = count_inversions(arr[middle: : ])
         result, c = merge_count_inversions(left, right)
         return result, (a + b + c)
     # }
@@ -184,9 +184,9 @@ def merge_count_inversions(x, y) :
 # {
     count = 0
     # i, j = 0, 0
-    tmp = i
-    i = j
-    j = tmp
+    # tmp = i
+    i = 0
+    j = 0
 
     merged = []
 
