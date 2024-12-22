@@ -104,14 +104,14 @@ def find_kth_smallest(numbers, k) :
         # {
             # The pivot index after partitioning is larger than k
             # We'll keep searching in the left part
-            return find_kth_smallest(numbers[:pos], k)
+            return find_kth_smallest(numbers[ : pos: ], k)
         # }
 
         else :
         # {
             # The pivot index after partitioning is smaller than k
             # We'll keep searching in the right part
-            return find_kth_smallest(numbers[pos + 1:], k - pos - 1)
+            return find_kth_smallest(numbers[pos + 1: : ], k - pos - 1)
         # }
 
     else :
