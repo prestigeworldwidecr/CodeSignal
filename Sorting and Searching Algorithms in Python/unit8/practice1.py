@@ -28,6 +28,8 @@ import random
 
 def find_kth_largest(numbers, k) :
 # {
+    # print(numbers)
+    
     if (numbers) :
     # {
         pos = partition(numbers, 0, len(numbers) - 1)
@@ -38,7 +40,7 @@ def find_kth_largest(numbers, k) :
             return numbers[pos]
         # }
 
-        elif (k - 1 > pos) :
+        elif (k - 1 < pos) :
         # {
             # The pivot index after partitioning is larger than k
             # We'll keep searching in the left part
@@ -72,7 +74,7 @@ def partition(nums, l, r) :
 
     for i in range(l + 1, r + 1) :
     # {
-        if (nums[i] <= nums[l]) :
+        if (nums[i] >= nums[l]) :
         # {
             # pivot_index += 1
             pivot_index = pivot_index + 1
