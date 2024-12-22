@@ -23,6 +23,30 @@ In Python, we use append() to push an element and pop() without an index to extr
 
 A situation to consider is when there are no elements to pop. In this instance, the pop() will throw an IndexError. To prevent this, we should check if the Stack is empty before popping elements. This circumstance, where there's nothing left to pop, is referred to as Stack Underflow. Conversely, if the Stack has reached its maximum capacity and we try to add an item to it, it's referred to as Stack Overflow.
 
+Let's unravel the complexities (pun intended!) behind these Stack operations. All three of our basic operations — push, pop, and peek — have a time complexity of 
+O
+(
+1
+)
+O(1), meaning they take constant time to complete, regardless of the size of the Stack.
+
+Contrarily, the space complexity is 
+O
+(
+n
+)
+O(n), where 
+n
+n is the number of elements in the Stack. This is considering an average scenario where elements are continually added and then removed from the Stack.
+
+Now that we've understood the fundamentals of Stack and its operations, let's focus on manipulating our Stack to gain a deeper understanding. We'll start by emptying our Stack and then confirm that it is indeed empty.
+
+In Python, we can check if the Stack is empty by checking its length. Let's create a helper function named isEmpty(stack):
+
+Having understood our Stack's manipulations, let's explore some real-world applications of Stacks. They are used widely in numerous areas, including parsing expressions, navigating browser history, implementing the "undo" operation in text editors, and more.
+
+Consider this scenario: We have a text editor that stores the history of text changes. Our task is to use a Stack to implement the "undo" feature — when the user performs an "undo" operation, the text reverts to its previous version - the last historic change stored in the stack. Here’s an example:
+
 '''
 
 # Create an empty stack
@@ -42,6 +66,54 @@ print("Popped Element:", topElement) # Output: 'C'
 # New top of the stack
 newTopElement = stack[-1]
 print("Top Element after Pop:", newTopElement) # Output: 'B'
+
+def is_empty(stack) :
+# {
+    return len(stack) == 0
+# }
+
+# Create an empty stack
+stack = []
+
+print(is_empty(stack))
+# Output: True; as our stack is currently empty
+
+stack.append('D')
+
+print(is_empty(stack))
+# Output: False; now our stack has an element 'D'
+
+# Fetch the size of the stack
+stack_size = len(stack)
+
+print("Size of Stack:", stack_size)
+# Output: 1; length of stack is 1
+
+# Create a stack to store text changes
+# The stack stores all historical versions of editor states, excluding the current state
+text_stack = []
+
+# The user inputs text
+text_stack.append("Hello, world!")
+text_stack.append("Hello, CodeSignal!")
+
+print(text_stack)
+# Output: ["Hello, world!", "Hello, CodeSignal!"]
+
+# Check if the stack is empty before performing "undo"
+if (is_empty(text_stack)) :
+# {
+    print("Cannot perform undo operation. There are no historic changes.")
+# }
+
+else :
+# {
+    # The user performs an "undo" operation
+    previous_text = text_stack.pop() # Retrieve the last historic change
+    print("After ""undo"", the text is: ", previous_text)
+# }
+
+# Output: After "undo", the text is: Hello, CodeSignal!
 
 '''
 
