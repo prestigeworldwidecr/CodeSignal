@@ -36,7 +36,7 @@ class Stack :
     # {
         if (len(self.stack) > 0) :
         # {
-            print("Pop element:", self.stack[0])
+            print("Pop element:", self.stack[len(self.stack) - 1])
             return self.stack.pop()
         # }
 
