@@ -88,6 +88,10 @@ print() # for spacing
 print("Operations after attempting to pop the top element:")
 my_stack.pop()
 
+# TODO: Try to peek into an empty stack
+print() # for spacing
+my_stack.peek()
+
 # TODO: Again, call the peek function to view the new top element of the stack
 stack_size = my_stack.get_size()
 print() # for spacing
@@ -97,9 +101,6 @@ for _ in range(stack_size) :
 # {
     my_stack.pop()
 # }
-
-# TODO: Try to peek into an empty stack
-my_stack.peek()
 
 '''
 
