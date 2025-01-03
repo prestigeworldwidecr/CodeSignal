@@ -12,7 +12,6 @@ Output: Your aim is to return the evaluated result as a number.
 def evaluate_postfix_inverse(expression) :
 # {
     # implement this
-    None
     stack = []
     
     for element in expression.split(' ') :
