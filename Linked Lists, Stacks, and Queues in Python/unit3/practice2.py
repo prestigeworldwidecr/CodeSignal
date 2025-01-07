@@ -23,13 +23,53 @@ class MaxStack :
     def push(self, x) :
     # {
         # implement this
-        None
+        self.stack.append(x)
+
+        # print(len(self.max_stack))
+
+        # if (self.max_stack or x >= self.max_stack[-1]) :
+        if (self.max_stack) :
+        # {
+            if (x >= self.max_stack[-1]) :
+            # {
+                self.max_stack.append(x)
+            # }
+
+            else :
+            # {
+                None
+            # }
+        # }
+
+        else :
+        # {
+            self.max_stack.append(x)
+        # }
     # }
     
     def pop(self) :
     # {
         # implement this
-        None
+        if (self.stack) :
+        # {
+            if (self.stack[-1] == self.max_stack[-1]) :
+            # {
+                self.max_stack.pop()
+            # }
+
+            else :
+            # {
+                None
+            # }
+
+            return self.stack.pop()
+        # }
+
+        else :
+        # {
+            None
+        # }
+
     # }
 
     def top(self) :
@@ -42,7 +82,7 @@ class MaxStack :
 
         else :
         # {
-            return None
+            None
         # }
 
     # }
@@ -57,7 +97,7 @@ class MaxStack :
 
         else :
         # {
-            return None
+            None
         # }
         
     # }
@@ -66,14 +106,15 @@ class MaxStack :
 
 # A few print statements to test the implementation
 stack = MaxStack()
+
 stack.push(5)
-print(stack.get_max())  # Expected: 5
+print(stack.get_max(), len(stack.stack), len(stack.max_stack))  # Expected: 5
 stack.push(1)
-print(stack.get_max())  # Expected: 5
+print(stack.get_max(), len(stack.stack), len(stack.max_stack))  # Expected: 5
 stack.push(6)
-print(stack.get_max())  # Expected: 6
+print(stack.get_max(), len(stack.stack), len(stack.max_stack))  # Expected: 6
 stack.pop()
-print(stack.get_max())  # Expected: 5
+print(stack.get_max(), len(stack.stack), len(stack.max_stack))  # Expected: 5
 
 '''
 

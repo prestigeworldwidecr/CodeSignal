@@ -168,7 +168,7 @@ class MinStack :
 
         else :
         # {
-            None
+            return None
         # }
 
     # }
