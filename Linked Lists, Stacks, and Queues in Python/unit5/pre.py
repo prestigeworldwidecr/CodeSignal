@@ -91,7 +91,7 @@ while (first_half) :
 def interleave_queue(queue) :
 # {
     half_size = len(queue) // 2
-    first_half = deque()
+    first_half = deque
 
     for _ in range(half_size) :
     # {
