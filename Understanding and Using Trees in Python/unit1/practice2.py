@@ -48,6 +48,7 @@ company_hierarchy_root = TreeNode("CEO")
 vp_marketing = TreeNode("VP Marketing")
 vp_finance = TreeNode("VP Finance")
 vp_engineering = TreeNode("VP Engineering")
+# senior_engineer = TreeNode("Senior_Engineer")
 
 company_hierarchy_root.add_child(vp_marketing)
 company_hierarchy_root.add_child(vp_finance)
@@ -57,8 +58,14 @@ company_hierarchy_root.add_child(vp_engineering)
 director_marketing = TreeNode("Director Marketing")
 vp_marketing.add_child(director_marketing)
 
+senior_engineer = TreeNode("Senior Engineer")
+vp_engineering.add_child(senior_engineer)
+
 engineer = TreeNode("Engineer")
-vp_engineering.add_child(engineer)
+senior_engineer.add_child(engineer)
+
+director_marketing = TreeNode("Product Manager")
+vp_engineering.add_child(director_marketing)
 
 # Function to print the Company Hierarchy Tree (i.e., Pre-order traversal)
 def print_company_hierarchy(node) :
