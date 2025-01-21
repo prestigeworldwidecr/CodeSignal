@@ -27,22 +27,20 @@ root.left.left = Node(4)
 root.left.right = Node(5)
 root.right.right = Node(6)
 
-# Creating nodes for the tree.
-root = Node(1)
-root.children = [Node(2), Node(3), Node(4)]
-root.children[0].children = [Node(5), Node(6)]
-root.children[2].children = [Node(7)]
-
 # TODO: Implement a function to perform in-order traversal
 def in_order_traversal(node):
 # {
-    print(str(node.value) + ' -> ', end='')
-
-    for child in node.children :
+    if (node):
     # {
-        # return str(node.value) + ' -> ' + str(print_tree(child))
-        in_order_traversal(child)
-    # }    
+        in_order_traversal(node.left)
+        print(str(node.value) + ' -> ', end='')
+        in_order_traversal(node.right)
+    # }
+    
+    else :
+    # {
+        return None
+    # }     
 
 # }
 
@@ -53,16 +51,18 @@ in_order_traversal(root)
 
 ***** BONEYARD *****
 
-if (node):
+# Creating nodes for the tree.
+root = Node(1)
+root.children = [Node(2), Node(3), Node(4)]
+root.children[0].children = [Node(5), Node(6)]
+root.children[2].children = [Node(7)]
+
+print(str(node.value) + ' -> ', end='')
+
+    for child in node.children :
     # {
-        in_order_traversal(node.left)
-        print(str(node.value) + ' -> ', end='')
-        in_order_traversal(node.right)
-    # }
-    
-    else :
-    # {
-        return None
-    # }
+        # return str(node.value) + ' -> ' + str(print_tree(child))
+        in_order_traversal(child)
+    # }   
 
 '''
