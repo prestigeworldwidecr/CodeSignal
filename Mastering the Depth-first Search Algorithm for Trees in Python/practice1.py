@@ -40,7 +40,7 @@ def dfs(node, visited=None):
     # }
     
     visited.add(node.value)
-    print(node.value, end=' -> ')
+    print(node.value, end=" -> ")
 
     for child in node.children:
     # {
@@ -59,14 +59,14 @@ def dfs(node, visited=None):
 # }
 
 # Constructing a tree
-root = Node('Head Office')
-add_edges(root, root, ['Marketing', 'Sales', 'R&D'])
+root = Node("Head Office")
+add_edges(root, root, ["Marketing", "Sales", "R&D"])
 
 node_marketing = root.children[0]
-add_edges(root, node_marketing, ['SEO', 'Content'])
+add_edges(root, node_marketing, ["SEO", "Content"])
 
 node_sales = root.children[1]
-add_edges(root, node_sales, ['Domestic', 'International'])
+add_edges(root, node_sales, ["Domestic", "International"])
 
 # Perform DFS traversal
 print("DFS Traversal:")
