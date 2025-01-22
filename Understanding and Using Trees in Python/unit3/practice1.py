@@ -10,16 +10,16 @@ from collections import deque
 
 # Represents the forest as a dictionary
 forest = {
-    "Amazon_Rainforest": ["Congo_Basin", "Southeast_Asian_Rainforests"],
-    "Congo_Basin": ["Guinea_Rainforests", "New_Guinea_Rainforests"],
-    "Southeast_Asian_Rainforests": ["Sundaland_Rainforests", "Wallacea_Rainforests"],
-    "Guinea_Rainforests": [],
-    "New_Guinea_Rainforests": ["Papua_New_Guinea_Rainforests"],
-    "Sundaland_Rainforests": [],
-    "Wallacea_Rainforests": ["Celebes_Rainforests"],
-    "Papua_New_Guinea_Rainforests": [],
-    "Celebes_Rainforests": []
-    }
+            "Amazon_Rainforest": ["Congo_Basin", "Southeast_Asian_Rainforests"],
+            "Congo_Basin": ["Guinea_Rainforests", "New_Guinea_Rainforests"],
+            "Southeast_Asian_Rainforests": ["Sundaland_Rainforests", "Wallacea_Rainforests"],
+            "Guinea_Rainforests": [],
+            "New_Guinea_Rainforests": ["Papua_New_Guinea_Rainforests"],
+            "Sundaland_Rainforests": [],
+            "Wallacea_Rainforests": ["Celebes_Rainforests"],
+            "Papua_New_Guinea_Rainforests": [],
+            "Celebes_Rainforests": []
+        }
 
 def BFS(forest, root='Amazon_Rainforest'):
 # {
