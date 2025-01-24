@@ -19,8 +19,6 @@ def BFS(graph, root) :
     level = {
             '1' : 0
             }
-    
-    # print('!', graph, root.values())
 
     while (queue) :
     # {
@@ -75,6 +73,7 @@ print(BFS(graph, '1'))
 
 ***** BONEYARD *****
 
+# print('!', graph, root.values())
 
     # levels = set()
     # levels = []
