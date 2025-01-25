@@ -17,7 +17,7 @@ def BFS(graph, root) :
 
     # TODO: initialize levels dictionary
     level = {
-            '1' : 0
+            root : 0
             }
 
     while (queue) :
@@ -25,9 +25,8 @@ def BFS(graph, root) :
         vertex = queue.popleft()
         visited.append(vertex)
 
-        # TODO: set the current level of vertex
-        level_of_vertex = level_of_vertex + 1
-
+        # TODO: set the current level of vertex ** totally misguided
+        
         for child in graph[vertex] :
         # {
             if (child in visited) :
@@ -39,7 +38,8 @@ def BFS(graph, root) :
             # {
                 queue.append(child)
                 # TODO: set the level of the child ** child is vertex
-                level.update({child : level_of_vertex})
+                level[child] = level[vertex] + 1
+                # level.update({child : level_of_vertex})
             # }
 
         # }
@@ -72,6 +72,12 @@ print(BFS(graph, '1'))
 '''
 
 ***** BONEYARD *****
+
+level[child] = level[vertex] + 1
+ level[child] = level[vertex]
+
+ # level_of_vertex = level_of_vertex + 1
+        # level[vertex] = level[vertex] + 1
 
 # print('!', graph, root.values())
 
