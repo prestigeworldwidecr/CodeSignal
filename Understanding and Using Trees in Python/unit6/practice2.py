@@ -27,7 +27,7 @@ def bst_insert(root, node):
     else :
     # {
         root = node
-        return
+        return None
     # }
     
     if (root.val < node.val) :
