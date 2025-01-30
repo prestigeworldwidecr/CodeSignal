@@ -70,7 +70,7 @@ heapq.heapify(minHeap)
 print("Heapify method: ", minHeap)
 # Output: Heapify method:  [1, 4, 2, 8, 7, 3]
 
-import heapq
+# import heapq
 
 heap = []
 
