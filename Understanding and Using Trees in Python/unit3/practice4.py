@@ -13,7 +13,6 @@ def BFS(graph, root) :
     visited = []
     queue = deque()
     queue.append(root)
-    level_of_vertex = 0
 
     # TODO: initialize levels dictionary
     level = {
