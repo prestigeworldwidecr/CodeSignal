@@ -166,12 +166,13 @@ def search(root, key) :
 # {
     if (root is None or root.val == key) : 
     # {
-        return root 
+        None
     # }
 
     else :
     # {
-        None
+        # None
+        return root.val
     # }
     
     if (root.val < key) : 
