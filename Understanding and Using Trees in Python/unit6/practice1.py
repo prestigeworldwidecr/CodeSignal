@@ -62,6 +62,8 @@ def insert_BST(root, node) :
 
     # }
 
+# }
+
 def in_order_traversal(root) :
 # {
     if (root) :
