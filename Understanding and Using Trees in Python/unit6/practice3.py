@@ -72,28 +72,30 @@ def insert_BST(root, node) :
 def search_BST(root, value) : 
 # {
     # TODO: Perform the search for value in the BST
-    if (root is None or root.val == value) : 
+    if (root is None) :
     # {
-        None
+        return None
     # }
-
-    else :
+    
+    elif (root.val == value) : 
     # {
         return root.val
     # }
-    
-    if (root.val < value) : 
-    # {
-        return search_BST(root.right, value) 
-    # }
 
     else :
     # {
-        # None
-        return search_BST(root.left, value)
+        if (root.val < value) : 
+        # {
+            return search_BST(root.right, value) 
+        # }
+
+        else :
+        # {
+            return search_BST(root.left, value)
+        # }
+
     # }
-    
-    # return search_BST(root.left, value)
+
 # }
         
 r = Node(50)
@@ -114,5 +116,15 @@ print(search_BST(r, 90)) # returns None
 '''
 
 ***** BONEYARD *****
+
+# return search_BST(root.left, value)
+
+# if (root is None or root.val == value) : 
+
+            # return None
+            # return root.val
+# None
+        # None
+        
 
 '''
