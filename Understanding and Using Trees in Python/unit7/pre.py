@@ -76,7 +76,8 @@ def is_balanced(root) -> bool:
             return 0, True
         # }
 
-        left_height, left_balanced = check_balance(node.left)
+        left_height = check_balance(node.left) 
+        left_balanced = check_balance(node.left)
 
         if (left_balanced) :
         # {
@@ -88,7 +89,8 @@ def is_balanced(root) -> bool:
             return -1, False
         # }
         
-        right_height, right_balanced = check_balance(node.right)
+        right_height = check_balance(node.right) 
+        right_balanced = check_balance(node.right)
 
         if (right_balanced):
         # {
