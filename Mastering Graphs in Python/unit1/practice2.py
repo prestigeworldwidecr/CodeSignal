@@ -60,7 +60,8 @@ for i in range(n) :
 
                     else :
                     # {
-                        print("Based on mutual friends,\nUser", users[i], "and User", users[j], "might know each other.")
+                        print("Based on mutual friends,")
+                        print("User,", users[i], "and User", users[j], "might know each other.")
                     # }
 
                 # }
