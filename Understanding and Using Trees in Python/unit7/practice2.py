@@ -19,70 +19,42 @@ class Node :
 
 # }
 
-def countNodes(root) :
-# {    
-    if (root) :
-    # {
-        return 1 + countNodes(root.right) + countNodes(root.left)
-    # }
-    
-    else :
-    # {
-        return 0
-    # }
-
-    # return 1 + countNodes(root.left) + countNodes(root.right)
-    # return 1 + countNodes(root.right) + countNodes(root.left)
-
-# }
-
-def right_root_left_traversal(root) :
+def kth_largest(root, k, tree) :
 # {
-    """
-    Performs a right-root-left traversal of a binary search tree (BST).
-
-    Args:
-        root: The root node of the BST.
-    """
-    if root is None:
-        return
-
-    right_root_left_traversal(root.right)  # Traverse the right subtree
-    print(root.data, end=" ")  # Process the current node (root)
-    right_root_left_traversal(root.left)   # Traverse the left subtree
-# }
-
-def kthLargest(root, k) :    
-# {
-    # implement this
-    # The number of nodes in the right subtree of the root
-    if (root) :
+    if (root and k > len(tree)) :
     # {
-        right_nodes = countNodes(root.right)
+        tree.append(root.val)
+    # }
+
+    elif (len(tree) == k) :
+    # {
+        print('!@', tree[k - 1])
+        return tree[k - 1]
     # }
 
     else :
     # {
-        right_nodes = 0
+        None
     # }
 
-    # print(root.val, k, right_nodes)
-    
-    # If k is equal to the number of nodes in the right subtree plus 1, 
-    # That means we must return the root's value as we've reached the k-th smallest
-    if (k == right_nodes + 1) :
+    if (root.right) :
     # {
-        return root.val
+        kth_largest(root.right, k, tree)  # Traverse the right subtree
     # }
-    
-    elif (k <= right_nodes) :
-    # {
-        return kthLargest(root.right, k)
-    # }
-    
+
     else :
     # {
-        return kthLargest(root.right, k - 1 - right_nodes) 
+        None
+    # }
+
+    if (root.left) :
+    # {
+        kth_largest(root.left, k, tree)   # Traverse the left subtree
+    # }
+
+    else :
+    # {
+        None
     # }
 
 # }
@@ -100,16 +72,230 @@ root.left.right.right = Node(35)
 root.right.right.left = Node(65)
 root.right.right.right = Node(80)
 
-# Now, let's test the function with the new binary tree
-print(kthLargest(root, 1))  # Expected output: 80
-print(kthLargest(root, 5))  # Expected output: 55
-print(kthLargest(root, 10))  # Expected output: 20
-print(kthLargest(root, 3))  # Expected output: 65
-print(kthLargest(root, 7))  # Expected output: 35
+print(kth_largest(root, 5, []))  # Expected output: 55
+
+# print(kth_largest(root, 10))  # Expected output: 20
+# print(kth_largest(root, 3))  # Expected output: 65
+# print(kth_largest(root, 7))  # Expected output: 35
+# print(kth_largest(root, 2))  # Expected output: 70
 
 '''
 
 ***** BONEYARD *****
+
+# print(root.val)  # Process the current node (root)
+        # print(root.val, tree, len(tree), k)
+        # return tree[k - 1]
+        # print('!', tree, len(tree), k)
+
+# Now, let's test the function with the new binary tree
+# print(kth_largest(root, 1))  # Expected output: 80
+
+# tree = right_root_left_traversal(root)
+# print(tree)
+
+        if (root.right) :
+        # {
+            # print("crap")
+            count = count + 1
+        # }
+
+        else :
+        # {
+            # count = count + 1
+            print("poop")
+        # }
+
+
+# print('!', tree)
+        # tree.append(root.val)
+        
+
+ """
+    Performs a right-root-left traversal of a binary search tree (BST).
+
+    Args:
+        root: The root node of the BST.
+    """
+
+def kth_largest_in_bst(root, k) :
+# {
+    """
+    Finds the k-th largest element in a Binary Search Tree (BST).
+
+    Args:
+        root: The root of the BST.
+        k: The desired rank (k-th largest).
+
+    Returns:
+        The k-th largest element, or None if k is invalid or the tree is empty.
+    """
+
+    # if not root or k <= 0:  # Handle invalid input
+    #    return None
+
+    if (root or k >= 0) :
+    # {
+        # count = 0
+        # print('!', k, root)
+
+        return reverse_inorder(root, k, 0)
+    # }
+
+    else :
+    # {
+        return None
+    # }
+
+    # count = [0]  # Use a list to make count mutable in the recursive function
+
+    # return reverse_inorder(root)
+
+# }
+
+def reverse_inorder(node, k, count) :
+# {
+    print('!', node.val, k, count)
+    
+    if (node) :
+    # {
+        right_result = reverse_inorder(node.right, k, count)
+
+        if (right_result) : # Found in right subtree
+        # {
+            return right_result
+        # }
+
+        # count[0] += 1
+        count = count + 1
+
+        if (count == k) :
+        # {
+            return node.val
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+        left_result = reverse_inorder(node.left, k, count)
+
+        return left_result
+    # }
+    
+    else :
+    # {
+        return count
+    # }
+
+# }
+
+def kth_largest_in_bst(root, k):
+    """
+    Finds the k-th largest element in a Binary Search Tree (BST).
+
+    Args:
+        root: The root of the BST.
+        k: The desired rank (k-th largest).
+
+    Returns:
+        The k-th largest element, or None if k is invalid or the tree is empty.
+    """
+
+    if not root or k <= 0:  # Handle invalid input
+        return None
+
+    count = [0]  # Use a list to make count mutable in the recursive function
+
+    def reverse_inorder(node):
+        if not node:
+            return None
+
+        right_result = reverse_inorder(node.right)
+        if right_result is not None:  # Found in right subtree
+            return right_result
+
+        count[0] += 1
+        if count[0] == k:
+            return node.data
+
+        left_result = reverse_inorder(node.left)
+        return left_result
+
+    return reverse_inorder(root)
+
+def countNodes(root) :
+# {    
+    if (root) :
+    # {
+        return 1 + countNodes(root.right) + countNodes(root.left)
+    # }
+    
+    else :
+    # {
+        return 0
+    # }
+
+# }
+
+def kthLargest(root, k) :    
+# {
+    print(root.val, k)
+    
+    if (root) :
+    # {
+        right_nodes = countNodes(root.right)
+    # }
+
+    else :
+    # {
+        right_nodes = 0
+    # }
+
+    if (k == right_nodes + 1) :
+    # {
+        return root.val
+    # }
+    
+    elif (k <= right_nodes) :
+    # {
+        return kthLargest(root.right, k)
+    # }
+    
+    else :
+    # {
+        return kthLargest(root.right, k - 1 - right_nodes) 
+    # }
+
+# }
+
+    # implement this
+    # The number of nodes in the right subtree of the root
+    
+    # print(root.val, k, right_nodes)
+    
+    # If k is equal to the number of nodes in the right subtree plus 1, 
+    # That means we must return the root's value as we've reached the k-th smallest
+
+def right_root_left_traversal(root) :
+# {
+    """
+    Performs a right-root-left traversal of a binary search tree (BST).
+
+    Args:
+        root: The root node of the BST.
+    """
+    if root is None:
+        return
+
+    right_root_left_traversal(root.right)  # Traverse the right subtree
+    print(root.data, end=" ")  # Process the current node (root)
+    right_root_left_traversal(root.left)   # Traverse the left subtree
+# }
+
+    # return 1 + countNodes(root.left) + countNodes(root.right)
+    # return 1 + countNodes(root.right) + countNodes(root.left)
 
 class Node:
     def __init__(self, data):
