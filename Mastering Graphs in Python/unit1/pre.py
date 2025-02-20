@@ -22,6 +22,30 @@ Initialize a list of lists (to replicate a 2D array or a matrix) where each cell
 As we find an edge between vertices i and j, we set both M[i][j] and M[j][i] to 1.
 Below is a sample Python code that depicts the simple friend group we considered earlier:
 
+Running this code yields the Adjacency Matrix of the friend graph where Alice (row 0) has connections with both Bob and Carol (columns 1 and 2).
+
+At first glance, the Adjacency Matrix may seem like a complex array of numbers. However, with a bit of practice, reading and interpreting this matrix can become straightforward. Each row and column is a unique node from the graph, and every cell M[i][j] maps to a potential edge between nodes i and j.
+
+Consider our friend graph: the Adjacency Matrix showed that Alice (row 0) has connections with both Bob and Carol (columns 1 and 2). However, upon observing Bob's row and Carol's column, or Carol's row and Bob's column, we notice that there are no connections between them, indicating they are not friends.
+
+So when should we use the Adjacency Matrix? The Adjacency Matrix representation is usually preferred when the graph is dense — that is, there are many edges relative to the number of vertices. However, if the graph has fewer edges (a sparse graph), it might not be the best choice due to its high space complexity. This is because we need an 
+N
+×
+N
+N×N matrix to represent a graph of 
+N
+N vertices, regardless of whether an edge exists or not.
+
+Let's now apply this to a more complex and real-world scenario. Consider Facebook's friend recommendation system: we have more users, which we can depict as nodes, and friendships, which we can depict as edges. Consider this case:
+
+B is friends with both A and C, but A doesn't know C. D doesn't know anyone. As A and C have a mutual friend, we might want to recommend them to each other. If we use an Adjacency Matrix to represent this relationship, we can efficiently determine this friend recommendation.
+
+Let's put this into Python code to see how it works!
+
+Running the code, we get a friend suggestion for Users A and C as they have a mutual connection with User B. Note that User D doesn't get any recommendations.
+
+With that, we've successfully traversed through the lesson on constructing an Adjacency Matrix for a given Graph structure! To reiterate, you've learned how an Adjacency Matrix can effectively represent a graph, explored how to convert an actual graph into its equivalent Adjacency Matrix representation using Python, and delved into how this matrix can be interpreted to get a clear view of the graph's connections. You've also seen a practical implementation of the Adjacency Matrix in social media friend recommendations.
+
 '''
 
 M = [
@@ -32,20 +56,91 @@ M = [
 
 # Mapping friends to numbers for simplicity: Alice: 0, Bob: 1, Carol: 2
 n = 3  # number of friends
-M = [[0] * n for _ in range(n)]  # Adjacency Matrix
+
+# M = [[0] * n for _ in range(n)]  # Adjacency Matrix
+for _ in range(n):
+# {
+    M.append([0] * n)
+# }
 
 # Alice is friends with Bob and Carol
 M[0][1] = M[0][2] = 1
 M[1][0] = M[2][0] = 1
 
 # Print the matrix
-for row in M:
+for row in M :
+# {
     print(row)
+# }
 
 # Output:
 # [0, 1, 1]
 # [1, 0, 0]
 # [1, 0, 0]
+
+users = 4  # 4 users: A: 0, B: 1, C: 2, D: 3
+M = [[0] * users for _ in range(users)]
+
+# Add friendships, A-B and B-C
+M[0][1] = M[1][0] = 1
+M[1][2] = M[2][1] = 1
+
+# Print the adjacency matrix
+for row in M:
+    print(row)
+
+# Output:
+# [0, 1, 0, 0]
+# [1, 0, 1, 0]
+# [0, 1, 0, 0]
+# [0, 0, 0, 0]
+
+users = 4  # 4 users: A: 0, B: 1, C: 2, D: 3
+M = [[0] * users for _ in range(users)]
+
+# Add friendships, A-B and B-C
+M[0][1] = M[1][0] = 1
+M[1][2] = M[2][1] = 1
+
+# Print the adjacency matrix
+for row in M :
+# {
+    print(row)
+# }
+
+# Output:
+# [0, 1, 0, 0]
+# [1, 0, 1, 0]
+# [0, 1, 0, 0]
+# [0, 0, 0, 0]
+
+# Check for friend suggestions
+for i in range(users) :
+# {
+    for j in range(i + 1, users) :
+    # {
+        if (i != j and 
+            M[i][j] == 0 and 
+            any(M[i][k] == 1 and M[k][j] == 1)) :
+        # {
+            for k in range(users) :
+            # {
+                print("User", i, " and User", j, "may know each other.")
+            # }
+
+        # }
+
+        else :
+        # {
+            None
+        #}
+
+    # }
+
+# }
+
+# Output: 
+# User 0 and User 2 may know each other.
 
 '''
 
