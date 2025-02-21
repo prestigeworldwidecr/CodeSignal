@@ -67,7 +67,7 @@ def DFS(graph, start, visited) :
     
     for next_node in graph[start] :
     # {
-        if next_node in visited:
+        if(next_node in visited) :
         # {
             None
         # }
