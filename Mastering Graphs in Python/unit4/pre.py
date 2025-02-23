@@ -116,6 +116,8 @@ def dfs(vertex, visited, stack, graph, parent):
 
         # }
 
+    # }
+
     return False
 
 # }
