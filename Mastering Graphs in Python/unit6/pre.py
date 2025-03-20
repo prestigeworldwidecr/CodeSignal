@@ -33,7 +33,8 @@ def shortestPath(n, graph, start, end) :
     
     while (queue) :
     # {
-        distance, path = queue.popleft()
+        distance = queue.popleft() 
+        path = queue.popleft()
         node = path[-1]
         min_distances[node] = distance
 
