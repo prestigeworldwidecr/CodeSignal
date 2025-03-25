@@ -4,6 +4,7 @@ Welcome to the final task of this unit! In this task, we will focus on applying 
 
 The code manages the placement and cancellation of customer orders, but key operations are repeated in both processes. Let’s extract those common elements into a universal function to streamline our code!
 
+Good try, but that's not quite right. The task requires you to extract the repeated logic of printing the order ID and status into a separate function. Would you like some help with that? 🤔
 
 '''
 
