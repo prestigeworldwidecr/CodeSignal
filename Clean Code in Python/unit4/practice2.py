@@ -11,18 +11,18 @@ import math
 class SquareEquationSolver :
 # {
 
-    """
+    '''
     TODO: Add a docstring to this class
     Class returns the roots of a quadratic equation
-    """
+    '''
     
     def solve_quadratic(self, a, b, c) :
     # {
-        """ 
+        ''' 
         TODO: Add comments to this method
         method solves the quadratic equation ax^2 + bx + c = 0
         and returns the roots as a list
-        """
+        '''
 
         roots = [None, None]
         discriminant = b * b - 4 * a * c    # b^2 - 4ac
