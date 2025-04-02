@@ -6,23 +6,30 @@ The current LibraryManager class manages book details, borrower information, and
 
 '''
 
-class LibraryManager :
+class LibraryBook :
 # {
-    def __init__(self, title, author, borrower_name, borrower_email) :
+    def __init__(self, title, author) :
     # {
         self.title = title
         self.author = author
+    # }
+
+# }
+
+class LibraryBorrower :
+# {
+    def __init__(self, borrower_name, borrower_email) :
+    # {
         self.borrower_name = borrower_name
         self.borrower_email = borrower_email
     # }
+
 # }
 
-class LibraryManagerSendDueDateReminder :
+class LibraryManager :
 # {
     def send_due_date_reminder(self, borrower_email, author, title, due_date) :
     # {
-        # print(f"Sending notification to {self.borrower_email}: "
-              # f"'{self.title}' by {self.author} is due on {due_date}")
         print("Sending notification to", borrower_email, ':')
         print(title, "by", author, "is due on", due_date)
     # }
@@ -30,10 +37,12 @@ class LibraryManagerSendDueDateReminder :
 
 def main() :
 # {
-    library_manager = LibraryManager("Fluent Python", "Luciano Ramalho", "John Doe", "john.doe@example.com")
-    # library_manager.send_due_date_reminder("30th October 2023")
-    library_manager_send_due_date_reminder = LibraryManagerSendDueDateReminder()
-    library_manager_send_due_date_reminder.send_due_date_reminder(library_manager.borrower_email, library_manager.author, library_manager.title, "30th October 2023")
+    library_borrower = LibraryBorrower("John Doe", "john.doe@example.com")
+    library_book = LibraryBook("Fluent Python", "Luciano Ramalho")
+    library_manager = LibraryManager()
+    
+    library_manager.send_due_date_reminder(library_borrower.borrower_email, library_book.author, library_book.title, "30th October 2023")
+
 # }
 
 if (__name__ == "__main__") :
@@ -49,5 +58,25 @@ else :
 '''
 
 ***** BONEYARD *****
+
+# print(f"Sending notification to {self.borrower_email}: "
+              # f"'{self.title}' by {self.author} is due on {due_date}")
+        
+    # library_manager = LibraryManager("Fluent Python", "Luciano Ramalho", "John Doe", "john.doe@example.com")
+    # library_manager.send_due_date_reminder("30th October 2023")
+    # library_manager_send_due_date_reminder = LibraryManagerSendDueDateReminder()
+    # library_manager_send_due_date_reminder.send_due_date_reminder(library_manager.borrower_email, 
+    # # # # library_manager.author, library_manager.title, "30th October 2023")
+
+class LibraryManager :
+# {
+    def __init__(self, title, author, borrower_name, borrower_email) :
+    # {
+        self.title = title
+        self.author = author
+        self.borrower_name = borrower_name
+        self.borrower_email = borrower_email
+    # }
+# }
 
 '''
