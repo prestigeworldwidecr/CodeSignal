@@ -14,8 +14,6 @@ class Rectangle :
     # {
         self._width = width
         self._height = height
-        # width(width)
-        # height(height)
     # }
 
     @property
