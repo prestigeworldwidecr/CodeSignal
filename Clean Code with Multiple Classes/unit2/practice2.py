@@ -2,6 +2,7 @@
 
 In our next exercise we're aiming to streamline our payment processing system. Currently, we have a StoreTransaction class that directly interacts with specific payment types. This setup is inflexible and makes it challenging to introduce new payment methods. Your task is to refactor the code to create a PaymentType abstract class, which will decouple the transaction processing logic from the payment methods. Doing so will enable our transaction processing to work with any payment type that implements this class, paving the way for future scalability and easier maintenance.
 
+
 '''
 
 from abc import ABC, abstractmethod

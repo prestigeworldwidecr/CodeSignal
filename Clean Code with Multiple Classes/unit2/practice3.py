@@ -17,6 +17,13 @@ Good effort, but your solution doesn't let each document type provide its own pr
 
 Want to try making process abstract and customizing it in each subclass? Let me know if you need a hint!
 
+
+In your abstract base class, define a method (e.g., process_document) that calls self.open(), self.process(), and self.close() in that order.
+
+Use @abstractmethod to mark process as abstract, so each subclass must implement it.
+Subclasses should only override process, not open or close.
+Try writing just the abstract base class with this structure!
+
 '''
 
 from abc import ABC, abstractmethod
@@ -24,10 +31,18 @@ from abc import ABC, abstractmethod
 class Document(ABC) :
 # {
     @abstractmethod
+    def process(self) :
+    # {
+        # self.open()
+        # self.process() 
+        # self.close()
+        None
+    # }
+
     def process_document(self) :
     # {
         self.open()
-        self.process() 
+        self.process()
         self.close()
     # }
 
@@ -46,7 +61,7 @@ class Document(ABC) :
 
 class TextDocument(Document) :
 # {
-    def process() :
+    def process(self) :
     # {
         # print("Opening text document")
         print("Processing text document")
@@ -57,7 +72,7 @@ class TextDocument(Document) :
 
 class SpreadsheetDocument(Document) :
 # {
-    def process() :
+    def process(self) :
     # {
         # print("Opening spreadsheet document")
         print("Processing spreadsheet document")
@@ -68,7 +83,10 @@ class SpreadsheetDocument(Document) :
 
 if (__name__ == "__main__"):
 # {
-    document = Document.process_document(TextDocument())
+    text_document = TextDocument()
+    spreadsheet_document = SpreadsheetDocument()
+    text_document.process_document()
+    spreadsheet_document.process_document()
 # }
 
 else :
