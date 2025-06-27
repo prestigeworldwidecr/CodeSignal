@@ -41,7 +41,6 @@ class BookingService :
 
 def main() :
 # {
-    # print("Processing booking...")
     booking_service = BookingService(EmailNotification())
     booking_service.process_booking("Your booking is confirmed!")
 # }
@@ -59,5 +58,7 @@ else :
 '''
 
 ***** BONEYARD *****
+
+# print("Processing booking...")
 
 '''
