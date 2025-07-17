@@ -8,7 +8,6 @@ This change will encapsulate certain checks into reusable methods, reduce repeti
 
 from datetime import datetime, timedelta
 
-
 class Customer :
 # {    
     def __init__(self, sign_up_date, purchase_history, loyalty_level) :
