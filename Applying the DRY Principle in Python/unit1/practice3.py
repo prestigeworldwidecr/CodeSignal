@@ -50,8 +50,6 @@ def is_customer_new(customer_sign_up_date) :
 
 def is_eligible_for_discount(customer) :
 # {
-    # print(customer.get_purchase_history(), len(customer.get_purchase_history()))
-    
     if (is_customer_new(customer.get_sign_up_date()) and len(customer.get_purchase_history()) > 5) :
     # {
         return True
@@ -115,6 +113,10 @@ else :
     new_customer = customer.get_sign_up_date() > datetime.now() - timedelta(days = 90)
 
     return new_customer or customer.get_loyalty_level() > 3    
+
+    # print(customer.get_purchase_history(), len(customer.get_purchase_history()))
+    
+    
     
 
 '''
