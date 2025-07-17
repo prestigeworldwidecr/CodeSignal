@@ -26,17 +26,35 @@ Preserve the original exception context where applicable.
 
 class BookNotAvailableException :
 # {
-    None
+    def __init__(self, book_id) :
+    # {
+        msg = str("Book:" + book_id + " not available")
+        super().__init__(msg)
+        self.book_id = book_id
+    # }
+
 # }
 
 class BookNotFoundException :
 # {
-    None
+    def __init__(self, book_id) :
+    # {
+        msg = str("Book:" + book_id + " does not exist")
+        super().__init__(msg)
+        self.book_id = book_id
+    # }
+    
 # }
 
 class InvalidUserException :
 # {
-    None
+    def __init__(self, user_id) :
+    # {
+        msg = str("User:" + user_id + " does not exist")
+        super().__init__(msg)
+        self.user_id = user_id
+    # }
+    
 # }
 
 class BookRepository :
@@ -45,13 +63,16 @@ class BookRepository :
     # {
         if book_id == "00000" :
         # {
-            raise Exception("Book not found")
+            # raise Exception("Book not found")
+            raise BookNotAvailableException(book_id)
         # }
 
         else :
         # {
             return True
         # }
+
+    # }
 
     def is_valid_user(self, user_id) :
     # {
@@ -62,7 +83,8 @@ class BookRepository :
 
         else :
         # {
-            raise Exception("Invalid user")
+            # raise Exception("Invalid user")
+            raise InvalidUserException(user_id)
         # }
 
     # }
@@ -71,7 +93,8 @@ class BookRepository :
     # {
         if (book_id == "error") :
         # {
-            raise Exception("Update failed")
+            # raise Exception("Update failed")
+            raise BookNotFoundException(book_id)
         # }
         
         else :
@@ -112,7 +135,8 @@ class LibraryService :
 
         else :
         # {
-            raise Exception("Book is not available")
+            # raise Exception("Book is not available")
+            raise BookNotAvailableException(book_id)
         # }
 
         if (self.book_repository.is_valid_user(user_id)) :
@@ -122,7 +146,8 @@ class LibraryService :
 
         else :
         # {
-            raise Exception("User is not valid")
+            # raise Exception("User is not valid")
+            raise InvalidUserException(user_id)
         # }
 
         self.book_repository.update_book_status(book_id, False)
@@ -140,7 +165,7 @@ def main() :
 
     except Exception as e :
     # {
-        print(f"Operation failed: {e}")
+        print("Operation failed:", e)
     # }
 
 # }
