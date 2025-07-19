@@ -22,8 +22,18 @@ class Order :
 # {
     def __init__(self, item, quantity) :
     # {
-        self.item = item
-        self.quantity = quantity
+        self._item = item
+        self._quantity = quantity
+    # }
+
+    def get_item(self) :
+    # {
+        return self._item
+    # }
+
+    def get_quantity(self) :
+    # {
+        return self._quantity
     # }
 
 # }
@@ -33,7 +43,8 @@ class DeliveryService :
     def process_order(self, customer, item, quantity) :
     # {
         order = Order(item, quantity)
-        print(customer.get_name(), "received order:", quantity, 'x', order.item)
+        # print(customer.get_name(), "received order:", quantity, 'x', order.item)
+        print(customer.get_name(), "received order:", order.get_quantity(), 'x', order.get_item())
     # }
 
 # }
