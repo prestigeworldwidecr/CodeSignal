@@ -6,8 +6,6 @@ The current setup complicates the class design by forcing unrelated functionalit
 
 '''
 
-# from abc import ABC, abstractmethod
-
 class Car :
 # {
     def drive(self) :
