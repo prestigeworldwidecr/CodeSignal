@@ -19,7 +19,6 @@ This refactoring will make the code more maintainable, extensible, and aligned w
 
 from abc import ABC, abstractmethod
 
-
 class Animal(ABC) :
 # {
     def feed(self) :
