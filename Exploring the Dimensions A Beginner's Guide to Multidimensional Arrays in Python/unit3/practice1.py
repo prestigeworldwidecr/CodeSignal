@@ -4,8 +4,6 @@ Wonderful progress, Space Voyager! Here's a practical task involving the restaur
 
 '''
 
-import math, numpy
-
 # A function to transpose a matrix representing restaurant seating arrangement
 def transpose_seating(seating) :
 # {
@@ -45,6 +43,8 @@ print(transposed_seating)  # Output isn't as expected. Can you identify the fix?
 '''
 
 ***** BONEYARD *****
+
+import math, numpy
 
  # total_rows - i - 1
 
