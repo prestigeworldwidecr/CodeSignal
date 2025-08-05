@@ -28,8 +28,8 @@ def reflectOverSecondaryDiagonal(matrix) :
     # {
         for j in range(p, edge_max_Y - 1, 1) :
         # {
-            print(edge_max_Y - 1, '(', i, ',', j, ')', '(', edge_length - i - 1, ',', edge_max_Y - 1, ')', edge_length - 1)  
-            new_matrix[i][j], new_matrix[edge_length - i - 1][edge_max_Y - 1] = new_matrix[edge_length - i - 1][edge_max_Y - 1], new_matrix[i][j]
+            # print(edge_max_Y - 1, '(', i, ',', j, ')', '(', edge_length - i - 1, ',', edge_max_Y - 1, ')', edge_length - 1)  
+            new_matrix[i][j], new_matrix[edge_length - j - 1][edge_length - i - 1] = new_matrix[edge_length - j - 1][edge_length - i - 1], new_matrix[i][j]
             
         # }
 
