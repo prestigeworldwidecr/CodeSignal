@@ -137,7 +137,6 @@ for i in range(total_rows) :
 
 for i in range(len(empty_spaces)) :
 # {
-    # print(evaluate_move(board, empty_spaces[i][0], empty_spaces[i][1]))
     row = empty_spaces[i][0]
     col = empty_spaces[i][1]
 
@@ -158,6 +157,9 @@ print(valid_moves)
 '''
 
 ***** BONEYARD *****
+
+# print(evaluate_move(board, empty_spaces[i][0], empty_spaces[i][1]))
+    
 
 if (0 < row and row < total_rows - 1 and 0 < col and col < total_columns - 1) :
         # {
