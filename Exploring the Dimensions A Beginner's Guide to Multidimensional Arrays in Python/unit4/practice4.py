@@ -32,17 +32,171 @@ Good effort, but your function isn't checking all four neighbors or if the cell 
 
 Want to give it another shot or need a hint?
 
+Good try, but your function should return True or False, not a list, and you need to use a list comprehension to collect all valid positions.
+
+Want to try adjusting your approach? Let me know if you need a hint!
+
+Sure! Here are a couple of small hints:
+
+First, check if the cell at (row, col) is empty ('E').
+Then, look at its neighbors: up (row-1, col), down (row+1, col), left (row, col-1), and right (row, col+1). Make sure you don't go out of bounds!
+If at least one neighbor is also empty, that's a valid move.
+How would you check each neighbor safely
+
+Exactly! Those checks help you avoid going out of bounds when looking at neighbors.
+
+Now, for each direction:
+
+Use these conditions before accessing a neighbor.
+Then, check if that neighbor is 'E'.
+Can you combine these checks to see if at least one neighbor is empty?
+
+You’re on the right track with your neighbor checks! A few tips:
+
+You only need to add (row, col) to your result if at least one neighbor is empty—not the neighbor’s coordinates.
+Try to simplify: use or to check all four neighbors, and if any are empty, add (row, col).
+Can you rewrite your logic so you only append (row, col) when the current cell is empty and at least one neighbor is empty
+
 '''
 
 def evaluate_move(board, row, col) :
 # {
-    result = []
-    
     # TODO: Check if a move to the given cell is possible; write a condition to check if the cell is empty.
     # Also, check if at least one neighboring cell is empty (not diagonally).
     if (board[row][col] == 'E') :
     # {
-        if (row > 0) :
+        # print((row, col))
+
+        if (row > 0 and board[row - 1][col] == 'E') :
+        # {
+            return True
+        # }
+
+        elif (row < total_rows - 1 and board[row + 1][col] == 'E') :
+        # {
+            return True
+        # }
+
+        elif (col > 0 and board[row][col - 1] == 'E') :
+        # {
+            return True
+        # }
+
+        elif (col < total_columns - 1 and board[row][col + 1] == 'E') :
+        # {
+            return True
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+    # }
+
+    else :
+    # {
+        None
+    # }
+
+    return False
+
+# }
+
+# Assuming a constant 2D array representing a board
+board = [
+            ['P', 'E', 'E', 'P'],
+            ['E', 'P', 'E', 'P'],
+            ['P', 'E', 'P', 'P'],
+            ['P', 'E', 'P', 'E']
+        ]
+
+# TODO: Write a list comprehension to find all valid move positions.
+empty_spaces = []
+valid_moves = []
+total_rows = len(board)
+total_columns = len(board[0])
+
+for i in range(total_rows) :
+# {
+    for j in range(total_columns) :
+    # {
+        if (board[i][j] == 'E') :
+        # {
+            empty_spaces.append((i, j))
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+    # }
+
+# }
+
+for i in range(len(empty_spaces)) :
+# {
+    # print(evaluate_move(board, empty_spaces[i][0], empty_spaces[i][1]))
+    row = empty_spaces[i][0]
+    col = empty_spaces[i][1]
+
+    if (evaluate_move(board, row, col)) :
+    # {
+        valid_moves.append((row, col))
+    # }
+
+    else :
+    # {
+        None
+    # }
+    
+# }
+
+print(valid_moves)
+
+'''
+
+***** BONEYARD *****
+
+if (0 < row and row < total_rows - 1 and 0 < col and col < total_columns - 1) :
+        # {
+            print(row, col)
+            
+            if (board[row - 1][col] == 'E' or board[row + 1][col] == 'E' or board[row][col - 1] == 'E' or board[row][col + 1] == 'E') :
+            # {
+                # result.append((row, col))
+                return True
+            # }
+
+            else :
+            # {
+                None
+            # }
+
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+# result = []
+    
+    
+
+    # }
+
+    else :
+    # {
+        None
+    # }
+
+# print(valid_moves[0][1])
+# print(evaluate_move(board, 1, 2))
+# print('(', valid_moves[i][0], ',', valid_moves[i][1], ')')
+    
+if (row > 0) :
         # {
             if (board[row - 1][col] == 'E') :
             # {
@@ -128,61 +282,5 @@ def evaluate_move(board, row, col) :
     # {
         None
     # }
-
-    return result
-
-# }
-
-# Assuming a constant 2D array representing a board
-board = [
-            ['P', 'E', 'E', 'P'],
-            ['E', 'P', 'E', 'P'],
-            ['P', 'E', 'P', 'P'],
-            ['P', 'E', 'P', 'E']
-        ]
-
-# TODO: Write a list comprehension to find all valid move positions.
-valid_moves = []
-total_rows = len(board)
-total_columns = len(board[0])
-
-for i in range(total_rows) :
-# {
-    for j in range(total_columns) :
-    # {
-        if (board[i][j] == 'E') :
-        # {
-            valid_moves.append((i, j))
-        # }
-
-        else :
-        # {
-            None
-        # }
-
-    # }
-
-# }
-
-for i in range(len(valid_moves)) :
-# {
-    print(evaluate_move(board, valid_moves[i][0], valid_moves[i][1]))
-# }
-
-'''
-
-***** BONEYARD *****
-
-    # }
-
-    else :
-    # {
-        None
-    # }
-
-# print(valid_moves[0][1])
-# print(evaluate_move(board, 1, 2))
-# print('(', valid_moves[i][0], ',', valid_moves[i][1], ')')
-    
 
 '''
