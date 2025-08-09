@@ -15,7 +15,8 @@ def find_next_uphill(grid, position) :
 
     for direction_row, direction_col in directions :
     # {
-        new_r, new_c = row + direction_row, col + direction_col
+        new_r = row + direction_row
+        new_c = col + direction_col
 
         if (0 <= new_r < len(grid) and 0 <= new_c < len(grid[0]) and grid[new_r][new_c] > next_val) :
         # {
