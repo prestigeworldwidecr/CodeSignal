@@ -12,16 +12,36 @@ def find_peak(grid, start_row, start_col) :
     total_rows = len(grid) 
     total_columns = len(grid[0])
     altitude = grid[start_row][start_col]
+    flag = True
+    cnt = 0
 
-    # Check North, East, South, West for higher altitude
-    for direction_row, direction_column in [(-1, 0), (0, 1), (1, 0), (0, -1)] :
+    while(flag) :
     # {
-        r = start_row + direction_row
-        c = start_col + direction_column
-
-        if (0 <= r < total_rows and 0 <= c < total_columns and grid[r][c] > altitude) :
+        cnt = 0
+        
+        for direction_row, direction_column in [(-1, 0), (0, 1), (1, 0), (0, -1), (-1, -1), (1, 1), (-1, 1), (1, -1)] :
         # {
-            altitude = grid[r][c]  # This line introduces a logical error
+            r = start_row + direction_row
+            c = start_col + direction_column
+
+            if (0 <= r < total_rows and 0 <= c < total_columns and grid[r][c] > altitude) :
+            # {
+                altitude = grid[r][c]  # This line introduces a logical error
+                start_row = r
+                start_col = c
+                cnt = cnt + 1
+            # }
+
+            else :
+            # {
+                None
+            # }
+
+        # }
+
+        if (cnt == 0) :
+        # {
+            flag = False
         # }
 
         else :
@@ -29,6 +49,8 @@ def find_peak(grid, start_row, start_col) :
             None
         # }
 
+        # return altitude
+    
     # }
 
     return altitude
@@ -48,5 +70,7 @@ print(find_peak(mountain, 0, 1))  # Should print the altitude of the highest pea
 '''
 
 ***** BONEYARD *****
+
+# Check North, East, South, West for higher altitude
 
 '''
