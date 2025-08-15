@@ -10,15 +10,26 @@ def trek_path(elevation_map, start_x, start_y) :
 # {
     possible_moves = [None]
     directions = [(0, 1), (-1, 0), (0, -1), (1, 0)]  # East, South, West, North
-    max_elevation = -sys.maxsize
-    path = []
+    path = [elevation_map[start_x][start_y]]
+    # flag = True
 
     # Pre-completed: Find all possible moves from the current position, moving only to higher and not yet visited elevations.
-    while(possible_moves) :
+    while(True) :
     # {
-        if (possible_moves[0] is None) :
+        current_height = path[-1]
+
+        # print(current_height)
+
+        # Pre-completed: Find all possible moves from the current position, moving only to higher and not yet visited elevations.
+        possible_moves = [(start_x + dx, start_y + dy) for dx, dy in directions
+                            if (0 <= start_x + dx < len(elevation_map) and
+                                0 <= start_y + dy < len(elevation_map[0]) and
+                                elevation_map[start_x + dx][start_y + dy] > current_height)
+                        ]
+
+        if (not possible_moves) :
         # {
-            possible_moves.pop()
+            break
         # }
 
         else :
@@ -26,38 +37,17 @@ def trek_path(elevation_map, start_x, start_y) :
             None
         # }
 
-        for dx, dy in directions :
-        # {
-            # print((start_x + dx, start_y + dy))
+        # TODO: Implement logic to select the next position based on the highest elevation in the possible moves.
 
-            if (0 <= start_x + dx < len(elevation_map) and 0 <= start_y + dy < len(elevation_map[0]) and elevation_map[start_x + dx][start_y + dy] > max_elevation) :
-            # {
-                possible_moves.append((start_x + dx, start_y + dy))
-                # print(max(possible_moves))
-                max_elevation = elevation_map[start_x + dx][start_y + dy]
-                # path.append(max_elevation)
-                # start_x = start_x + dx
-                # start_y = start_y + dy
-                # print('!', len(possible_moves), max_elevation)
-            # }
-
-            else :
-            # {
-                # print(elevation_map[start_x + dx][start_y + dy])    
-                None
-            # }
-
-        # }
-
-        start_x = start_x + dx
-        start_y = start_y + dy
-        # print('!', len(possible_moves), max_elevation)
-        path.append(max_elevation)
-        possible_moves.pop()
-
+        # Hint: Use a key function with the max() function to find the move leading to the highest elevation.  
+        max(possible_moves, key=lambda pos: elevation_map[pos[0]][pos[1]])
+        # path.append()
+        start_x = possible_moves[len(possible_moves) - 1][0]
+        start_y = possible_moves[len(possible_moves) - 1][1]
+        path.append(elevation_map[start_x][start_y])
+        
     # }
 
-    path.pop()
     return path
 
 # }
@@ -114,6 +104,84 @@ possible_moves = [
     # print(len(possible_moves))
     # path = [elevation_map[start_x][start_y]]
     
-                     
+
+        # print((start_x + dx, start_y + dy))
+
+                # print(max(possible_moves))
+                # path.append(max_elevation)
+                # start_x = start_x + dx
+                # start_y = start_y + dy
+                # print('!', len(possible_moves), max_elevation)
+                # print(elevation_map[start_x + dx][start_y + dy])    
+        # print('!', len(possible_moves), max_elevation)                     
+
+# max_elevation = -sys.maxsize        
+
+
+
+# path.append(max_elevation)
+    # path.pop() 
+    # return path
+                                
+for dx, dy in directions :
+        # {            
+        # }
+
+
+        if (possible_moves[0] is None) :
+        # {
+            possible_moves.pop()
+        # }
+
+        else :
+        # {
+            None
+        # }
+        possible_moves.pop()
+
+        possible_moves.append((start_x + dx, start_y + dy))
+            key = lambda possible_moves: elevation_map[[start_x + dx][start_y + dy]]
+            print(key)
+
+        # start_x = start_x + dx
+        # start_y = start_y + dy            
+
+# max_elevation = elevation_map[start_x + dx][start_y + dy]
+                # max_elevation = max(possible_moves)        
+
+possible_moves = [
+                            (start_x + dx, start_y + dy) for dx, dy in directions
+                            if (0 <= start_x + dx < len(elevation_map) and
+                                0 <= start_y + dy < len(elevation_map[0]) and
+                                elevation_map[start_x + dx][start_y + dy] > current_height)
+                        ]
                         
+for dx, dy in directions :
+        # {
+            possible_moves = [None]
+            # print(elevation_map[start_x + dx][start_y + dy], current_height)
+
+            if (0 <= start_x + dx < len(elevation_map) and 0 <= start_y + dy < len(elevation_map[0]) and elevation_map[start_x + dx][start_y + dy] > current_height) :
+            # {
+                possible_moves.append((start_x + dx, start_y + dy))
+            # }
+
+            else :
+            # {
+                # possible_moves.pop()
+                None
+            # }
+
+        # }
+
+if (possible_moves) :
+        # {            
+            None
+        # }
+
+        else :
+        # {
+            flag = False
+        # }        
+
 '''
