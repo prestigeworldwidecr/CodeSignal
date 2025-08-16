@@ -6,7 +6,7 @@ You're on the final stretch of mastering grid traversal, Space Voyager! Imagine 
 
 def inbounds(matrix, x, y) :
 # {
-    return 0 <= x < len(matrix) and 0 <= y < len(matrix[0]) - 1
+    return 0 <= x < len(matrix) and 0 <= y < len(matrix[0])
 # }
 
 # TODO: Define the path_traverse function that takes a matrix of "heights" and the current position as parameters. It should return the next step's position if a higher value is found, or None if there's no higher adjacent value.
