@@ -31,8 +31,6 @@ def trek_path(elevation_map, start_x, start_y) :
 
         # }
 
-        # print(possible_moves)
-
         if (possible_moves and possible_moves[0] != None) :
         # {
             # TODO: Implement logic to select the next position based on the highest elevation in the possible moves.
@@ -212,5 +210,6 @@ import sys
                         
 # possible_moves.pop()
 # possible_moves = []
+        # print(possible_moves)
 
 '''
