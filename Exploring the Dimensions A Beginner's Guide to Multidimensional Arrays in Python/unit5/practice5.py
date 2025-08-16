@@ -4,10 +4,36 @@ You're on the final stretch of mastering grid traversal, Space Voyager! Imagine 
 
 '''
 
-# TODO: Define the path_traverse function that takes a matrix of "heights" and the current position as parameters. It should return the next step's position if a higher value is found, or None if there's no higher adjacent value.
-def path_traverse(mountain, x, y) :
+def inbounds(matrix, x, y) :
 # {
-    None
+    return 0 <= x < len(matrix) and 0 <= y < len(matrix) - 1
+# }
+
+# TODO: Define the path_traverse function that takes a matrix of "heights" and the current position as parameters. It should return the next step's position if a higher value is found, or None if there's no higher adjacent value.
+def path_traverse(heights, x, y) :
+# {
+    adjacent = [(0, -1), (1, 0), (0, 1), (-1, 0)]
+    next_step = (x, y)
+
+    for i in range(len(adjacent)) :
+    # {
+        next_x = x + adjacent[i][0]
+        next_y = y + adjacent[i][1]
+
+        if (inbounds(heights, next_x, next_y) and heights[next_x][next_y]) :
+        # {
+            next_step = (next_x, next_y)
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+    # }
+
+    return next_step
+
 # }
 
 # Example matrix (mountain heights)
@@ -21,13 +47,25 @@ mountain = [[3, 1, 4],
 starting_position = (2, 1)
 
 # TODO: Use the path_traverse function to determine the next step from your starting position based on a higher adjacent value
-
 next_step = path_traverse(mountain, starting_position[0], starting_position[1])
+
 # TODO: Print out the next step's position or a message indicating that no higher step could be found
 print(next_step)
 
 '''
 
 ***** BONEYARD *****
+
+
+    if (0 <= x < len(matrix) and 0 <= y < len(matrix) - 1) :
+    # {
+        
+    # }
+
+    else :
+    # {
+        return False
+    # }
+
 
 '''
