@@ -4,49 +4,48 @@ Great progress on your learning journey! Now it's time to apply what you've lear
 
 '''
 
-import sys
-
 def trek_path(elevation_map, start_x, start_y) :
 # {
     possible_moves = [None]
     directions = [(0, 1), (-1, 0), (0, -1), (1, 0)]  # East, South, West, North
     path = [elevation_map[start_x][start_y]]
-    # flag = True
 
     # Pre-completed: Find all possible moves from the current position, moving only to higher and not yet visited elevations.
-    while(True) :
+    while(possible_moves) :
     # {
-        current_height = path[-1]
-
-        # print(current_height)
+        current_height = path[len(path) - 1]
+        possible_moves = []
 
         # Pre-completed: Find all possible moves from the current position, moving only to higher and not yet visited elevations.
-        possible_moves = [(start_x + dx, start_y + dy) for dx, dy in directions
-                            if (0 <= start_x + dx < len(elevation_map) and
-                                0 <= start_y + dy < len(elevation_map[0]) and
-                                elevation_map[start_x + dx][start_y + dy] > current_height)
-                        ]
-
-        if (not possible_moves) :
+        for dx, dy in directions :
         # {
-            break
+            if (0 <= start_x + dx < len(elevation_map) and 0 <= start_y + dy < len(elevation_map[0]) and elevation_map[start_x + dx][start_y + dy] > current_height) :
+            # {
+                possible_moves.append((start_x + dx, start_y + dy))
+            # }
+
+            else :
+            # {
+                None
+            # }
+
+        # }
+
+        # print(possible_moves)
+
+        if (possible_moves and possible_moves[0] != None) :
+        # {
+            # TODO: Implement logic to select the next position based on the highest elevation in the possible moves.
+            # Hint: Use a key function with the max() function to find the move leading to the highest elevation.  
+            start_x = max(possible_moves, key=lambda pos: elevation_map[pos[0]][pos[1]])[0]
+            start_y = max(possible_moves, key=lambda pos: elevation_map[pos[0]][pos[1]])[1]
+            path.append(elevation_map[start_x][start_y])
         # }
 
         else :
         # {
             None
         # }
-
-        # TODO: Implement logic to select the next position based on the highest elevation in the possible moves.
-
-        # Hint: Use a key function with the max() function to find the move leading to the highest elevation.  
-        # print(max(possible_moves, key=lambda pos: elevation_map[pos[0]][pos[1]]))
-        # path.append()
-        # start_x = possible_moves[len(possible_moves) - 1][0]
-        # start_y = possible_moves[len(possible_moves) - 1][1]
-        start_x = possible_moves[max(possible_moves, key=lambda pos: elevation_map[pos[0]][pos[1]])][0]
-        start_y = possible_moves[max(possible_moves, key=lambda pos: elevation_map[pos[0]][pos[1]])][1]
-        path.append(elevation_map[start_x][start_y])
         
     # }
 
@@ -185,5 +184,33 @@ if (possible_moves) :
         # {
             flag = False
         # }        
+
+
+import sys      
+
+# print(max(possible_moves, key=lambda pos: elevation_map[pos[0]][pos[1]]))
+        # path.append()
+        # start_x = possible_moves[len(possible_moves) - 1][0]
+        # start_y = possible_moves[len(possible_moves) - 1][1]
+        # print(max(possible_moves, key=lambda pos: elevation_map[pos[0]][pos[1]])[0])
+
+
+
+        # print(current_height)        
+
+# flag = True        
+
+
+        possible_moves = [(start_x + dx, start_y + dy) for dx, dy in directions
+                            if (0 <= start_x + dx < len(elevation_map) and
+                                0 <= start_y + dy < len(elevation_map[0]) and
+                                elevation_map[start_x + dx][start_y + dy] > current_height)
+                        ]
+
+# possible_moves = [None]
+            # print(elevation_map[start_x + dx][start_y + dy], current_height)
+                        
+# possible_moves.pop()
+# possible_moves = []
 
 '''
