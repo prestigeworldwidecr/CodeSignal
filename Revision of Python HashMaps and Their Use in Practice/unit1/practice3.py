@@ -44,6 +44,10 @@ else :
 
 # print(title)
         # print("Book is available")
+
+        my_dict = {'apple': 1, 'banana': 2, 'cherry': 3}
+(first_key, first_value), *rest = my_dict.items()
+print(f"First key: {first_key}, First value: {first_value}")
         
 
 '''
