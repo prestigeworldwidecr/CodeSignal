@@ -12,10 +12,10 @@ vegetable_inventory = {
                         }
 
 # TODO: Calculate the maximum number of a single type of vegetable in the inventory
-max_vegetable = max(vegetable_inventory)
+max_vegetable = max(vegetable_inventory.values())
 
 # TODO: Print out the maximum number of any vegetable in the inventory
-print(vegetable_inventory[max_vegetable])
+print(max_vegetable)
 '''
 
 ***** BONEYARD *****
