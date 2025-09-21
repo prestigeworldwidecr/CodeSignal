@@ -73,7 +73,7 @@ def is_prime(n) :
     
 # }
 
-def zigzag_traverse_and_primes(l) :
+def zigzag_traverse_and_primes1(l) :
 # {
     result = {}
 
@@ -82,6 +82,81 @@ def zigzag_traverse_and_primes(l) :
         if (is_prime(l[i])) :
         # {
             result[i] = l[i]
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+    # }
+    
+    return result
+# }
+
+def zigzag_traverse_and_primes(a) :
+# {
+    row = 0
+    col = 0
+    visited = []
+    i = 0
+    result = {}
+
+    visited.append(a[row][col])
+    i = i + 1
+
+    while (i <= len(a) * len(a[0]) - 1) :
+    # {
+        # move right
+        while (col < len(a[0]) - 1 and i <= len(a) * len(a[0]) - 1) :
+        # {
+            col = col + 1
+            visited.append(a[row][col])
+            i = i + 1
+        # }
+
+        # move down
+        if (row < len(a) - 1 and i <= len(a) * len(a[0]) - 1) :
+        # {
+            row = row + 1
+            visited.append(a[row][col])
+            i = i + 1
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+        # move left
+        while (col > 0 and i <= len(a) * len(a[0]) - 1) :
+        # {
+            col = col - 1
+            visited.append(a[row][col])
+            i = i + 1
+        # }
+
+        if (row < len(a) - 1 and i <= len(a) * len(a[0]) - 1) :
+        # {
+            # move down
+            row = row + 1
+            visited.append(a[row][col])
+            i = i + 1
+
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+    # }
+
+    for i in range(len(visited)) :
+    # {
+        if (is_prime(visited[i])) :
+        # {
+            result[i] = visited[i]
         # }
 
         else :
@@ -161,7 +236,8 @@ a = [
         [7, 8, 9] 
     ]
 
-print(zigzag_traverse_and_primes(step1_ztp(a)))
+# print(zigzag_traverse_and_primes(step1_ztp(a)))
+print(zigzag_traverse_and_primes(a))
 
 '''
 
