@@ -110,17 +110,10 @@ def parse_string(input_string) :
              
     # Parse to a nested dictionary
     elements = preprocessed_string.split(';')
-    # elements = elements.split('=', 1)
     result_dict = {}
 
     for element in elements :
     # {
-        # print(element.split('=', 1))
-        # tmp = element.split('=', 1)
-        # tmp = element.split('=', 1)
-        # print(element)
-        # print(elements)
-        # key, value = element.split('=', 1)
         key, value = element.split(',', 1)
 
         if ('{' in value) :
@@ -144,7 +137,6 @@ def parse_string(input_string) :
 def solution(json_string, update_value) :
 # {
     # TODO: implement the solution here    
-    # return parse_string_and_update_value(json_string, "key4", update_value)
     return update_dict(json.loads(json_string), "key4", update_value)
 # }
 
@@ -152,13 +144,23 @@ def solution(json_string, update_value) :
 json_string = "{\"key1\": \"value1\", \"key2\": {\"key3\": \"value3\", \"key4\": \"value4\"}, \"key5\": \"value5\"}"
 update_value = "taco"
 
-# print(json.loads(json_string))
-
 print(solution(json_string, update_value))
 
 '''
 
 ***** BONEYARD *****
+
+# return parse_string_and_update_value(json_string, "key4", update_value)
+# print(json.loads(json_string))
+
+# elements = elements.split('=', 1)
+    
+# print(element.split('=', 1))
+# tmp = element.split('=', 1)
+# tmp = element.split('=', 1)
+# print(element)
+# print(elements)
+# key, value = element.split('=', 1)
 
 # s = parse_string(json_string)
 # parse_string_and_update_value
