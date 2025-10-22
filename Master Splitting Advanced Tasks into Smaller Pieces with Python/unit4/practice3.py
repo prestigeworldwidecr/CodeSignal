@@ -93,40 +93,96 @@ If the value starts with ( and ends with ), split the inside by ; to get subkey-
 Otherwise, just store the value as a string.
 Does this help you get started? Want to try implementing step 2?
 
+Great question! The issue is in your update_dict function. When you update a field like Address with a new value that is a nested string (e.g., "(Street=3rd Ave;City=SF;Zip=94101)"), your code currently just assigns the string as the value, rather than parsing it into a dictionary.
+
+In your code, this happens here:
+
+if (k == key) :
+    dictionary[k] = value
+
+This line simply assigns the new value, regardless of whether it should be a nested dictionary.
+
+What should you do instead?
+
+Before assigning, check if the new value is a nested string (starts with ( and ends with )).
+If so, parse it into a dictionary (using your parsing logic for nested values) before assigning.
+Try updating your update_dict like this:
+
+if k == key:
+    if isinstance(value, str) and value.startswith('(') and value.endswith(')'):
+        # Parse the nested string into a dictionary
+        value = {kv.split('=')[0]: kv.split('=')[1] for kv in value[1:-1].split(';')}
+    dictionary[k] = value
+
+This way, when you update Address, it will be a dictionary, not a string.
+
+Summary:
+You need to update your assignment in update_dict to parse nested strings into dictionaries before assigning. Give this a try!
+
+Great question! Here’s what you need to do:
+
+You should update the part of your code where you are updating the user’s detail (inside your solution function).
+Right now, you have this:
+
+for r in result:
+    if (userid in r.keys()):
+        r = update_dict(r, key, new_value)
+
+But your update_dict function is not updating the value inside the nested user dictionary; instead, it’s adding the key at the top level or returning a new dictionary.
+
+What you want is:
+
+Find the dictionary for the user with the matching userid.
+Update the value for key inside that user's dictionary.
+If the new value is a nested string (starts with ( and ends with )), parse it into a dictionary before assigning.
+Replace your update logic with something like:
+
+for r in result:
+    if userid in r:
+        # Check if new_value is a nested string
+        if isinstance(new_value, str) and new_value.startswith('(') and new_value.endswith(')'):
+            # Parse the nested string into a dictionary
+            nested = {}
+            for kv in new_value[1:-1].split(';'):
+                k, v = kv.split('=', 1)
+                nested[k] = v
+            r[userid][key] = nested
+        else:
+            r[userid][key] = new_value
+
+Summary:
+
+This code goes inside your main solution function, replacing the part where you update the user’s detail.
+You do not need a separate update_dict function for this—just update the value directly in the user’s dictionary.
+Let me know if you want to see how to clean up your parsing logic too!
 
 '''
 
-def update_dict(dictionary, key, value) :
+def update_dict(dictionary, key, value, userid) :
 # {
-    for k in dictionary :
+    tmp = {}
+    
+    if (isinstance(value, str) and value.startswith('(') and value.endswith(')')) :
     # {
-        if (k == key) :
+        for kv in value[1: -1].split(';') :
         # {
-            dictionary[k] = value
+            k, v = kv.split('=', 1)
+            tmp[k] = v
         # }
 
-        elif (isinstance(dictionary[k], dict)) :
-        # {
-            update_dict(dictionary[k], key, value)
-        # }
-
-        else :
-        # {
-            None
-        # }
+        dictionary[userid][key] = tmp
 
     # }
 
-    return dictionary
+    else :
+    # {
+        dictionary[userid][key] = value
+    # }
 
-# }
-             
-def parse_string_and_update_value(input_string, update_key, new_value) :
-# {    
-    dictionary = parse_string(input_string)
-    update_dict(dictionary, update_key, new_value)
+    # dictionary[key] = value
 
     return dictionary
+
 # }
 
 def parse_string(input_string) :
@@ -149,9 +205,59 @@ def parse_string(input_string) :
         d = d.split(':')
         sub_data_header = d[0]
 
-        if ('{' in d[1]) :
+        if (len(d) < 2) :
         # {
+            None
+        # }
+
+        elif ('{' in d[0]) :
+        # {
+            sub_data = str(d).replace(';', ", ")
+            sub_data = sub_data.replace('{', '')
+            sub_data = sub_data.replace('}', '')
+            sub_data = sub_data.replace("'", '')
+            sub_data = sub_data.replace(';', ", ")
+            sub_data = sub_data.replace('[', '')
+            sub_data = sub_data.replace(']', '')
+            sub_data = sub_data.replace('"', '')
+            sub_data = sub_data.split(',')
+            i = 0
+            j = 1
             
+            while (i < len(sub_data) - 1) : 
+            # {             
+                tmp1 = sub_data[i]
+                tmp2 = sub_data[j]
+
+                if (tmp1[0] == ' ') :
+                # {
+                    tmp1 = tmp1[1 : len(tmp1)]
+                # }
+
+                else :
+                # {
+                    None
+                # }
+
+                if (tmp2[0] == ' ') :
+                # {
+                    tmp2 = tmp2[1 : len(tmp2)]
+                # }
+
+                else :
+                # {
+                    None
+                # }
+
+                data_dict[tmp1] = tmp2
+                i = i + 2
+                j = i + 1
+            # }
+
+        # }
+        
+        elif ('{' in d[1]) :
+        # {
             sub_data = str(d[1 : len(d)])
             sub_data = sub_data.replace('{', '')
             sub_data = sub_data.replace('}', '')
@@ -167,6 +273,27 @@ def parse_string(input_string) :
             # {             
                 tmp1 = sub_data[i]
                 tmp2 = sub_data[j]
+
+                if (tmp1[0] == ' ') :
+                # {
+                    tmp1 = tmp1[1 : len(tmp1)]
+                # }
+
+                else :
+                # {
+                    None
+                # }
+
+                if (tmp2[0] == ' ') :
+                # {
+                    tmp2 = tmp2[1 : len(tmp2)]
+                # }
+
+                else :
+                # {
+                    None
+                # }
+
                 sub_data_dict[tmp1] = tmp2
                 data_dict[sub_data_header] = sub_data_dict
                 i = i + 2
@@ -177,7 +304,20 @@ def parse_string(input_string) :
 
         else :
         # {
-            data_dict[sub_data_header] = d[1]
+            tmp = d[1]
+            
+            if (tmp[0] == ' ') :
+            # {
+                tmp = tmp[1 : len(tmp)]
+            # }
+
+            else :
+            # {
+                None
+            # }
+            
+            data_dict[sub_data_header] = tmp
+
         # }
 
     # }
@@ -201,7 +341,7 @@ def solution(data, userid, key, new_value) :
     # {
         if (userid in r.keys()) :
         # {
-            r = update_dict(r, key, new_value)
+            r = update_dict(r, key, new_value, userid)
         # }
 
         else :
@@ -211,11 +351,20 @@ def solution(data, userid, key, new_value) :
 
     # }
 
+    # print(result)
+
     return result
 
 # }
 
 data = "001,Age=25,Name=John,Address=(Street=Main St;City=NY;Zip=10001),Email=john@gmail.com\n002,Age=30,Name=Jane,Address=(Street=2nd St;City=LA;Zip=90001),Email=jane@hotmail.com"
+
+# data = "001,Age=25,Name=John,Address=(Street=Main St;City=NY;Zip=10001),Email=john@gmail.com\n002,Age=30,Name=Jane,Address=(Street=2nd St;City=LA;Zip=90001),Email=jane@hotmail.com', '001', 'Email', 'johndoe@gmail.com"
+
+# data = "001,Name=John,Address=(Street=Main St;City=NY;Zip=10001),Email=john@gmail.com\n002,Name=Jane,Address=(Street=2nd St;City=LA;Zip=90001),Email=jane@hotmail.com', '002', 'Address', '(Street=3rd Ave;City=SF;Zip=94101)"
+
+data = "'002', 'Address', '(Street=3rd Ave;City=SF;Zip=94101)"
+
 userid = "001"
 key = "Email"
 new_value = "johndoe@gmail.com"
@@ -225,6 +374,86 @@ print(solution(data, userid, key, new_value))
 '''
 
 ***** BONEYARD *****
+
+# Parse the nested string into a dictionary
+
+# value = {kv.split('=')[0]: kv.split('=')[1] for kv in value[1:-1].split(';')}
+
+
+# value = {kv.split('=')[0]: kv.split('=')[1]}
+
+for r in result:
+
+    if userid in r:
+        # Check if new_value is a nested string
+        if isinstance(new_value, str) and new_value.startswith('(') and new_value.endswith(')'):
+            # Parse the nested string into a dictionary
+            nested = {}
+            for kv in new_value[1:-1].split(';'):
+                k, v = kv.split('=', 1)
+                nested[k] = v
+            r[userid][key] = nested
+        else:
+            r[userid][key] = new_value
+    
+
+for k in dictionary :
+# {
+    if (k == key) :
+    # {
+        dictionary[k] = value
+    # }
+
+    elif (isinstance(dictionary[k], dict)) :
+    # {
+        update_dict(dictionary[k], key, value)
+    # }
+
+    else :
+    # {
+        None
+    # }
+
+# }
+             
+def parse_string_and_update_value(input_string, update_key, new_value) :
+# {    
+    dictionary = parse_string(input_string)
+    update_dict(dictionary, update_key, new_value)
+
+    return dictionary
+# }
+
+# print('*', d[0], d[1])
+
+            
+# print('%', d[1])
+
+
+
+# print('#', d, data, len(d))            
+                
+
+# print(tmp1, tmp2)
+# data_dict[sub_data_header] = sub_data_dict
+
+# print (sub_data_dict)
+
+# print(sub_data)
+
+
+            
+# print('&', sub_data)
+
+# print('&', sub_data)
+
+# print(type(d[0]), len(d), d, d[0])
+            
+           
+# print(sub_data)
+
+
+# print("hello", d, len(d))
 
     # print('1', result)
 
