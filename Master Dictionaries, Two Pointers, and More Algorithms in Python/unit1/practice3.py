@@ -97,9 +97,8 @@ def create_paired_array(arr) :
         result.append((value, index))
     # }
 
-    # print(result)
-
     return result
+
 # }
 
 def optimizedReplace(A, B) :
@@ -110,10 +109,18 @@ def optimizedReplace(A, B) :
     B_enum.sort()
     neighbor_index = 0
 
+    if (len(A) == 1) :
+    # {
+        return [A[0]]
+    # }
+
+    else :
+    # {
+        None
+    # }
+
     for i in range(len(B_enum)) :
     # {
-        # print(e[1])
-        # C.append(A[e[1]])
         if (i == 0) :
         # {
             neighbor_index = i + 1
@@ -128,12 +135,14 @@ def optimizedReplace(A, B) :
         # {
             if (B_enum[i][0] - B_enum[i - 1][0] < B_enum[i + 1][0] - B_enum[i][0]) :
             # {
-                neighbor_index = B_enum[i - 1][1]
+                # neighbor_index = B_enum[i - 1][1]
+                neighbor_index = i - 1
             # }
 
             else :
             # { 
-                neighbor_index = B_enum[i + 1][1]
+                # neighbor_index = B_enum[i + 1][1]
+                neighbor_index = i + 1
             # }
 
         # }
@@ -141,8 +150,6 @@ def optimizedReplace(A, B) :
         C[B_enum[i][1]] = A[B_enum[neighbor_index][1]]
     # }
     
-    # print(B_enum)
-    # print(C)
     return C
 
 # }
@@ -156,6 +163,15 @@ print(optimizedReplace(A, B))
 '''
 
 ***** BONEYARD *****
+
+
+# print(result)
+
+
+# print(e[1])
+# C.append(A[e[1]])
+# print(B_enum)
+# print(C)
 
 n = len(B_enum)
 for i in range(n):
