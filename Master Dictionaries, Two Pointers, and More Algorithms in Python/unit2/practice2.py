@@ -26,11 +26,48 @@ Your task involves figuring out a method to accurately and efficiently perform t
 def solution(list1, list2) :
 # {
     # TODO: implement the solution and return the result list.
-    None
+    result = [False] * len(list1)
+    set2 = set(list2)
+
+    for i in range(len(list1)) :
+    # {
+        if (list1[i] in set2) :
+        # {
+            result[i] = True
+        # }
+
+        else :
+        # {
+            None
+        # }
+
+    # }
+
+    return result
+
 # }
+
+list1 = ["mars", "jupiter", "venus", "earth"]
+list2 = ["earth", "mars", "neptune"]
+
+# [True, False, False, True]
+
+print(solution(list1, list2))
 
 '''
 
 ***** BONEYARD *****
+
+# print(result)
+
+# tmp = "mars"
+
+# print(list[0], list2, tmp in list2)
+
+
+# tmp = list[i]
+
+# print(i, tmp, list[i], tmp in list2)
+
 
 '''
