@@ -85,6 +85,172 @@ Instead, after building last_occurrence, loop through the string and keep track 
 When your current index matches that farthest index, that’s the end of a chapter—record its length and start a new one.
 Can you try writing just the loop that finds these chapter ends, using your last_occurrence dictionary?
 
+Awesome! If you already have the loop like:
+
+for i, c in enumerate(s):
+    # your logic here
+
+Now, inside that loop:
+
+Update a variable (let’s call it end) to be the maximum of its current value and last_occurrence[c].
+If i == end, that’s the end of a chapter—append the length to your result list and reset your start point.
+What do you think you should use to keep track of where the current chapter started?
+
+
+c
+Nov 13
+i have no clue
+Cosmo
+Nov 13
+Read message aloud
+No problem! You can use a variable, let’s call it start, to remember where the current chapter began.
+
+Set start = 0 before the loop.
+When you find a chapter end (i == end), the chapter length is i - start + 1.
+After recording the length, set start = i + 1 to begin the next chapter.
+Would you like to try adding this logic to your loop?
+
+
+c
+Nov 13
+done
+Cosmo
+Nov 13
+Read message aloud
+Great job! 🚀
+
+Now, test your function with a few examples (like "abacdcd" or "abcabcabc") to see if it returns the correct chapter lengths. If something doesn’t look right, let me know what output you get and we’ll debug together!
+
+
+c
+Nov 13
+input: "abcabcabc"
+output: {'a': 2, 'b': 5, 'c': 8}
+Cosmo
+Nov 13
+Read message aloud
+Nice, that means your last_occurrence dictionary is working!
+Now, try running your full function to see what list of chapter lengths it returns for "abcabcabc". What output do you get?
+
+
+c
+Yesterday
+{'a': 2, 'b': 5, 'c': 8}
+Cosmo
+Yesterday
+Read message aloud
+It looks like you’re printing the last_occurrence dictionary, not the list of chapter lengths.
+
+Make sure your function:
+
+Builds last_occurrence first,
+Then runs the loop to find chapter ends and appends the lengths to a result list,
+Finally, returns the result list (not the dictionary).
+Can you check if you’re returning the correct result at the end? If not, try adding a return res where res is your list of chapter lengths.
+
+
+c
+Yesterday
+[9]
+Cosmo
+Yesterday
+Read message aloud
+Perfect! 🎉
+
+That’s the correct output for "abcabcabc"—the whole string is one chapter. Try a few more test cases (like "abacdcd" or "abc") to make sure your function works for different patterns. If you see any unexpected results, let me know!
+
+
+c
+Yesterday
+"abacdcd" returns [7]
+all its doing is returning the count of letters
+this doesnt work
+Cosmo
+Yesterday
+Read message aloud
+Great observation! If your function returns [7] for "abacdcd", it means your partitioning logic isn’t splitting chapters at the right places.
+
+Let’s debug together:
+
+Are you updating end inside your loop to be the maximum of its current value and the last occurrence of the current character?
+Are you checking if i == end: inside the loop, and only then appending the chapter length and updating start?
+For "abacdcd", the correct output should be [3, 4].
+Try printing end and i at each step to see if your logic is finding the right chapter ends.
+What do you see when you do that?
+
+
+c
+Yesterday
+Are you updating end inside your loop to be the maximum of its current value and the last occurrence of the current character?
+i dont know how to do this
+Cosmo
+Yesterday
+Read message aloud
+No worries! Here’s how you can update end inside your loop:
+
+end = max(end, last_occurrence[c])
+
+end keeps track of the farthest last index of any character you’ve seen so far.
+last_occurrence[c] gives you the last index of the current character.
+So, in your loop, after getting c (the current character), update end like above.
+This way, end always points to the farthest last occurrence among all characters in the current chapter.
+
+Want to try adding that line inside your loop?
+
+
+c
+Yesterday
+what is variable c?
+Cosmo
+Yesterday
+Read message aloud
+Great question! In the loop:
+
+
+for i, c in enumerate(s):
+
+i is the current index (0, 1, 2, ...)
+c is the character at that index in the string s
+So, for example, if s = "abacdcd", then on the first iteration, i = 0 and c = 'a'.
+
+Does that help clarify?
+
+
+c
+Yesterday
+still doesnt work
+Cosmo
+Yesterday
+Read message aloud
+Let’s double-check your steps! Here’s a checklist to help you debug:
+
+Build the last occurrence dictionary:
+
+last_occurrence = {c: i for i, c in enumerate(s)}
+
+Initialize variables:
+
+res = []
+end = 0
+start = 0
+
+Loop through the string:
+
+for i, c in enumerate(s):
+    end = max(end, last_occurrence[c])
+    if i == end:
+        res.append(i - start + 1)
+        start = i + 1
+
+Return the result
+
+return res
+
+If you follow these steps exactly, "abacdcd" should return [3, 4].
+
+If it still doesn’t work, can you share your current code (just the function)? I’ll help you spot what’s off!
+
+
 '''
 
 def min_block(s) :
